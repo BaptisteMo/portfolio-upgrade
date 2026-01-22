@@ -1,6 +1,6 @@
 # Story 1.2: Hero Landing Component
 
-Status: ready-for-dev
+Status: review
 
 ## Story
 
@@ -20,35 +20,35 @@ Status: ready-for-dev
 
 ## Tasks / Subtasks
 
-- [ ] **Task 1: Create Hero Component Structure** (AC: 1, 6)
-  - [ ] Create `src/components/features/hero/HeroLanding.tsx`
-  - [ ] Create `src/components/features/hero/index.ts` barrel export
-  - [ ] Set up 100vh container with CSS Grid/Flexbox
-  - [ ] Use design tokens for all styling (no hardcoded values)
+- [x] **Task 1: Create Hero Component Structure** (AC: 1, 6)
+  - [x] Create `src/components/features/hero/HeroLanding.tsx`
+  - [x] Create `src/components/features/hero/index.ts` barrel export
+  - [x] Set up 100vh container with CSS Grid/Flexbox
+  - [x] Use design tokens for all styling (no hardcoded values)
 
-- [ ] **Task 2: Implement Typography Hierarchy** (AC: 2, 3)
-  - [ ] Add headline with monumental typography (clamp 48-96px)
-  - [ ] Add tagline with keywords prominently displayed
-  - [ ] Use Satoshi font for headline, proper font-weight
-  - [ ] Ensure keywords visible without scrolling
+- [x] **Task 2: Implement Typography Hierarchy** (AC: 2, 3)
+  - [x] Add headline with monumental typography (clamp 48-96px)
+  - [x] Add tagline with keywords prominently displayed
+  - [x] Use Satoshi font for headline, proper font-weight
+  - [x] Ensure keywords visible without scrolling
 
-- [ ] **Task 3: Add CTA Buttons** (AC: 4, 5)
-  - [ ] Add primary CTA "Voir les projets" using shadcn Button
-  - [ ] Add secondary CTA "Me contacter" with variant="outline"
-  - [ ] Link primary CTA to projects section
-  - [ ] Link secondary CTA to contact section/page
-  - [ ] Ensure proper touch targets (44x44px minimum)
+- [x] **Task 3: Add CTA Buttons** (AC: 4, 5)
+  - [x] Add primary CTA "Voir les projets" using shadcn Button
+  - [x] Add secondary CTA "Me contacter" with variant="outline"
+  - [x] Link primary CTA to projects section
+  - [x] Link secondary CTA to contact section/page
+  - [x] Ensure proper touch targets (44x44px minimum)
 
-- [ ] **Task 4: Make Responsive** (AC: 7)
-  - [ ] Mobile (< 768px): Stack vertically, smaller typography
-  - [ ] Tablet (768-1024px): Intermediate sizing
-  - [ ] Desktop (> 1024px): Full monumental layout
-  - [ ] Test at 375px, 768px, 1440px breakpoints
+- [x] **Task 4: Make Responsive** (AC: 7)
+  - [x] Mobile (< 768px): Stack vertically, smaller typography
+  - [x] Tablet (768-1024px): Intermediate sizing
+  - [x] Desktop (> 1024px): Full monumental layout
+  - [x] Test at 375px, 768px, 1440px breakpoints
 
-- [ ] **Task 5: Add to Homepage** (AC: all)
-  - [ ] Import HeroLanding in `src/app/page.tsx`
-  - [ ] Verify full-page display
-  - [ ] Test in dev and build
+- [x] **Task 5: Add to Homepage** (AC: all)
+  - [x] Import HeroLanding in `src/app/page.tsx`
+  - [x] Verify full-page display
+  - [x] Test in dev and build
 
 ## Dev Notes
 
@@ -162,15 +162,22 @@ export function HeroLanding() {
 
 ### Agent Model Used
 
-_To be filled by Dev Agent_
+Claude Opus 4.5 (claude-opus-4-5-20251101)
 
 ### Completion Notes List
 
-_To be filled during implementation_
+- Created HeroLanding component with min-h-screen (100vh) centered layout using Flexbox
+- Implemented monumental typography with clamp(4.5rem,8vw,6rem) for responsive scaling
+- Used Tailwind responsive classes (text-5xl md:text-7xl lg:text-[clamp]) for breakpoints
+- Keywords displayed immediately visible (no scroll required)
+- CTAs use shadcn Button with proper min-h/min-w for 44px touch targets
+- All styling uses design tokens (bg-background, text-foreground, text-muted-foreground)
+- Note: Using Inter as Satoshi fallback (per Story 1.1 font configuration)
+- Build passes successfully
 
 ### File List
 
 _Files created/modified:_
-- `src/components/features/hero/HeroLanding.tsx`
-- `src/components/features/hero/index.ts`
-- `src/app/page.tsx`
+- `src/components/features/hero/HeroLanding.tsx` (created)
+- `src/components/features/hero/index.ts` (created)
+- `src/app/page.tsx` (modified)

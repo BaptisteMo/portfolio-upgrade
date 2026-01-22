@@ -1,0 +1,1 @@
+export { HeroLanding } from './HeroLanding'
