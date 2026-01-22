@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { fontVariables } from '@/lib/fonts'
-import { ThemeProvider } from '@/components/shared/ThemeProvider'
+import { ThemeProvider } from '@/components/shared'
 import './globals.css'
 
 export const metadata: Metadata = {
