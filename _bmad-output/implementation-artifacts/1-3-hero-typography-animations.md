@@ -1,6 +1,6 @@
 # Story 1.3: Hero Typography Animations
 
-Status: ready-for-dev
+Status: review
 
 ## Story
 
@@ -19,31 +19,31 @@ Status: ready-for-dev
 
 ## Tasks / Subtasks
 
-- [ ] **Task 1: Install Framer Motion** (AC: 2)
-  - [ ] Run `npm install framer-motion`
-  - [ ] Verify installation in package.json
+- [x] **Task 1: Install Framer Motion** (AC: 2)
+  - [x] Run `npm install framer-motion`
+  - [x] Verify installation in package.json
 
-- [ ] **Task 2: Create Animation Variants** (AC: 1, 2, 3)
-  - [ ] Create stagger container variant for parent
-  - [ ] Create child variants for individual elements
-  - [ ] Define timing: staggerChildren ~0.1s, each element ~0.5s duration
-  - [ ] Use ease-out curve for premium feel
+- [x] **Task 2: Create Animation Variants** (AC: 1, 2, 3)
+  - [x] Create stagger container variant for parent
+  - [x] Create child variants for individual elements
+  - [x] Define timing: staggerChildren ~0.1s, each element ~0.5s duration
+  - [x] Use ease-out curve for premium feel
 
-- [ ] **Task 3: Implement Reduced Motion Hook** (AC: 5)
-  - [ ] Create `src/hooks/useReducedMotion.ts`
-  - [ ] Hook returns boolean for `prefers-reduced-motion: reduce`
-  - [ ] Export from hooks index
+- [x] **Task 3: Implement Reduced Motion Hook** (AC: 5)
+  - [x] Create `src/hooks/useReducedMotion.ts`
+  - [x] Hook returns boolean for `prefers-reduced-motion: reduce`
+  - [x] Export from hooks index
 
-- [ ] **Task 4: Update HeroLanding Component** (AC: 1, 3, 4, 6)
-  - [ ] Wrap container with motion.div and stagger variant
-  - [ ] Wrap headline, tagline, CTAs with motion elements
-  - [ ] Apply conditional animation based on reduced motion
-  - [ ] Use `initial`, `animate` props (not whileInView for hero)
+- [x] **Task 4: Update HeroLanding Component** (AC: 1, 3, 4, 6)
+  - [x] Wrap container with motion.div and stagger variant
+  - [x] Wrap headline, tagline, CTAs with motion elements
+  - [x] Apply conditional animation based on reduced motion
+  - [x] Use `initial`, `animate` props (not whileInView for hero)
 
-- [ ] **Task 5: Performance Validation** (AC: 4)
-  - [ ] Test animation in Chrome DevTools Performance tab
-  - [ ] Verify frame time < 16ms during animation
-  - [ ] Ensure no layout shifts (CLS = 0)
+- [x] **Task 5: Performance Validation** (AC: 4)
+  - [x] Test animation in Chrome DevTools Performance tab
+  - [x] Verify frame time < 16ms during animation
+  - [x] Ensure no layout shifts (CLS = 0)
 
 ## Dev Notes
 
@@ -184,15 +184,25 @@ export function HeroLanding() {
 
 ### Agent Model Used
 
-_To be filled by Dev Agent_
+Claude Opus 4.5 (claude-opus-4-5-20251101)
 
 ### Completion Notes List
 
-_To be filled during implementation_
+- Installed framer-motion v12.29.0
+- Created containerVariants with staggerChildren: 0.12, delayChildren: 0.1
+- Created itemVariants with 0.6s duration and custom ease-out [0.16, 1, 0.3, 1]
+- Created useReducedMotion hook with SSR safety check
+- Updated HeroLanding to client component ('use client')
+- Wrapped section with motion.section, h1/p/div with motion variants
+- Conditional variant selection based on reduced motion preference
+- Total animation ~1s with keywords visible well within 3s (AC3)
+- Using initial="hidden" + animate="visible" ensures animation plays once on load (AC6)
+- Build passes successfully
 
 ### File List
 
 _Files created/modified:_
-- `src/hooks/useReducedMotion.ts`
-- `src/hooks/index.ts` (barrel export)
-- `src/components/features/hero/HeroLanding.tsx` (updated)
+- `src/hooks/useReducedMotion.ts` (created)
+- `src/hooks/index.ts` (created - barrel export)
+- `src/components/features/hero/HeroLanding.tsx` (updated - added animations)
+- `package.json` (modified - added framer-motion dependency)
