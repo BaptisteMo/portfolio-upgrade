@@ -229,8 +229,15 @@
   /* Letter spacing */
   --tracking-tighter: -0.05em;
   --tracking-tight: -0.025em;
+  --tracking-hero: -0.03em;     /* UX spec: hero 96px typography */
   --tracking-normal: 0;
   --tracking-wide: 0.025em;
+
+  /* Line heights for titles (UX spec compliant) */
+  --leading-title: 1.25;        /* UX spec: titres sans-serif */
+
+  /* Touch target (accessibility) */
+  --touch-target: 2.75rem;      /* 44px minimum per WCAG */
 }
 
 /* ============================================
