@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Directions - Portfolio Baptiste (Landing + Product inspired)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #fafafa;
+      color: #1a1a1a;
+      overflow-x: hidden;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark {
+      background: #0a0a0a;
+      color: #e5e5e5;
+    }
+
+    /* Navigation Controls */
+    .nav-controls {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: flex;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    body.dark .nav-controls {
+      background: rgba(20, 20, 20, 0.95);
+      border-color: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-btn {
+      padding: 6px 12px;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      color: #666;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    body.dark .nav-btn {
+      color: #999;
+    }
+
+    .nav-btn:hover {
+      background: rgba(0, 0, 0, 0.04);
+      color: #1a1a1a;
+    }
+
+    body.dark .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #e5e5e5;
+    }
+
+    .nav-btn.active {
+      background: rgba(0, 0, 0, 0.06);
+      color: #1a1a1a;
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark .nav-btn.active {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .mode-toggle {
+      margin-left: 8px;
+      padding: 6px 12px;
+      background: transparent;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s ease;
+    }
+
+    body.dark .mode-toggle {
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Direction Container */
+    .direction {
+      display: none;
+      min-height: 100vh;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .direction.active {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Direction Header */
+    .direction-header {
+      padding: 80px 32px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .direction-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .direction-subtitle {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 16px;
+    }
+
+    body.dark .direction-subtitle {
+      color: #999;
+    }
+
+    .direction-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      padding: 4px 10px;
+      background: rgba(0, 0, 0, 0.04);
+      border-radius: 4px;
+      font-size: 11px;
+      color: #666;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    body.dark .tag {
+      background: rgba(255, 255, 255, 0.06);
+      color: #999;
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Mockup Container */
+    .mockup-container {
+      padding: 32px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .mockup-label {
+      font-size: 12px;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    /* === DIRECTION 1: STRIPE LANDING PAGE STYLE === */
+    .direction-1 .mockup {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+      border-radius: 12px;
+      overflow: hidden;
+      min-height: 700px;
+    }
+
+    .direction-1 .landing-nav {
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .direction-1 .logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+
+    .direction-1 .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .direction-1 .nav-link {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .direction-1 .nav-link:hover {
+      color: #fff;
+    }
+
+    .direction-1 .hero {
+      padding: 100px 48px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .direction-1 .hero-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(139, 92, 246, 0.15);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 50px;
+      font-size: 13px;
+      color: #a78bfa;
+      margin-bottom: 24px;
+    }
+
+    .direction-1 .hero h1 {
+      font-size: 64px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+
+    .direction-1 .hero h1 span {
+      background: linear-gradient(135deg, #a78bfa 0%, #22c55e 50%, #3b82f6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .direction-1 .hero p {
+      font-size: 20px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+
+    .direction-1 .cta-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .direction-1 .cta-primary {
+      padding: 14px 28px;
+      background: #fff;
+      color: #0a0a0a;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .direction-1 .cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
+    }
+
+    .direction-1 .cta-secondary {
+      padding: 14px 28px;
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .direction-1 .cta-secondary:hover {
+      border-color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .direction-1 .features {
+      padding: 0 48px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .direction-1 .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .direction-1 .feature-card {
+      padding: 32px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .direction-1 .feature-card:hover {
+      border-color: rgba(139, 92, 246, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .direction-1 .feature-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(34, 197, 94, 0.2));
+      border-radius: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .direction-1 .feature-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .direction-1 .feature-card p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.6;
+    }
+
+    /* === DIRECTION 2: GITHUB LANDING PAGE STYLE === */
+    .direction-2 .mockup {
+      background: #0d1117;
+      border-radius: 12px;
+      overflow: hidden;
+      min-height: 700px;
+    }
+
+    .direction-2 .gh-nav {
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #30363d;
+    }
+
+    .direction-2 .gh-logo {
+      font-size: 28px;
+    }
+
+    .direction-2 .gh-nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .direction-2 .gh-nav-link {
+      font-size: 14px;
+      color: #e6edf3;
+      text-decoration: none;
+    }
+
+    .direction-2 .gh-hero {
+      padding: 80px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .direction-2 .gh-hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(34, 197, 94, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .direction-2 .gh-hero h1 {
+      font-size: 56px;
+      font-weight: 800;
+      color: #e6edf3;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .direction-2 .gh-hero h1 .highlight {
+      color: #22c55e;
+    }
+
+    .direction-2 .gh-hero p {
+      font-size: 20px;
+      color: #8b949e;
+      max-width: 700px;
+      margin: 0 auto 32px;
+      line-height: 1.5;
+    }
+
+    .direction-2 .gh-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      background: #238636;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .direction-2 .gh-cta:hover {
+      background: #2ea043;
+    }
+
+    .direction-2 .project-showcase {
+      padding: 60px 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .direction-2 .showcase-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #8b949e;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .direction-2 .showcase-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #30363d;
+    }
+
+    .direction-2 .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .direction-2 .showcase-card {
+      padding: 32px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      transition: border-color 0.2s;
+    }
+
+    .direction-2 .showcase-card:hover {
+      border-color: #22c55e;
+    }
+
+    .direction-2 .showcase-card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #58a6ff;
+      margin-bottom: 8px;
+    }
+
+    .direction-2 .showcase-card p {
+      font-size: 14px;
+      color: #8b949e;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .direction-2 .showcase-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 12px;
+      color: #8b949e;
+    }
+
+    .direction-2 .showcase-meta span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .direction-2 .lang-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+    }
+
+    /* === DIRECTION 3: LINEAR LANDING PAGE STYLE === */
+    .direction-3 .mockup {
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      min-height: 700px;
+    }
+
+    .direction-3 .linear-nav {
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .direction-3 .linear-logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .direction-3 .linear-logo-icon {
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(135deg, #5e6ad2, #a78bfa);
+      border-radius: 4px;
+    }
+
+    .direction-3 .linear-nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .direction-3 .linear-nav-link {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .direction-3 .linear-nav-link:hover {
+      color: #fff;
+    }
+
+    .direction-3 .linear-hero {
+      padding: 100px 48px 60px;
+      text-align: center;
+    }
+
+    .direction-3 .linear-hero h1 {
+      font-size: 72px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 24px;
+    }
+
+    .direction-3 .linear-hero h1 .gradient {
+      background: linear-gradient(135deg, #a78bfa 0%, #f472b6 50%, #fb923c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .direction-3 .linear-hero p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.5);
+      max-width: 500px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    .direction-3 .linear-cta-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .direction-3 .linear-cta {
+      padding: 12px 24px;
+      background: #5e6ad2;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .direction-3 .linear-cta:hover {
+      background: #6b77db;
+    }
+
+    .direction-3 .linear-cta-ghost {
+      padding: 12px 24px;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .direction-3 .product-preview {
+      padding: 40px 48px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .direction-3 .preview-window {
+      background: #111;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+    }
+
+    .direction-3 .preview-header {
+      padding: 12px 16px;
+      background: #1a1a1a;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      gap: 8px;
+    }
+
+    .direction-3 .preview-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #333;
+    }
+
+    .direction-3 .preview-dot.red { background: #ff5f57; }
+    .direction-3 .preview-dot.yellow { background: #febc2e; }
+    .direction-3 .preview-dot.green { background: #28c840; }
+
+    .direction-3 .preview-content {
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 32px;
+      min-height: 300px;
+    }
+
+    .direction-3 .preview-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .direction-3 .preview-nav-item {
+      padding: 8px 12px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      border-radius: 4px;
+    }
+
+    .direction-3 .preview-nav-item.active {
+      background: rgba(94, 106, 210, 0.2);
+      color: #a78bfa;
+    }
+
+    .direction-3 .preview-main h2 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .direction-3 .preview-main p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.4);
+      line-height: 1.6;
+    }
+
+    .direction-3 .preview-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .direction-3 .preview-card {
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+    }
+
+    .direction-3 .preview-card-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .direction-3 .preview-card-meta {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* === DIRECTION 4: STRIPE DASHBOARD === */
+    .direction-4 .mockup {
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    body.dark .direction-4 .mockup {
+      background: #141414;
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .direction-4 .dashboard-header {
+      padding: 32px 32px 24px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    body.dark .direction-4 .dashboard-header {
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .direction-4 .dashboard-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .direction-4 .dashboard-subtitle {
+      font-size: 14px;
+      color: #666;
+    }
+
+    body.dark .direction-4 .dashboard-subtitle {
+      color: #999;
+    }
+
+    .direction-4 .stats-grid {
+      padding: 32px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .direction-4 .stat-card {
+      padding: 24px;
+      background: rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    body.dark .direction-4 .stat-card {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .direction-4 .stat-card:hover {
+      border-color: rgba(34, 197, 94, 0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    body.dark .direction-4 .stat-card:hover {
+      border-color: rgba(34, 197, 94, 0.4);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .direction-4 .stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #999;
+      margin-bottom: 8px;
+    }
+
+    .direction-4 .stat-value {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+
+    .direction-4 .stat-change {
+      font-size: 13px;
+      color: #22c55e;
+      font-weight: 500;
+    }
+
+    .direction-4 .projects-section {
+      padding: 0 32px 32px;
+    }
+
+    .direction-4 .section-header {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .direction-4 .project-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .direction-4 .project-item {
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 8px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+
+    body.dark .direction-4 .project-item {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .direction-4 .project-item:hover {
+      border-color: rgba(34, 197, 94, 0.3);
+    }
+
+    .direction-4 .project-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .direction-4 .project-desc {
+      font-size: 13px;
+      color: #666;
+    }
+
+    body.dark .direction-4 .project-desc {
+      color: #999;
+    }
+
+    .direction-4 .project-tags {
+      display: flex;
+      gap: 6px;
+    }
+
+    .direction-4 .project-tag {
+      padding: 4px 10px;
+      background: rgba(34, 197, 94, 0.1);
+      color: #16a34a;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    body.dark .direction-4 .project-tag {
+      color: #22c55e;
+    }
+
+    /* === DIRECTION 5: GITHUB PROFILE === */
+    .direction-5 .mockup {
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    body.dark .direction-5 .mockup {
+      background: #0d1117;
+      border-color: #30363d;
+    }
+
+    .direction-5 .profile-header {
+      padding: 32px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+    }
+
+    body.dark .direction-5 .profile-header {
+      border-color: #30363d;
+    }
+
+    .direction-5 .avatar {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      border-radius: 50%;
+      border: 2px solid rgba(0, 0, 0, 0.08);
+    }
+
+    body.dark .direction-5 .avatar {
+      border-color: #30363d;
+    }
+
+    .direction-5 .profile-info h1 {
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .direction-5 .profile-bio {
+      font-size: 14px;
+      color: #656d76;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    body.dark .direction-5 .profile-bio {
+      color: #8b949e;
+    }
+
+    .direction-5 .profile-stats {
+      display: flex;
+      gap: 24px;
+    }
+
+    .direction-5 .stat {
+      font-size: 13px;
+      color: #656d76;
+    }
+
+    body.dark .direction-5 .stat {
+      color: #8b949e;
+    }
+
+    .direction-5 .stat strong {
+      font-weight: 600;
+      color: #1f2328;
+    }
+
+    body.dark .direction-5 .stat strong {
+      color: #e6edf3;
+    }
+
+    .direction-5 .profile-content {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 24px;
+      padding: 32px;
+    }
+
+    .direction-5 .pinned-section h2 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .direction-5 .pinned-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .direction-5 .pinned-item {
+      padding: 16px;
+      background: rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    body.dark .direction-5 .pinned-item {
+      background: #161b22;
+      border-color: #30363d;
+    }
+
+    .direction-5 .pinned-item:hover {
+      border-color: #22c55e;
+    }
+
+    .direction-5 .pinned-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #0969da;
+    }
+
+    body.dark .direction-5 .pinned-title {
+      color: #58a6ff;
+    }
+
+    .direction-5 .pinned-desc {
+      font-size: 12px;
+      color: #656d76;
+      margin-bottom: 12px;
+    }
+
+    body.dark .direction-5 .pinned-desc {
+      color: #8b949e;
+    }
+
+    .direction-5 .pinned-lang {
+      font-size: 11px;
+      color: #22c55e;
+      font-weight: 500;
+    }
+
+    .direction-5 .activity-sidebar h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .direction-5 .contributions {
+      padding: 16px;
+      background: rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+
+    body.dark .direction-5 .contributions {
+      background: #161b22;
+      border-color: #30363d;
+    }
+
+    .direction-5 .contrib-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 3px;
+      margin-top: 12px;
+    }
+
+    .direction-5 .contrib-day {
+      aspect-ratio: 1;
+      background: rgba(34, 197, 94, 0.2);
+      border-radius: 2px;
+    }
+
+    .direction-5 .contrib-day.high {
+      background: #22c55e;
+    }
+
+    /* === DIRECTION 6: LINEAR ISSUE DETAIL === */
+    .direction-6 .mockup {
+      background: #18181b;
+      border: 1px solid #27272a;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .direction-6 .linear-topbar {
+      padding: 12px 20px;
+      border-bottom: 1px solid #27272a;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .direction-6 .breadcrumb {
+      font-size: 13px;
+      color: #71717a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .direction-6 .shortcuts-hint {
+      font-size: 12px;
+      color: #71717a;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .direction-6 .kbd {
+      padding: 2px 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 3px;
+      font-size: 11px;
+      font-family: monospace;
+      color: #71717a;
+    }
+
+    .direction-6 .issue-layout {
+      display: grid;
+      grid-template-columns: 180px 1fr 300px;
+      min-height: 600px;
+    }
+
+    .direction-6 .quick-nav {
+      padding: 20px 16px;
+      border-right: 1px solid #27272a;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .direction-6 .quick-item {
+      padding: 8px 12px;
+      font-size: 13px;
+      color: #71717a;
+      margin-bottom: 4px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .direction-6 .quick-item:hover {
+      background: rgba(139, 92, 246, 0.1);
+      color: #a78bfa;
+    }
+
+    .direction-6 .quick-shortcut {
+      font-size: 10px;
+      padding: 2px 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 3px;
+      font-family: monospace;
+    }
+
+    .direction-6 .issue-main {
+      padding: 40px 48px;
+    }
+
+    .direction-6 .issue-id {
+      font-size: 13px;
+      color: #71717a;
+      margin-bottom: 8px;
+    }
+
+    .direction-6 .issue-heading {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #f4f4f5;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+
+    .direction-6 .issue-body {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #a1a1aa;
+      margin-bottom: 32px;
+    }
+
+    .direction-6 .attachments {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .direction-6 .attachment {
+      aspect-ratio: 16/9;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid #27272a;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #52525b;
+      font-size: 12px;
+    }
+
+    .direction-6 .properties {
+      padding: 24px;
+      border-left: 1px solid #27272a;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .direction-6 .property-group {
+      margin-bottom: 20px;
+    }
+
+    .direction-6 .prop-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #52525b;
+      margin-bottom: 8px;
+    }
+
+    .direction-6 .prop-value {
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid #27272a;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #e4e4e7;
+    }
+
+    .direction-6 .prop-select {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .direction-6 .priority-dot {
+      width: 8px;
+      height: 8px;
+      background: #a78bfa;
+      border-radius: 50%;
+    }
+
+    @media (max-width: 1200px) {
+      .features-grid,
+      .showcase-grid,
+      .preview-content {
+        grid-template-columns: 1fr;
+      }
+
+      .issue-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-nav,
+      .properties {
+        border-right: none;
+        border-left: none;
+        border-bottom: 1px solid #27272a;
+      }
+
+      .profile-content {
+        grid-template-columns: 1fr;
+      }
+
+      .pinned-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .direction-1 .hero h1,
+      .direction-2 .gh-hero h1,
+      .direction-3 .linear-hero h1 {
+        font-size: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Controls -->
+  <div class="nav-controls">
+    <button class="nav-btn active" onclick="showDirection(1)">Stripe Landing</button>
+    <button class="nav-btn" onclick="showDirection(2)">GitHub Landing</button>
+    <button class="nav-btn" onclick="showDirection(3)">Linear Landing</button>
+    <button class="nav-btn" onclick="showDirection(4)">Stripe Dashboard</button>
+    <button class="nav-btn" onclick="showDirection(5)">GitHub Profile</button>
+    <button class="nav-btn" onclick="showDirection(6)">Linear Issue</button>
+    <button class="mode-toggle" onclick="toggleMode()">Toggle Dark</button>
+  </div>
+
+  <!-- Direction 1: Stripe Landing Page Style -->
+  <div class="direction direction-1 active">
+    <div class="direction-header">
+      <h1 class="direction-title">Direction 1: Stripe Landing Page Style</h1>
+      <p class="direction-subtitle">Gradient hero + Bold headlines + Feature grid + Premium feel</p>
+      <div class="direction-tags">
+        <span class="tag">Dark gradient</span>
+        <span class="tag">Centered hero</span>
+        <span class="tag">Feature cards</span>
+        <span class="tag">Violet/Green accent</span>
+      </div>
+    </div>
+
+    <div class="mockup-container">
+      <div class="mockup-label">Portfolio Landing Page</div>
+      <div class="mockup">
+        <nav class="landing-nav">
+          <div class="logo">Baptiste Morillon</div>
+          <div class="nav-links">
+            <a href="#" class="nav-link">Projects</a>
+            <a href="#" class="nav-link">Process</a>
+            <a href="#" class="nav-link">About</a>
+            <a href="#" class="nav-link">Contact</a>
+          </div>
+        </nav>
+
+        <div class="hero">
+          <span class="hero-badge">Product Designer • 6 years experience</span>
+          <h1>I design <span>products that scale</span></h1>
+          <p>Specialized in B2B SaaS, I help startups and scale-ups build design systems and ship products that users love. Currently focused on AI-powered tools.</p>
+          <div class="cta-group">
+            <button class="cta-primary">View Projects →</button>
+            <button class="cta-secondary">Download Resume</button>
+          </div>
+        </div>
+
+        <div class="features">
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">🎯</div>
+              <h3>Product Strategy</h3>
+              <p>From discovery to delivery, I work closely with product teams to define vision and roadmap.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🧩</div>
+              <h3>Design Systems</h3>
+              <p>150+ components built. I create scalable systems that accelerate development.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">📊</div>
+              <h3>Data-Driven Design</h3>
+              <p>Every decision backed by research. 70% average improvement in core metrics.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Direction 2: GitHub Landing Page Style -->
+  <div class="direction direction-2">
+    <div class="direction-header">
+      <h1 class="direction-title">Direction 2: GitHub Landing Page Style</h1>
+      <p class="direction-subtitle">Bold hero + Green accent + Project showcase cards + Dev-focused</p>
+      <div class="direction-tags">
+        <span class="tag">Dark #0d1117</span>
+        <span class="tag">Radial glow</span>
+        <span class="tag">Showcase grid</span>
+        <span class="tag">Green primary</span>
+      </div>
+    </div>
+
+    <div class="mockup-container">
+      <div class="mockup-label">Portfolio Landing Page</div>
+      <div class="mockup">
+        <nav class="gh-nav">
+          <span class="gh-logo">⚡</span>
+          <div class="gh-nav-links">
+            <a href="#" class="gh-nav-link">Projects</a>
+            <a href="#" class="gh-nav-link">Process</a>
+            <a href="#" class="gh-nav-link">About</a>
+            <a href="#" class="gh-nav-link">Contact</a>
+          </div>
+        </nav>
+
+        <div class="gh-hero">
+          <h1>Design that <span class="highlight">ships</span>.</h1>
+          <p>Product Designer specializing in B2B SaaS. I build design systems and ship products used by thousands. Currently exploring AI-powered design tools.</p>
+          <button class="gh-cta">Explore Projects →</button>
+        </div>
+
+        <div class="project-showcase">
+          <div class="showcase-label">Featured Work</div>
+          <div class="showcase-grid">
+            <div class="showcase-card">
+              <h3>La Wooferie</h3>
+              <p>Complete redesign of pet care platform. Reduced drop-off by 70%, increased bookings by 65%.</p>
+              <div class="showcase-meta">
+                <span><span class="lang-dot"></span> B2B SaaS</span>
+                <span>4 months</span>
+                <span>React + TypeScript</span>
+              </div>
+            </div>
+            <div class="showcase-card">
+              <h3>Marketplace Social</h3>
+              <p>Creator tools dashboard serving 10K+ active creators with analytics and monetization.</p>
+              <div class="showcase-meta">
+                <span><span class="lang-dot"></span> B2C Platform</span>
+                <span>6 months</span>
+                <span>Next.js</span>
+              </div>
+            </div>
+            <div class="showcase-card">
+              <h3>Analytics Dashboard</h3>
+              <p>Enterprise analytics platform processing 1M+ events/day with real-time visualization.</p>
+              <div class="showcase-meta">
+                <span><span class="lang-dot"></span> Enterprise</span>
+                <span>8 months</span>
+                <span>Vue.js</span>
+              </div>
+            </div>
+            <div class="showcase-card">
+              <h3>Design System Kit</h3>
+              <p>Component library with 150+ production-ready components used across 4 products.</p>
+              <div class="showcase-meta">
+                <span><span class="lang-dot"></span> Design System</span>
+                <span>Ongoing</span>
+                <span>Figma + React</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Direction 3: Linear Landing Page Style -->
+  <div class="direction direction-3">
+    <div class="direction-header">
+      <h1 class="direction-title">Direction 3: Linear Landing Page Style</h1>
+      <p class="direction-subtitle">Minimal dark + Large typography + Product preview + Gradient text</p>
+      <div class="direction-tags">
+        <span class="tag">Pure black</span>
+        <span class="tag">72px headline</span>
+        <span class="tag">App preview</span>
+        <span class="tag">Multi-color gradient</span>
+      </div>
+    </div>
+
+    <div class="mockup-container">
+      <div class="mockup-label">Portfolio Landing Page</div>
+      <div class="mockup">
+        <nav class="linear-nav">
+          <div class="linear-logo">
+            <div class="linear-logo-icon"></div>
+            Baptiste Morillon
+          </div>
+          <div class="linear-nav-links">
+            <a href="#" class="linear-nav-link">Projects</a>
+            <a href="#" class="linear-nav-link">Process</a>
+            <a href="#" class="linear-nav-link">About</a>
+            <a href="#" class="linear-nav-link">Contact</a>
+          </div>
+        </nav>
+
+        <div class="linear-hero">
+          <h1>Design for<br/><span class="gradient">product teams</span></h1>
+          <p>Product Designer crafting B2B SaaS experiences. Building design systems and shipping products at scale.</p>
+          <div class="linear-cta-group">
+            <button class="linear-cta">View Projects</button>
+            <button class="linear-cta-ghost">Contact</button>
+          </div>
+        </div>
+
+        <div class="product-preview">
+          <div class="preview-window">
+            <div class="preview-header">
+              <div class="preview-dot red"></div>
+              <div class="preview-dot yellow"></div>
+              <div class="preview-dot green"></div>
+            </div>
+            <div class="preview-content">
+              <div class="preview-sidebar">
+                <div class="preview-nav-item active">🏠 Overview</div>
+                <div class="preview-nav-item">📁 Projects</div>
+                <div class="preview-nav-item">🔧 Process</div>
+                <div class="preview-nav-item">👤 About</div>
+              </div>
+              <div class="preview-main">
+                <h2>Featured Projects</h2>
+                <p>Selected work from 6 years building B2B SaaS products</p>
+                <div class="preview-cards">
+                  <div class="preview-card">
+                    <div class="preview-card-title">La Wooferie</div>
+                    <div class="preview-card-meta">B2B SaaS • -70% drop-off</div>
+                  </div>
+                  <div class="preview-card">
+                    <div class="preview-card-title">Marketplace Social</div>
+                    <div class="preview-card-meta">B2C • 10K+ creators</div>
+                  </div>
+                  <div class="preview-card">
+                    <div class="preview-card-title">Analytics Dashboard</div>
+                    <div class="preview-card-meta">Enterprise • 1M+ events/day</div>
+                  </div>
+                  <div class="preview-card">
+                    <div class="preview-card-title">Design System</div>
+                    <div class="preview-card-meta">150+ components</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Direction 4: Stripe Dashboard -->
+  <div class="direction direction-4">
+    <div class="direction-header">
+      <h1 class="direction-title">Direction 4: Stripe Dashboard Style</h1>
+      <p class="direction-subtitle">Stats cards + List view + Hover interactions</p>
+      <div class="direction-tags">
+        <span class="tag">Stats grid</span>
+        <span class="tag">Card hover</span>
+        <span class="tag">Green accent</span>
+        <span class="tag">Data-forward</span>
+      </div>
+    </div>
+
+    <div class="mockup-container">
+      <div class="mockup-label">Portfolio Dashboard</div>
+      <div class="mockup">
+        <div class="dashboard-header">
+          <h1 class="dashboard-title">Baptiste Morillon</h1>
+          <p class="dashboard-subtitle">Product Designer • B2B SaaS • 6 years experience</p>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Projects Shipped</div>
+            <div class="stat-value">12</div>
+            <div class="stat-change">+3 this year</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Avg User Satisfaction</div>
+            <div class="stat-value">4.7/5</div>
+            <div class="stat-change">+0.3 vs last year</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Design System Components</div>
+            <div class="stat-value">150+</div>
+            <div class="stat-change">Across 4 systems</div>
+          </div>
+        </div>
+        <div class="projects-section">
+          <h2 class="section-header">Featured Projects</h2>
+          <div class="project-list">
+            <div class="project-item">
+              <div>
+                <div class="project-title">La Wooferie - Pet Care Platform</div>
+                <div class="project-desc">Complete redesign reducing drop-off rate by 70% and increasing booking completion by 65%</div>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">B2B SaaS</span>
+                <span class="project-tag">4 months</span>
+                <span class="project-tag">React</span>
+              </div>
+            </div>
+            <div class="project-item">
+              <div>
+                <div class="project-title">Marketplace Social - Creator Tools</div>
+                <div class="project-desc">Built creator dashboard with analytics and monetization tools, 10K+ active creators</div>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">B2C</span>
+                <span class="project-tag">6 months</span>
+                <span class="project-tag">Next.js</span>
+              </div>
+            </div>
+            <div class="project-item">
+              <div>
+                <div class="project-title">Analytics Dashboard - Real-time Data</div>
+                <div class="project-desc">Enterprise analytics platform processing 1M+ events/day with real-time visualization</div>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">Enterprise</span>
+                <span class="project-tag">8 months</span>
+                <span class="project-tag">Vue.js</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Direction 5: GitHub Profile -->
+  <div class="direction direction-5">
+    <div class="direction-header">
+      <h1 class="direction-title">Direction 5: GitHub Profile View</h1>
+      <p class="direction-subtitle">Avatar + Bio + Pinned repos + Activity sidebar</p>
+      <div class="direction-tags">
+        <span class="tag">Profile layout</span>
+        <span class="tag">Pinned grid 2-col</span>
+        <span class="tag">Activity sidebar</span>
+        <span class="tag">Contributions</span>
+      </div>
+    </div>
+
+    <div class="mockup-container">
+      <div class="mockup-label">Portfolio Home / About</div>
+      <div class="mockup">
+        <div class="profile-header">
+          <div class="avatar"></div>
+          <div class="profile-info">
+            <h1>Baptiste Morillon</h1>
+            <p class="profile-bio">Product Designer specializing in B2B SaaS with 6 years of experience building design systems and shipping products that users love. Currently working on AI-powered tools for creators.</p>
+            <div class="profile-stats">
+              <div class="stat"><strong>12</strong> projects shipped</div>
+              <div class="stat"><strong>150+</strong> components designed</div>
+              <div class="stat"><strong>50K+</strong> users impacted</div>
+            </div>
+          </div>
+        </div>
+        <div class="profile-content">
+          <div class="pinned-section">
+            <h2>Pinned Projects</h2>
+            <div class="pinned-grid">
+              <div class="pinned-item">
+                <div class="pinned-title">La Wooferie</div>
+                <div class="pinned-desc">Pet care booking platform redesign with 70% drop-off reduction</div>
+                <div class="pinned-lang">● B2B SaaS</div>
+              </div>
+              <div class="pinned-item">
+                <div class="pinned-title">Marketplace Social</div>
+                <div class="pinned-desc">Creator tools dashboard serving 10K+ active creators</div>
+                <div class="pinned-lang">● B2C Platform</div>
+              </div>
+              <div class="pinned-item">
+                <div class="pinned-title">Analytics Dashboard</div>
+                <div class="pinned-desc">Enterprise analytics platform with real-time data visualization</div>
+                <div class="pinned-lang">● Enterprise</div>
+              </div>
+              <div class="pinned-item">
+                <div class="pinned-title">Design System Kit</div>
+                <div class="pinned-desc">Component library with 150+ production-ready components</div>
+                <div class="pinned-lang">● Design System</div>
+              </div>
+            </div>
+          </div>
+          <div class="activity-sidebar">
+            <h3>Activity</h3>
+            <div class="contributions">
+              <div style="font-size: 12px; color: #666; margin-bottom: 8px;">Projects shipped over time</div>
+              <div class="contrib-grid">
+                <div class="contrib-day"></div>
+                <div class="contrib-day high"></div>
+                <div class="contrib-day"></div>
+                <div class="contrib-day high"></div>
+                <div class="contrib-day"></div>
+                <div class="contrib-day high"></div>
+                <div class="contrib-day"></div>
+                <div class="contrib-day high"></div>
+                <div class="contrib-day"></div>
+                <div class="contrib-day high"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Direction 6: Linear Issue Detail -->
+  <div class="direction direction-6">
+    <div class="direction-header">
+      <h1 class="direction-title">Direction 6: Linear Issue Detail View</h1>
+      <p class="direction-subtitle">Breadcrumbs + Quick nav + Content + Properties + Shortcuts hints</p>
+      <div class="direction-tags">
+        <span class="tag">Quick nav 180px</span>
+        <span class="tag">Properties 300px</span>
+        <span class="tag">Shortcuts visible</span>
+        <span class="tag">Dark focused</span>
+      </div>
+    </div>
+
+    <div class="mockup-container">
+      <div class="mockup-label">Case Study Detail Page</div>
+      <div class="mockup">
+        <div class="linear-topbar">
+          <div class="breadcrumb">
+            <span>Projects</span>
+            <span>/</span>
+            <span>La Wooferie</span>
+          </div>
+          <div class="shortcuts-hint">
+            <span><span class="kbd">⌘K</span> Command</span>
+            <span><span class="kbd">N</span> New</span>
+            <span><span class="kbd">E</span> Edit</span>
+          </div>
+        </div>
+        <div class="issue-layout">
+          <div class="quick-nav">
+            <div class="quick-item">
+              <span>Overview</span>
+              <span class="quick-shortcut">O</span>
+            </div>
+            <div class="quick-item">
+              <span>Problem</span>
+              <span class="quick-shortcut">P</span>
+            </div>
+            <div class="quick-item">
+              <span>Research</span>
+              <span class="quick-shortcut">R</span>
+            </div>
+            <div class="quick-item">
+              <span>Design</span>
+              <span class="quick-shortcut">D</span>
+            </div>
+            <div class="quick-item">
+              <span>Results</span>
+              <span class="quick-shortcut">S</span>
+            </div>
+          </div>
+          <div class="issue-main">
+            <div class="issue-id">PROJ-001</div>
+            <h1 class="issue-heading">La Wooferie - Complete Platform Redesign</h1>
+            <div class="issue-body">
+              Pet care booking platform serving 5K+ pet owners and 200+ pet sitters. Existing platform had 40% drop-off rate during booking flow due to trust issues and complex booking process.
+              <br/><br/>
+              Challenge: Rebuild trust through transparent profiles, verified reviews, and clear communication expectations while simplifying 7-step booking flow to 3 steps.
+            </div>
+            <div class="mockup-label">Process Screenshots</div>
+            <div class="attachments">
+              <div class="attachment">Wireframes</div>
+              <div class="attachment">User Testing</div>
+              <div class="attachment">Design System</div>
+              <div class="attachment">Final Screens</div>
+            </div>
+          </div>
+          <div class="properties">
+            <div class="property-group">
+              <div class="prop-label">Status</div>
+              <div class="prop-value">✅ Shipped</div>
+            </div>
+            <div class="property-group">
+              <div class="prop-label">Priority</div>
+              <div class="prop-value">
+                <div class="prop-select">
+                  <div class="priority-dot"></div>
+                  <span>High Impact</span>
+                </div>
+              </div>
+            </div>
+            <div class="property-group">
+              <div class="prop-label">Timeline</div>
+              <div class="prop-value">4 months</div>
+            </div>
+            <div class="property-group">
+              <div class="prop-label">Team</div>
+              <div class="prop-value">Solo Designer + 2 Devs</div>
+            </div>
+            <div class="property-group">
+              <div class="prop-label">Stack</div>
+              <div class="prop-value">React, TypeScript, Tailwind CSS</div>
+            </div>
+            <div class="property-group">
+              <div class="prop-label">Key Results</div>
+              <div class="prop-value">
+                -70% drop-off<br/>
+                +65% completion<br/>
+                4.8/5 satisfaction
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentDirection = 1;
+
+    function showDirection(num) {
+      document.querySelectorAll('.direction').forEach(dir => {
+        dir.classList.remove('active');
+      });
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelector('.direction-' + num).classList.add('active');
+      document.querySelectorAll('.nav-btn')[num - 1].classList.add('active');
+      currentDirection = num;
+    }
+
+    function toggleMode() {
+      document.body.classList.toggle('dark');
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' && currentDirection < 6) {
+        showDirection(currentDirection + 1);
+      } else if (e.key === 'ArrowLeft' && currentDirection > 1) {
+        showDirection(currentDirection - 1);
+      } else if (e.key === 'd' || e.key === 'D') {
+        toggleMode();
+      }
+    });
+
+    // Start in dark mode
+    document.body.classList.add('dark');
+  </script>
+</body>
+</html>
