@@ -1,6 +1,6 @@
 # Story 1.5: Splash Screen & Dashboard Transition
 
-Status: ready-for-dev
+Status: review
 
 ## Story
 
@@ -20,39 +20,39 @@ Status: ready-for-dev
 
 ## Tasks / Subtasks
 
-- [ ] **Task 1: Create Splash Screen Component** (AC: 1, 2)
-  - [ ] Create `src/components/features/splash/SplashScreen.tsx`
-  - [ ] Create `src/components/features/splash/index.ts`
-  - [ ] Display keywords prominently (reuse HeroLanding content and the style de "Product designer" du HeroLanding)
-  - [ ] Add visual indicator (arrow down or "Entrer" button)
+- [x] **Task 1: Create Splash Screen Component** (AC: 1, 2)
+  - [x] Create `src/components/features/splash/SplashScreen.tsx`
+  - [x] Create `src/components/features/splash/index.ts`
+  - [x] Display keywords prominently (reuse HeroLanding content and the style de "Product designer" du HeroLanding)
+  - [x] Add visual indicator (arrow down or "Entrer" button)
 
-- [ ] **Task 2: Implement Transition Triggers** (AC: 3)
-  - [ ] Add click event listener on splash
-  - [ ] Add scroll event listener (any scroll = trigger)
-  - [ ] Add keydown event listener (any key = trigger)
-  - [ ] Prevent multiple triggers (use state flag)
+- [x] **Task 2: Implement Transition Triggers** (AC: 3)
+  - [x] Add click event listener on splash
+  - [x] Add scroll event listener (any scroll = trigger)
+  - [x] Add keydown event listener (any key = trigger)
+  - [x] Prevent multiple triggers (use state flag)
 
-- [ ] **Task 3: Create Transition Animation** (AC: 4, 6)
-  - [ ] Use Framer Motion AnimatePresence for exit animation
-  - [ ] Splash fades out + slides up
-  - [ ] Dashboard fades in from below
-  - [ ] Total duration ~500ms with ease-out
-  - [ ] Reduced motion: instant switch (opacity only, < 100ms)
+- [x] **Task 3: Create Transition Animation** (AC: 4, 6)
+  - [x] Use Framer Motion AnimatePresence for exit animation
+  - [x] Splash fades out + slides up
+  - [x] Dashboard fades in from below
+  - [x] Total duration ~500ms with ease-out
+  - [x] Reduced motion: instant switch (opacity only, < 100ms)
 
-- [ ] **Task 4: Create Dashboard Placeholder** (AC: 5)
-  - [ ] Create basic dashboard layout container
-  - [ ] Show tri-panel structure (Nav | Content | Panel) as placeholders
-  - [ ] Will be fully implemented in Epic 2
+- [x] **Task 4: Create Dashboard Placeholder** (AC: 5)
+  - [x] Create basic dashboard layout container
+  - [x] Show tri-panel structure (Nav | Content | Panel) as placeholders
+  - [x] Will be fully implemented in Epic 2
 
-- [ ] **Task 5: Session-Based Display Logic** (AC: 7)
-  - [ ] Check sessionStorage for "splash_seen" flag
-  - [ ] If seen, skip splash and show dashboard directly
-  - [ ] Set flag after splash completes
+- [x] **Task 5: Session-Based Display Logic** (AC: 7)
+  - [x] Check sessionStorage for "splash_seen" flag
+  - [x] If seen, skip splash and show dashboard directly
+  - [x] Set flag after splash completes
 
-- [ ] **Task 6: Update Homepage** (AC: all)
-  - [ ] Create state for splash visibility
-  - [ ] Conditionally render Splash or Dashboard
-  - [ ] Handle transition between states
+- [x] **Task 6: Update Homepage** (AC: all)
+  - [x] Create state for splash visibility
+  - [x] Conditionally render Splash or Dashboard
+  - [x] Handle transition between states
 
 ## Dev Notes
 
@@ -209,15 +209,26 @@ export default function HomePage() {
 
 ### Agent Model Used
 
-_To be filled by Dev Agent_
+Claude Opus 4.5 (claude-opus-4-5-20251101)
 
 ### Completion Notes List
 
-_To be filled during implementation_
+- Created SplashScreen component with letter-by-letter cascade animation (same style as HeroLanding)
+- Animation includes blur effect (8px → 0px) with custom ease-out curve
+- Visual indicator: animated ChevronDown with "Cliquez pour entrer" text
+- Triggers: click, scroll (passive), keydown - all trigger transition
+- hasTriggered ref prevents multiple trigger calls
+- AnimatePresence with mode="wait" for smooth exit/enter transitions
+- Splash exits with fade + slide up (-50px), dashboard enters with fade + slide up
+- Reduced motion: instant transitions (<100ms), no y movement
+- Session-based: sessionStorage "splash_seen" flag prevents re-showing
+- Mounted check prevents hydration mismatch
+- Dashboard placeholder shows tri-panel grid (Nav | Content | Panel)
+- Build passes successfully
 
 ### File List
 
 _Files created/modified:_
-- `src/components/features/splash/SplashScreen.tsx`
-- `src/components/features/splash/index.ts`
-- `src/app/page.tsx` (updated with splash logic)
+- `src/components/features/splash/SplashScreen.tsx` (created)
+- `src/components/features/splash/index.ts` (created)
+- `src/app/page.tsx` (updated with splash logic and dashboard placeholder)
