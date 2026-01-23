@@ -6,8 +6,11 @@ import { SplashScreen } from '@/components/features/splash'
 import { HeroLanding } from '@/components/features/hero'
 import { useReducedMotion } from '@/hooks'
 
+// Flow: Step 0 (splash 1) -> Step 1 (splash 2) -> Step 2 (dashboard)
+type Step = 0 | 1 | 2
+
 export default function HomePage() {
-  const [showSplash, setShowSplash] = useState(true)
+  const [step, setStep] = useState<Step>(0)
   const [mounted, setMounted] = useState(false)
   const reducedMotion = useReducedMotion()
 
@@ -15,15 +18,19 @@ export default function HomePage() {
     setMounted(true)
     // Check if splash was already seen this session
     if (typeof window !== 'undefined' && sessionStorage.getItem('splash_seen')) {
-      setShowSplash(false)
+      setStep(2) // Skip to dashboard
     }
   }, [])
 
-  const handleSplashComplete = () => {
-    if (typeof window !== 'undefined') {
-      sessionStorage.setItem('splash_seen', 'true')
+  const handleNextStep = () => {
+    if (step === 0) {
+      setStep(1)
+    } else if (step === 1) {
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('splash_seen', 'true')
+      }
+      setStep(2)
     }
-    setShowSplash(false)
   }
 
   // Avoid hydration mismatch - show nothing until mounted
@@ -33,9 +40,26 @@ export default function HomePage() {
 
   return (
     <AnimatePresence mode="wait">
-      {showSplash ? (
-        <SplashScreen key="splash" onComplete={handleSplashComplete} />
-      ) : (
+      {step === 0 && (
+        <SplashScreen
+          key="splash-1"
+          headline="Product Designer"
+          subtitle="B2B SaaS • Design Systems • 6 ans d'expérience"
+          buttonText="Suivant"
+          onComplete={handleNextStep}
+        />
+      )}
+
+      {step === 1 && (
+        <SplashScreen
+          key="splash-2"
+          headline="Créer des expériences qui comptent"
+          buttonText="Entrer sur le site"
+          onComplete={handleNextStep}
+        />
+      )}
+
+      {step === 2 && (
         <motion.div
           key="dashboard"
           initial={{ opacity: 0, y: reducedMotion ? 0 : 30 }}

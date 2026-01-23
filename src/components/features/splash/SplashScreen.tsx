@@ -1,15 +1,17 @@
 'use client'
 
-import { useEffect, useCallback, useRef } from 'react'
 import { motion, type Variants } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 import { useReducedMotion } from '@/hooks'
 
 interface SplashScreenProps {
+  headline: string
+  subtitle?: string
+  buttonText: string
   onComplete: () => void
 }
 
-// Container for staggered children - same as HeroLanding
+// Container for staggered children
 const containerVariants: Variants = {
   hidden: { opacity: 1 },
   visible: {
@@ -21,7 +23,7 @@ const containerVariants: Variants = {
   },
 }
 
-// Letter animation with blur effect - same as HeroLanding
+// Letter animation with blur effect
 const letterVariants: Variants = {
   hidden: {
     opacity: 0,
@@ -87,33 +89,8 @@ function AnimatedLetters({
   )
 }
 
-export function SplashScreen({ onComplete }: SplashScreenProps) {
+export function SplashScreen({ headline, subtitle, buttonText, onComplete }: SplashScreenProps) {
   const reducedMotion = useReducedMotion()
-  const hasTriggered = useRef(false)
-
-  // Memoize handler to prevent multiple triggers
-  const handleTrigger = useCallback(() => {
-    if (hasTriggered.current) return
-    hasTriggered.current = true
-    onComplete()
-  }, [onComplete])
-
-  // Handle all triggers: click, scroll, keydown
-  useEffect(() => {
-    const handleClick = () => handleTrigger()
-    const handleScroll = () => handleTrigger()
-    const handleKeyDown = () => handleTrigger()
-
-    window.addEventListener('click', handleClick)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    window.addEventListener('keydown', handleKeyDown)
-
-    return () => {
-      window.removeEventListener('click', handleClick)
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [handleTrigger])
 
   // Select variants based on user preference
   const containerVars = reducedMotion ? reducedMotionVariants : containerVariants
@@ -141,31 +118,28 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
           variants={containerVars}
           className="text-5xl md:text-7xl lg:text-[clamp(4.5rem,8vw,6rem)] font-bold tracking-[--tracking-hero] leading-[--leading-title] text-foreground"
         >
-          <AnimatedLetters text="Product Designer" variants={letterVars} />
+          <AnimatedLetters text={headline} variants={letterVars} />
         </motion.h1>
 
-        {/* Tagline with keywords */}
-        <motion.p
-          variants={itemVars}
-          className="mt-6 text-lg md:text-xl lg:text-2xl font-medium text-muted-foreground"
-        >
-          B2B SaaS • Design Systems • 6 ans d&apos;expérience
-        </motion.p>
-
-        {/* Visual indicator - animated arrow */}
-        <motion.div
-          variants={itemVars}
-          className="mt-16"
-        >
-          <motion.div
-            animate={reducedMotion ? {} : { y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
+        {/* Tagline with keywords (optional) */}
+        {subtitle && (
+          <motion.p
+            variants={itemVars}
+            className="mt-6 text-lg md:text-xl lg:text-2xl font-medium text-muted-foreground"
           >
-            <ChevronDown className="mx-auto h-8 w-8 text-muted-foreground" />
-          </motion.div>
-          <span className="text-sm text-muted-foreground mt-2 block">
-            Cliquez pour entrer
-          </span>
+            {subtitle}
+          </motion.p>
+        )}
+
+        {/* CTA Button */}
+        <motion.div variants={itemVars} className="mt-16">
+          <Button
+            size="lg"
+            onClick={onComplete}
+            className="min-h-[--touch-target] px-8"
+          >
+            {buttonText}
+          </Button>
         </motion.div>
       </motion.div>
     </motion.div>
