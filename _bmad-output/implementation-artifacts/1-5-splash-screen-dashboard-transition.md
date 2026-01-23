@@ -23,7 +23,7 @@ Status: ready-for-dev
 - [ ] **Task 1: Create Splash Screen Component** (AC: 1, 2)
   - [ ] Create `src/components/features/splash/SplashScreen.tsx`
   - [ ] Create `src/components/features/splash/index.ts`
-  - [ ] Display keywords prominently (reuse HeroLanding content)
+  - [ ] Display keywords prominently (reuse HeroLanding content and the style de "Product designer" du HeroLanding)
   - [ ] Add visual indicator (arrow down or "Entrer" button)
 
 - [ ] **Task 2: Implement Transition Triggers** (AC: 3)
