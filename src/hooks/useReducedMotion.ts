@@ -1,28 +1,16 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useReducedMotion as useFramerReducedMotion } from 'framer-motion'
 
 /**
  * Hook to detect user's reduced motion preference
+ * Uses Framer Motion's native hook which handles SSR hydration correctly
  * Returns true if user prefers reduced motion (accessibility)
  */
 export function useReducedMotion(): boolean {
-  const [reducedMotion, setReducedMotion] = useState(false)
-
-  useEffect(() => {
-    // Check if window is available (SSR safety)
-    if (typeof window === 'undefined') return
-
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
-    setReducedMotion(mediaQuery.matches)
-
-    const handler = (event: MediaQueryListEvent) => {
-      setReducedMotion(event.matches)
-    }
-
-    mediaQuery.addEventListener('change', handler)
-    return () => mediaQuery.removeEventListener('change', handler)
-  }, [])
-
-  return reducedMotion
+  // Framer Motion's hook returns true/false/null
+  // null means "not yet determined" (SSR), we treat as false to show animation
+  // This prevents hydration mismatch as Framer handles it internally
+  const shouldReduceMotion = useFramerReducedMotion()
+  return shouldReduceMotion ?? false
 }
