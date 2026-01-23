@@ -5,26 +5,46 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { useReducedMotion } from '@/hooks'
 
-// Animation variants for staggered entrance (AC: 1, 2)
+// Container for staggered children
 const containerVariants: Variants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 1 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.1,
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
     },
   },
 }
 
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+// Letter animation with blur effect - slower timing
+const letterVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+    filter: 'blur(8px)',
+  },
   visible: {
     opacity: 1,
     y: 0,
+    filter: 'blur(0px)',
     transition: {
-      duration: 0.6,
-      ease: [0.16, 1, 0.3, 1], // Custom ease-out for premium feel
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+}
+
+// Item variants for non-letter elements (tagline, CTAs)
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20, filter: 'blur(4px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1],
     },
   },
 }
@@ -38,31 +58,59 @@ const reducedMotionVariants: Variants = {
   },
 }
 
+// Animated text component that splits into letters
+function AnimatedLetters({
+  text,
+  className,
+  variants,
+}: {
+  text: string
+  className?: string
+  variants: Variants
+}) {
+  return (
+    <span className={className} aria-label={text}>
+      {text.split('').map((char, index) => (
+        <motion.span
+          key={index}
+          variants={variants}
+          className="inline-block"
+          style={{ whiteSpace: char === ' ' ? 'pre' : 'normal' }}
+          aria-hidden="true"
+        >
+          {char}
+        </motion.span>
+      ))}
+    </span>
+  )
+}
+
 export function HeroLanding() {
   const reducedMotion = useReducedMotion()
 
   // Select variants based on user preference (AC: 5)
-  const variants = reducedMotion ? reducedMotionVariants : containerVariants
+  const containerVars = reducedMotion ? reducedMotionVariants : containerVariants
+  const letterVars = reducedMotion ? reducedMotionVariants : letterVariants
   const itemVars = reducedMotion ? reducedMotionVariants : itemVariants
 
   return (
     <motion.section
       initial="hidden"
       animate="visible"
-      variants={variants}
+      variants={containerVars}
       className="min-h-screen flex items-center justify-center bg-background"
       aria-label="Introduction - Baptiste Morillon, Product Designer"
     >
       <div className="container max-w-7xl px-4 py-16 md:py-24">
-        {/* Headline - Monumental typography with cascade animation (AC: 1, 3) */}
+        {/* Headline - Letter-by-letter cascade animation with blur */}
         <motion.h1
-          variants={itemVars}
+          variants={containerVars}
           className="text-5xl md:text-7xl lg:text-[clamp(4.5rem,8vw,6rem)] font-bold tracking-[--tracking-hero] leading-[--leading-title] text-foreground"
         >
-          Product Designer
+          <AnimatedLetters text="Product Designer" variants={letterVars} />
         </motion.h1>
 
-        {/* Tagline with keywords - visible within 3s (AC: 3) */}
+        {/* Tagline with keywords - appears after headline */}
         <motion.p
           variants={itemVars}
           className="mt-6 text-lg md:text-xl lg:text-2xl font-medium text-muted-foreground"
