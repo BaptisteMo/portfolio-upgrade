@@ -129,6 +129,7 @@ export function HeroLanding() {
           <Button asChild variant="outline" size="lg" className="min-h-[--touch-target] min-w-[--touch-target]">
             <Link href="/contact">Me contacter</Link>
           </Button>
+      
         </motion.div>
       </div>
     </motion.section>
