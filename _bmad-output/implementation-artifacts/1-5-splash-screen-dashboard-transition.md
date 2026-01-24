@@ -1,6 +1,6 @@
 # Story 1.5: Splash Screen & Dashboard Transition
 
-Status: review
+Status: done
 
 ## Story
 
@@ -27,10 +27,10 @@ Status: review
   - [x] Add visual indicator (arrow down or "Entrer" button)
 
 - [x] **Task 2: Implement Transition Triggers** (AC: 3)
-  - [x] Add click event listener on splash
-  - [x] Add scroll event listener (any scroll = trigger)
-  - [x] Add keydown event listener (any key = trigger)
-  - [x] Prevent multiple triggers (use state flag)
+  - [x] ~~Add click event listener on splash~~ → Changed to explicit button navigation per user request
+  - [x] ~~Add scroll event listener~~ → Removed in favor of 3-step button flow
+  - [x] ~~Add keydown event listener~~ → Removed in favor of 3-step button flow
+  - [x] Step state machine (0 → 1 → 2) controls progression via button clicks
 
 - [x] **Task 3: Create Transition Animation** (AC: 4, 6)
   - [x] Use Framer Motion AnimatePresence for exit animation
@@ -215,13 +215,16 @@ Claude Opus 4.5 (claude-opus-4-5-20251101)
 
 - Created SplashScreen component with letter-by-letter cascade animation (same style as HeroLanding)
 - Animation includes blur effect (8px → 0px) with custom ease-out curve
-- Visual indicator: animated ChevronDown with "Cliquez pour entrer" text
-- Triggers: click, scroll (passive), keydown - all trigger transition
-- hasTriggered ref prevents multiple trigger calls
+- Implemented 3-step flow per user request:
+  - Step 0: "Product Designer" + subtitle + "Suivant" button
+  - Step 1: "Créer des expériences qui comptent" + "Entrer sur le site" button
+  - Step 2: Tri-panel dashboard
+- SplashScreen refactored to accept props: headline, subtitle (optional), buttonText, onComplete
+- Step state machine (0, 1, 2) controls progression via explicit button clicks
 - AnimatePresence with mode="wait" for smooth exit/enter transitions
 - Splash exits with fade + slide up (-50px), dashboard enters with fade + slide up
 - Reduced motion: instant transitions (<100ms), no y movement
-- Session-based: sessionStorage "splash_seen" flag prevents re-showing
+- Session-based: sessionStorage "splash_seen" flag skips to step 2 on return visits
 - Mounted check prevents hydration mismatch
 - Dashboard placeholder shows tri-panel grid (Nav | Content | Panel)
 - Build passes successfully
@@ -232,3 +235,24 @@ _Files created/modified:_
 - `src/components/features/splash/SplashScreen.tsx` (created)
 - `src/components/features/splash/index.ts` (created)
 - `src/app/page.tsx` (updated with splash logic and dashboard placeholder)
+
+---
+
+## Senior Developer Review
+
+**Review Date:** 2026-01-23
+**Reviewer:** Claude Opus 4.5 (Adversarial Code Review)
+
+### Issues Found: 2
+
+#### 🟡 MEDIUM (2)
+
+| ID | Issue | Resolution |
+|----|-------|------------|
+| M1 | **Completion Notes outdated** - Referenced ChevronDown and click/scroll/keydown triggers from original implementation | ✅ FIXED - Updated to reflect 3-step button flow |
+| M2 | **Task 2 outdated** - Story tasks referenced event listeners that were replaced with button navigation | ✅ FIXED - Updated Task 2 to show design change |
+
+### Review Outcome
+
+**Status:** PASSED ✅
+All issues addressed. Story approved for completion.
