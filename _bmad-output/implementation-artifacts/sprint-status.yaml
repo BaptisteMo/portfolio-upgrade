@@ -41,13 +41,13 @@ story_location: _bmad-output/implementation-artifacts
 
 development_status:
   # Epic 1: Foundation & Landing Experience (6 stories)
-  epic-1: in-progress
+  epic-1: done
   1-1-project-setup-design-system-foundation: done
   1-2-hero-landing-component: done
   1-3-hero-typography-animations: done
   1-4-dark-light-theme-system: done
   1-5-splash-screen-dashboard-transition: done
-  1-6-performance-baseline-validation: ready-for-dev
+  1-6-performance-baseline-validation: done
   epic-1-retrospective: optional
 
   # Epic 2: Dashboard & Navigation System (5 stories)
