@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils'
 import { useLanguage } from '@/contexts'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { ThemeToggle } from '@/components/shared'
+import { ShortcutsBar } from '@/components/features/shortcuts-bar'
 
 const navItems = {
   fr: [
@@ -83,8 +84,9 @@ export function NavPanel() {
         </ul>
       </nav>
 
-      {/* Language Switcher */}
-      <div className="mt-auto pt-6 border-t border-border ">
+      {/* Bottom section */}
+      <div className="mt-auto space-y-4 pt-6 border-t border-border">
+        <ShortcutsBar />
         <div className="flex items-center justify-between">
           <LanguageSwitcher />
           <ThemeToggle />
