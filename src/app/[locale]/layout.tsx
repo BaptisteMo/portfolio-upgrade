@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation'
 import { LanguageProvider } from '@/contexts'
 import { SkipLink } from '@/components/layout'
 import { LazyCommandPaletteProvider } from '@/components/features/command-palette'
-import { LazyShortcutsBar } from '@/components/features/shortcuts-bar'
 import { LazyDesignForensicsOverlay } from '@/components/features/easter-egg'
 import type { Locale } from '@/content/meta'
 
@@ -36,7 +35,6 @@ export default async function LocaleLayout({
       <SkipLink locale={locale} />
       {children}
       <LazyCommandPaletteProvider />
-      <LazyShortcutsBar />
       <LazyDesignForensicsOverlay />
     </LanguageProvider>
   )

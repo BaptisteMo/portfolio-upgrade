@@ -11,8 +11,8 @@ export function ShortcutsBar() {
   const { locale } = useLanguage()
 
   function openPalette() {
-    window.dispatchEvent(
-      new KeyboardEvent('keydown', { key: 'k', metaKey: true })
+    document.dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'k', metaKey: true, bubbles: true })
     )
   }
 
