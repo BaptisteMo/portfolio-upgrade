@@ -1,6 +1,6 @@
 # Story 2.1: Tri-Panel Layout Component
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -20,42 +20,42 @@ Status: ready-for-dev
 
 ## Tasks / Subtasks
 
-- [ ] **Task 1: Create TriPanelLayout Component Structure** (AC: 1, 6, 7)
-  - [ ] Create `src/components/layout/TriPanelLayout/TriPanelLayout.tsx`
-  - [ ] Create `src/components/layout/TriPanelLayout/index.ts` barrel export
-  - [ ] Define TypeScript interface `TriPanelLayoutProps` with `nav`, `children`, `panel` props
-  - [ ] Use design tokens for all styling (--spacing-*, bg-background, etc.)
+- [x] **Task 1: Create TriPanelLayout Component Structure** (AC: 1, 6, 7)
+  - [x] Create `src/components/layout/TriPanelLayout/TriPanelLayout.tsx`
+  - [x] Create `src/components/layout/TriPanelLayout/index.ts` barrel export
+  - [x] Define TypeScript interface `TriPanelLayoutProps` with `nav`, `children`, `panel` props
+  - [x] Use design tokens for all styling (--spacing-*, bg-background, etc.)
 
-- [ ] **Task 2: Implement Desktop Grid Layout** (AC: 1, 4, 5)
-  - [ ] Use CSS Grid with `grid-template-columns: 20% 1fr 30%` or equivalent Flexbox
-  - [ ] Set max-width: 1440px with mx-auto for centering
-  - [ ] Apply gap-12 (48px) between panels
-  - [ ] Ensure full viewport height (min-h-screen)
+- [x] **Task 2: Implement Desktop Grid Layout** (AC: 1, 4, 5)
+  - [x] Use CSS Grid with `grid-template-columns: 20% 1fr 30%` or equivalent Flexbox
+  - [x] Set max-width: 1440px with mx-auto for centering
+  - [x] Apply gap-12 (48px) between panels
+  - [x] Ensure full viewport height (min-h-screen)
 
-- [ ] **Task 3: Implement Fixed Side Panels** (AC: 2)
-  - [ ] Set Navigation panel to position: fixed, left: 0
-  - [ ] Set Context panel to position: fixed, right: 0
-  - [ ] Both panels should have height: 100vh
-  - [ ] Add proper z-index for layering (nav: z-10, panel: z-10)
+- [x] **Task 3: Implement Fixed Side Panels** (AC: 2)
+  - [x] Set Navigation panel to position: fixed, left: 0
+  - [x] Set Context panel to position: fixed, right: 0
+  - [x] Both panels should have height: 100vh
+  - [x] Add proper z-index for layering (nav: z-10, panel: z-10)
 
-- [ ] **Task 4: Implement Scrollable Content Area** (AC: 3)
-  - [ ] Content area scrolls independently (overflow-y: auto)
-  - [ ] Add margin-left and margin-right to account for fixed panels
-  - [ ] Ensure smooth scrolling behavior
+- [x] **Task 4: Implement Scrollable Content Area** (AC: 3)
+  - [x] Content area scrolls independently (overflow-y: auto)
+  - [x] Add margin-left and margin-right to account for fixed panels
+  - [x] Ensure smooth scrolling behavior
 
-- [ ] **Task 5: Add Responsive Breakpoint** (AC: 1)
-  - [ ] Tri-panel only renders on lg breakpoint (≥1024px)
-  - [ ] Add placeholder for mobile layout (single column, Epic 6)
-  - [ ] Use Tailwind responsive utilities (lg:grid-cols-[20%_1fr_30%])
+- [x] **Task 5: Add Responsive Breakpoint** (AC: 1)
+  - [x] Tri-panel only renders on lg breakpoint (≥1024px)
+  - [x] Add placeholder for mobile layout (single column, Epic 6)
+  - [x] Use Tailwind responsive utilities (lg:grid-cols-[20%_1fr_30%])
 
-- [ ] **Task 6: Create Layout Barrel Export** (AC: all)
-  - [ ] Create `src/components/layout/index.ts` to export TriPanelLayout
-  - [ ] Verify import works via `@/components/layout`
+- [x] **Task 6: Create Layout Barrel Export** (AC: all)
+  - [x] Create `src/components/layout/index.ts` to export TriPanelLayout
+  - [x] Verify import works via `@/components/layout`
 
-- [ ] **Task 7: Test Integration** (AC: all)
-  - [ ] Create test page using TriPanelLayout
-  - [ ] Verify build passes
-  - [ ] Test at 1024px, 1440px breakpoints
+- [x] **Task 7: Test Integration** (AC: all)
+  - [x] Create test page using TriPanelLayout
+  - [x] Verify build passes
+  - [x] Test at 1024px, 1440px breakpoints
 
 ## Dev Notes
 
@@ -221,19 +221,55 @@ export function TriPanelLayout({ nav, children, panel }: TriPanelLayoutProps) {
 - `role="main"` on content area
 - `role="complementary"` on context panel
 
+## Senior Developer Review (AI)
+
+**Review Date:** 2026-01-24
+**Reviewer:** Claude Opus 4.5
+**Outcome:** Approved (after fixes)
+
+### Action Items
+
+- [x] **[HIGH]** H1: Wide screen layout bug - panels capped but margins grew on >1440px screens
+- [x] **[HIGH]** H2: AC5 max-width 1440px constraint missing
+- [x] **[MEDIUM]** M1: Missing overflow-y: auto on content area (AC3)
+- [x] **[MEDIUM]** M2: Mobile main missing consistent inner wrapper
+- [x] **[LOW]** L1: Use canonical Tailwind classes (max-w-360, xl:ml-72, xl:mr-108, max-w-108)
+
+### Fixes Applied
+
+1. Added `max-w-360` container for 1440px max-width (AC5)
+2. Added `xl:left-[calc((100vw-1440px)/2)]` and `xl:right-[calc(...)]` for centered fixed panels on ultra-wide screens
+3. Changed margins to `vw` units with `xl:` breakpoint fixed values for consistency
+4. Added `overflow-y-auto` to content areas (AC3)
+5. Added inner wrapper to mobile main for consistent content constraints
+6. Used canonical Tailwind classes per linter suggestions
+
 ## Dev Agent Record
 
 ### Agent Model Used
 
-_To be filled by Dev Agent_
+Claude Opus 4.5 (claude-opus-4-5-20251101)
 
 ### Completion Notes List
 
-_To be filled during implementation_
+- Created TriPanelLayout component following story skeleton exactly
+- Used fixed positioning for nav (20%, max 288px) and panel (30%, max 432px)
+- Content area uses margin-based positioning to account for fixed panels
+- Mobile fallback shows single column layout (lg:hidden / hidden lg:block pattern)
+- Integrated with page.tsx replacing placeholder grid
+- Build passes successfully
+- All ACs satisfied: tri-panel on desktop, fixed panels, scrollable content, responsive breakpoint
+
+**Code Review Fixes (2026-01-24):**
+- Fixed wide-screen layout bug with xl: breakpoint positioning
+- Added max-w-360 (1440px) container
+- Added overflow-y-auto for proper scrolling
+- Consistent mobile wrapper styling
 
 ### File List
 
 _Files created/modified:_
-- `src/components/layout/TriPanelLayout/TriPanelLayout.tsx`
-- `src/components/layout/TriPanelLayout/index.ts`
-- `src/components/layout/index.ts`
+- `src/components/layout/TriPanelLayout/TriPanelLayout.tsx` (created, then fixed)
+- `src/components/layout/TriPanelLayout/index.ts` (created)
+- `src/components/layout/index.ts` (created)
+- `src/app/page.tsx` (modified - replaced placeholder with TriPanelLayout)

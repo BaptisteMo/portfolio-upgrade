@@ -1,2 +1,11 @@
 // Hooks barrel export
 export { useReducedMotion } from './useReducedMotion'
+export { useBreadcrumbs } from './useBreadcrumbs'
+export { useCountUp } from './useCountUp'
+export { useActiveSection } from './useActiveSection'
+export { useCommandPalette } from './useCommandPalette'
+export { useParallax } from './useParallax'
+export { useFuzzySearch } from './useFuzzySearch'
+export type { SearchableItem } from './useFuzzySearch'
+export { useMediaQuery } from './useMediaQuery'
+export { useKonamiCode } from './useKonamiCode'

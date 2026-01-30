@@ -1,5 +1,7 @@
 'use client'
 
+import React from 'react'
+
 import { motion, type Variants } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { useReducedMotion } from '@/hooks'
@@ -11,17 +13,34 @@ interface SplashScreenProps {
   onComplete: () => void
 }
 
+const headlineVariants: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.05, delayChildren: 0.05 } }, // mots
+}
+
+const LETTER_STAGGER = 0.08
+
+const wordVariants: Variants = {
+  hidden: {},
+  visible: (delay: number) => ({
+    transition: {
+      delayChildren: delay,          // <- décale le début de ce mot
+      staggerChildren: LETTER_STAGGER,
+    },
+  }),
+}
 // Container for staggered children
 const containerVariants: Variants = {
   hidden: { opacity: 1 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.05,
-      delayChildren: 0.2,
+      staggerChildren: 0,
+      delayChildren: 0,
     },
   },
 }
+;
 
 // Letter animation with blur effect
 const letterVariants: Variants = {
@@ -64,29 +83,44 @@ const reducedMotionVariants: Variants = {
   },
 }
 
-// Animated text component that splits into letters
-function AnimatedLetters({
+
+function AnimatedWords({
   text,
-  variants,
+  wordVariants,
+  letterVariants,
 }: {
   text: string
-  variants: Variants
+  wordVariants: Variants
+  letterVariants: Variants
 }) {
-  return (
-    <span aria-label={text}>
-      {text.split('').map((char, index) => (
-        <motion.span
-          key={index}
-          variants={variants}
-          className="inline-block"
-          style={{ whiteSpace: char === ' ' ? 'pre' : 'normal' }}
-          aria-hidden="true"
-        >
-          {char}
-        </motion.span>
-      ))}
-    </span>
-  )
+  const words = text.split(' ')
+  let acc = 0
+return (
+  <span aria-label={text}>
+    {words.map((word, w) => {
+      const delay = acc
+      acc += word.length * LETTER_STAGGER
+
+      return (
+        <React.Fragment key={w}>
+          <motion.span
+            custom={delay}
+            variants={wordVariants}
+            className="inline-block whitespace-nowrap"
+          >
+            {word.split('').map((char, i) => (
+              <motion.span key={`${w}-${i}`} variants={letterVariants} className="inline-block" aria-hidden="true">
+                {char}
+              </motion.span>
+            ))}
+          </motion.span>
+
+          {w < words.length - 1 && <span aria-hidden="true"> </span>}
+        </React.Fragment>
+      )
+    })}
+  </span>
+)
 }
 
 export function SplashScreen({ headline, subtitle, buttonText, onComplete }: SplashScreenProps) {
@@ -115,10 +149,14 @@ export function SplashScreen({ headline, subtitle, buttonText, onComplete }: Spl
       >
         {/* Headline - Letter-by-letter cascade animation with blur */}
         <motion.h1
-          variants={containerVars}
-          className="text-5xl md:text-7xl lg:text-[clamp(4.5rem,8vw,6rem)] font-bold tracking-[--tracking-hero] leading-[--leading-title] text-foreground"
+          variants={headlineVariants}
+          className="text-5xl md:text-7xl lg:text-[clamp(4.5rem,8vw,6rem)] font-bold tracking-[--tracking-hero] leading-[--leading-title] text-foreground text-balance"
         >
-          <AnimatedLetters text={headline} variants={letterVars} />
+          <AnimatedWords
+            text={headline}
+            wordVariants={wordVariants}
+            letterVariants={letterVars}
+          />
         </motion.h1>
 
         {/* Tagline with keywords (optional) */}
@@ -134,6 +172,7 @@ export function SplashScreen({ headline, subtitle, buttonText, onComplete }: Spl
         {/* CTA Button */}
         <motion.div variants={itemVars} className="mt-16">
           <Button
+            variant='ghost'
             size="lg"
             onClick={onComplete}
             className="min-h-[--touch-target] px-8"

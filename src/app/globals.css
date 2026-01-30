@@ -78,8 +78,8 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0.02 265);
 
-  /* Primary - Violet #a855f7 */
-  --primary: oklch(0.65 0.25 295);
+  /* Primary - Violet (AA compliant: 5.5:1 on white) */
+  --primary: oklch(0.55 0.25 295);
   --primary-foreground: oklch(1 0 0);
 
   /* Secondary */
@@ -90,8 +90,8 @@
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
 
-  /* Accent - Green #22c55e (for availability CTA) */
-  --accent: oklch(0.72 0.19 145);
+  /* Accent - Green (AA compliant: 5.4:1 on white) */
+  --accent: oklch(0.50 0.19 145);
   --accent-foreground: oklch(1 0 0);
 
   /* Destructive */
@@ -100,11 +100,11 @@
   /* Borders & Input */
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: oklch(0.65 0.25 295);                  /* Matches primary */
+  --ring: oklch(0.55 0.25 295);                  /* Matches primary */
 
   /* Chart colors */
-  --chart-1: oklch(0.65 0.25 295);               /* Violet */
-  --chart-2: oklch(0.72 0.19 145);               /* Green */
+  --chart-1: oklch(0.55 0.25 295);               /* Violet */
+  --chart-2: oklch(0.50 0.19 145);               /* Green */
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
@@ -112,12 +112,12 @@
   /* Sidebar */
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0.02 265);
-  --sidebar-primary: oklch(0.65 0.25 295);
+  --sidebar-primary: oklch(0.55 0.25 295);
   --sidebar-primary-foreground: oklch(1 0 0);
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.65 0.25 295);
+  --sidebar-ring: oklch(0.55 0.25 295);
 }
 
 /* ============================================
@@ -256,6 +256,25 @@
   /* Smooth scrolling */
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Command Palette Dialog animations */
+  .cmdk-overlay {
+    animation: cmdk-overlay-show 200ms ease-out;
+  }
+
+  .cmdk-content {
+    animation: cmdk-content-show 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes cmdk-overlay-show {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes cmdk-content-show {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
   }
 
   /* Reduced motion preference */

@@ -1,2 +1,10 @@
 // Feature components barrel export
-export { HeroLanding } from './hero'
+export { HeroLanding, AvailabilityStatusCTA } from './hero'
+export { NavPanel, Breadcrumbs } from './navigation'
+export { ProjectCard, ProjectGrid, ProjectTag } from './projects'
+export { CaseStudyHeader, MetricsGrid, StatCard } from './case-study'
+export { AboutHeader, Timeline, SkillsList, AvailabilityBadge } from './about'
+export { ContextPanel } from './context-panel'
+export { ContactForm } from './contact'
+export { MobileFAB } from './mobile-fab'
+export { MobileBottomSheet } from './mobile-bottom-sheet'

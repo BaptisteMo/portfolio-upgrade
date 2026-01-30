@@ -1,8 +1,10 @@
 'use client'
 
-import { motion, type Variants } from 'framer-motion'
+import { animate, motion, useMotionValue, useTransform, type Variants } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import { AvailabilityStatusCTA } from './AvailabilityStatusCTA'
+import { useEffect } from "react"
 import { useReducedMotion } from '@/hooks'
 
 // Container for staggered children
@@ -85,51 +87,180 @@ function AnimatedLetters({
   )
 }
 
+// --- CountUp réutilisable (motion/react) ---
+function CountUp({
+  to,
+  duration = 1.6,
+  delay = 0,
+  className,
+  reducedMotion = false,
+}: {
+  to: number
+  duration?: number
+  delay?: number
+  className?: string
+  reducedMotion?: boolean
+}) {
+  const mv = useMotionValue(reducedMotion ? to : 0)
+  const rounded = useTransform(() => Math.round(mv.get()))
+
+  useEffect(() => {
+    if (reducedMotion) {
+      mv.set(to)
+      return
+    }
+    const controls = animate(mv, to, {
+      duration,
+      delay,
+      ease: "easeOut",
+    })
+    return () => controls.stop()
+  }, [mv, to, duration, delay, reducedMotion])
+
+  return (
+    <motion.span className={className} aria-label={`${to}`}>
+      {rounded}
+    </motion.span>
+  )
+}
+
+function StatCard({
+  value,
+  suffix,
+  title,
+  description,
+  delay = 0,
+  reducedMotion = false,
+  variants,
+}: {
+  value: number
+  suffix?: string
+  title: string
+  description: string
+  delay?: number
+  reducedMotion?: boolean
+  variants: Variants
+}) {
+  return (
+    <motion.div
+      variants={variants}
+      className="rounded-2xl border bg-background/60 backdrop-blur-sm p-5 shadow-sm"
+    >
+      <div className="flex items-end gap-2">
+        <CountUp
+          to={value}
+          delay={delay}
+          duration={1.7}
+          reducedMotion={reducedMotion}
+          className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground"
+        />
+        {suffix ? (
+          <span className="text-lg md:text-xl font-medium text-muted-foreground pb-0.5">
+            {suffix}
+          </span>
+        ) : null}
+      </div>
+
+      <p className="mt-2 text-sm font-medium text-foreground">{title}</p>
+      <p className="mt-1 text-sm text-muted-foreground">{description}</p>
+    </motion.div>
+  )
+}
+
 export function HeroLanding() {
   const reducedMotion = useReducedMotion()
+  const stats = [
+    {
+      value: 6,
+      suffix: "+",
+      title: "Années d’expérience",
+      description: "Produit, design systems, discovery & delivery.",
+    },
+    {
+      value: 12,
+      suffix: "+",
+      title: "Produits & modules livrés",
+      description: "Web apps internes, B2B, mobile, multi-pays.",
+    },
+    {
+      value: 40,
+      suffix: "+",
+      title: "Interviews utilisateurs",
+      description: "Personas, parcours, tests, insights actionnables.",
+    },
+    {
+      value: 3,
+      suffix: "",
+      title: "Stacks explorées",
+      description: "React / Next.js, design tokens, prototyping avancé.",
+    },
+  ] as const
 
   // Select variants based on user preference (AC: 5)
   const containerVars = reducedMotion ? reducedMotionVariants : containerVariants
   const letterVars = reducedMotion ? reducedMotionVariants : letterVariants
   const itemVars = reducedMotion ? reducedMotionVariants : itemVariants
 
-  return (
+return (
     <motion.section
       initial="hidden"
       animate="visible"
       variants={containerVars}
-      className="min-h-screen flex items-center justify-center bg-background"
+      className=" flex items-center justify-center bg-background"
       aria-label="Introduction - Baptiste Morillon, Product Designer"
     >
       <div className="container max-w-7xl px-4 py-16 md:py-24">
-        {/* Headline - Letter-by-letter cascade animation with blur */}
         <motion.h1
           variants={containerVars}
-          className="text-5xl md:text-7xl lg:text-[clamp(4.5rem,8vw,6rem)] font-bold tracking-[--tracking-hero] leading-[--leading-title] text-foreground"
+          className="text-5xl md:text-6xl font-bold tracking-[--tracking-hero] leading-[--leading-title] text-foreground"
         >
-          <AnimatedLetters text="Product Designer" variants={letterVars} />
+          <AnimatedLetters text="Bienvenue" variants={letterVars} />
         </motion.h1>
 
-        {/* Tagline with keywords - appears after headline */}
+        {/* Tagline */}
         <motion.p
           variants={itemVars}
-          className="mt-6 text-lg md:text-xl lg:text-2xl font-medium text-muted-foreground"
+          className="mt-4 max-w-2xl text-lg md:text-xl font-medium text-muted-foreground"
         >
-          B2B SaaS • Design Systems • 6 ans d&apos;expérience
+          Je conçois des produits clairs, utiles et scalables — du discovery à la
+          livraison, avec une obsession : <span className="text-foreground">la simplicité</span>.
         </motion.p>
 
-        {/* CTAs with staggered entrance */}
-        <motion.div
-          variants={itemVars}
-          className="mt-10 flex flex-col sm:flex-row gap-4"
-        >
+        {/* Availability Status */}
+        <AvailabilityStatusCTA />
+
+        {/* CTAs */}
+        <motion.div variants={itemVars} className="mt-10 flex flex-col sm:flex-row gap-4">
           <Button asChild size="lg" className="min-h-[--touch-target] min-w-[--touch-target]">
             <Link href="#projects">Voir les projets</Link>
           </Button>
-          <Button asChild variant="outline" size="lg" className="min-h-[--touch-target] min-w-[--touch-target]">
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="min-h-[--touch-target] min-w-[--touch-target]"
+          >
             <Link href="/contact">Me contacter</Link>
           </Button>
-      
+        </motion.div>
+
+        {/* Dashboard stats */}
+        <motion.div
+          variants={itemVars}
+          className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+        >
+          {stats.map((s, idx) => (
+            <StatCard
+              key={s.title}
+              value={s.value}
+              suffix={s.suffix}
+              title={s.title}
+              description={s.description}
+              delay={0.15 + idx * 0.08}
+              reducedMotion={reducedMotion}
+              variants={itemVars}
+            />
+          ))}
         </motion.div>
       </div>
     </motion.section>
