@@ -1,6 +1,7 @@
 import { getAllProjects } from '@/lib/mdx'
 import { NavPanel, ProjectGrid } from '@/components/features'
 import { TriPanelLayout } from '@/components/layout'
+import { ConcentricCircles } from '@/components/ui'
 import { notFound } from 'next/navigation'
 import type { Locale } from '@/content/meta'
 
@@ -36,16 +37,19 @@ export default async function ProjectsPage({ params }: PageProps) {
   const content = pageContent[locale as Locale]
 
   return (
-    <TriPanelLayout
-      nav={<NavPanel />}
-    >
-      <div className="space-y-6 py-4">
-        <h1 className="text-3xl font-bold text-foreground">{content.title}</h1>
-        <p className="text-muted-foreground">
-          {content.description}
-        </p>
-        <ProjectGrid projects={projects} emptyLabel={content.emptyLabel} />
-      </div>
-    </TriPanelLayout>
+    <>
+      <ConcentricCircles position="top-right" className="fixed z-0" />
+      <TriPanelLayout
+        nav={<NavPanel />}
+      >
+        <div className="space-y-6 py-4">
+          <h1 className="text-3xl font-bold text-foreground">{content.title}</h1>
+          <p className="text-muted-foreground">
+            {content.description}
+          </p>
+          <ProjectGrid projects={projects} emptyLabel={content.emptyLabel} />
+        </div>
+      </TriPanelLayout>
+    </>
   )
 }

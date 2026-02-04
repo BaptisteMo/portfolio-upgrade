@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { SplashScreen } from '@/components/features/splash'
 import { HeroLanding, NavPanel, Breadcrumbs } from '@/components/features'
 import { TriPanelLayout } from '@/components/layout'
+import { ConcentricCircles } from '@/components/ui'
 import { useReducedMotion, useBreadcrumbs } from '@/hooks'
 import { useLanguage } from '@/contexts'
 
@@ -71,12 +72,14 @@ export default function HomePage() {
   }
 
   const dashboard = (
-    <TriPanelLayout
-      nav={<NavPanel />}
-      
-    >
-      <HeroLanding />
-    </TriPanelLayout>
+    <>
+      <ConcentricCircles position="top-right" className="fixed z-0" />
+      <TriPanelLayout
+        nav={<NavPanel />}
+      >
+        <HeroLanding />
+      </TriPanelLayout>
+    </>
   )
 
   // If splash already seen, render dashboard directly (PageTransition in TriPanelLayout handles animation)

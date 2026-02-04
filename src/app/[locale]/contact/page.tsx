@@ -2,6 +2,7 @@ import { TriPanelLayout } from '@/components/layout'
 import { NavPanel, Breadcrumbs } from '@/components/features'
 import { MadLibsContactForm } from '@/components/features/contact'
 import { Toaster } from '@/components/ui/sonner'
+import { ConcentricCircles } from '@/components/ui'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import type { Locale } from '@/content/meta'
@@ -40,14 +41,15 @@ export default async function ContactPage({ params }: PageProps) {
   ]
 
   return (
-    <TriPanelLayout nav={<NavPanel />}>
-
-      <h1 className="sr-only">{locale === 'fr' ? 'Contact' : 'Contact'}</h1>
-      <div className="max-w-3xl py-8 md:h-screen flex items-center">
-        <MadLibsContactForm />
-      </div>
-
-      <Toaster richColors position="bottom-right" />
-    </TriPanelLayout>
+    <>
+      <ConcentricCircles position="top-right" className="fixed z-0" />
+      <TriPanelLayout nav={<NavPanel />}>
+        <h1 className="sr-only">{locale === 'fr' ? 'Contact' : 'Contact'}</h1>
+        <div className="max-w-3xl py-8 md:h-screen flex items-center">
+          <MadLibsContactForm />
+        </div>
+        <Toaster richColors position="bottom-right" />
+      </TriPanelLayout>
+    </>
   )
 }

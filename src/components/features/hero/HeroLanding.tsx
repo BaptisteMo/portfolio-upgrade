@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { AvailabilityStatusCTA } from './AvailabilityStatusCTA'
 import { useEffect } from "react"
 import { useReducedMotion } from '@/hooks'
+import { useLanguage } from '@/contexts'
 
 // Container for staggered children
 const containerVariants: Variants = {
@@ -169,6 +170,7 @@ function StatCard({
 
 export function HeroLanding() {
   const reducedMotion = useReducedMotion()
+  const { locale } = useLanguage()
   const stats = [
     {
       value: 6,
@@ -206,7 +208,7 @@ return (
       initial="hidden"
       animate="visible"
       variants={containerVars}
-      className=" flex items-center justify-center bg-background"
+      className=" flex items-center justify-center"
       aria-label="Introduction - Baptiste Morillon, Product Designer"
     >
       <div className="container max-w-7xl px-4 py-16 md:py-24">
@@ -240,7 +242,7 @@ return (
             size="lg"
             className="min-h-[--touch-target] min-w-[--touch-target]"
           >
-            <Link href="/contact">Me contacter</Link>
+            <Link href={`/${locale}/contact`}>Me contacter</Link>
           </Button>
         </motion.div>
 
