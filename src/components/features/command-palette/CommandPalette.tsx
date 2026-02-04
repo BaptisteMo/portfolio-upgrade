@@ -227,19 +227,20 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
       }}
       label={labels.ariaLabel}
       shouldFilter={!isSearching}
-      overlayClassName="cmdk-overlay fixed inset-0 bg-black/50 backdrop-blur-[8px]"
-      contentClassName="cmdk-content fixed inset-0 z-50 flex items-start justify-center pt-[20vh]"
+      overlayClassName="cmdk-overlay fixed inset-0 z-[100] bg-black/50 backdrop-blur-[8px]"
+      contentClassName="cmdk-content fixed inset-0 z-[100] flex items-center justify-center"
+      className='w-[50%]'
     >
       <DialogTitle className="sr-only">{labels.ariaLabel}</DialogTitle>
       <DialogDescription className="sr-only">{labels.placeholder}</DialogDescription>
-      <div className="w-full max-w-150 rounded-xl border border-border bg-popover shadow-lg">
+      <div className="w-full max-w-150 mx-auto rounded-xl border border-border bg-popover shadow-lg">
         <Command.Input
           placeholder={labels.placeholder}
           className="w-full border-b border-border bg-transparent p-4 text-sm text-foreground placeholder:text-muted-foreground outline-none"
           autoFocus
           onValueChange={setQuery}
         />
-        <Command.List className="max-h-75 overflow-y-auto p-2">
+        <Command.List className="max-h-75 overflow-y-auto scrollbar-hide p-2">
           <Command.Empty className="px-3 py-6 text-center text-sm text-muted-foreground">
             {labels.empty}
           </Command.Empty>

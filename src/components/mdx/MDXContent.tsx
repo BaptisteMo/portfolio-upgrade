@@ -30,21 +30,21 @@ const components = {
   ),
   p: ({ children, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <ScrollReveal>
-      <p className="text-muted-foreground leading-relaxed mb-4" {...props}>
+      <p className="font-body text-muted-foreground leading-relaxed mb-4" {...props}>
         {children}
       </p>
     </ScrollReveal>
   ),
   ul: ({ children, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
     <ScrollReveal>
-      <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2" {...props}>
+      <ul className="font-body list-disc list-inside text-muted-foreground mb-4 space-y-2" {...props}>
         {children}
       </ul>
     </ScrollReveal>
   ),
   ol: ({ children, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
     <ScrollReveal>
-      <ol className="list-decimal list-inside text-muted-foreground mb-4 space-y-2" {...props}>
+      <ol className="font-body list-decimal list-inside text-muted-foreground mb-4 space-y-2" {...props}>
         {children}
       </ol>
     </ScrollReveal>
@@ -52,7 +52,7 @@ const components = {
   blockquote: ({ children, ...props }: React.HTMLAttributes<HTMLQuoteElement>) => (
     <ScrollReveal>
       <blockquote
-        className="border-l-4 border-primary pl-4 italic text-muted-foreground my-6"
+        className="font-body border-l-4 border-primary pl-4 italic text-muted-foreground my-6"
         {...props}
       >
         {children}

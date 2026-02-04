@@ -41,7 +41,6 @@ export default function HomePage() {
   const [mounted, setMounted] = useState(false)
   const [splashSeen, setSplashSeen] = useState(false)
   const reducedMotion = useReducedMotion()
-  const breadcrumbItems = useBreadcrumbs()
   const { locale } = useLanguage()
 
   const content = splashContent[locale]

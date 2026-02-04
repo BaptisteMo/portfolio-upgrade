@@ -37,7 +37,7 @@ export function DesignForensicsOverlay() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="fixed inset-0 z-[9999] pointer-events-none"
+      className="fixed inset-0 z-9999 pointer-events-none"
       aria-hidden="true"
     >
       {/* Label */}
@@ -50,7 +50,7 @@ export function DesignForensicsOverlay() {
         {Array.from({ length: 8 }).map((_, i) => (
           <div
             key={i}
-            className="flex-1 border-x border-dashed border-blue-500/15 first:border-l-0 last:border-r-0 max-md:[&:nth-child(n+5)]:hidden"
+            className="flex-1 border-x border-dashed border-blue-500/15 first:border-l-0 last:border-r-0 max-md:nth-[n+5]:hidden"
           />
         ))}
       </div>

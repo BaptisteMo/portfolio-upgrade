@@ -1,4 +1,4 @@
-import { Inter, Fraunces, JetBrains_Mono } from 'next/font/google'
+import { Inter, Fraunces, JetBrains_Mono, Libre_Baskerville } from 'next/font/google'
 // import localFont from 'next/font/local'
 
 /**
@@ -51,5 +51,13 @@ export const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 })
 
+// Libre Baskerville - Serif font for body content
+export const libreBaskerville = Libre_Baskerville({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-libre-baskerville',
+  display: 'swap',
+})
+
 // Font CSS class string for root layout
-export const fontVariables = `${satoshi.variable} ${fraunces.variable} ${jetbrainsMono.variable}`
+export const fontVariables = `${satoshi.variable} ${fraunces.variable} ${jetbrainsMono.variable} ${libreBaskerville.variable}`

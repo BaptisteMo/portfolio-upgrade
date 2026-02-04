@@ -16,6 +16,7 @@
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
+  --color-primary-contrasted: var(--primary-contrasted);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
@@ -25,6 +26,7 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-border: var(--border);
+  --color-border-contrasted: var(--border-contrasted);
   --color-input: var(--input);
   --color-ring: var(--ring);
 
@@ -49,6 +51,16 @@
   --font-sans: var(--font-satoshi);
   --font-serif: var(--font-fraunces);
   --font-mono: var(--font-jetbrains-mono);
+  --font-body: var(--font-lora);
+
+  /* Custom shadows */
+  --shadow-primary-glow: 0 2px 0px 1px var(--primary);
+  --shadow-primary-down: 0 1px 0px 1px var(--primary);
+  --shadow-primary-hover: 0 3px 0px 1px var(--primary);
+
+  --shadow-secondary-glow: 0 2px 0px 1px var(--border);
+  --shadow-secondary-down: 0 1px 0px 1px var(--border);
+  --shadow-secondary-hover: 0 3px 0px 1px var(--border);
 
   /* Radius tokens */
   --radius-sm: calc(var(--radius) - 4px);
@@ -80,6 +92,7 @@
 
   /* Primary - Violet (AA compliant: 5.5:1 on white) */
   --primary: oklch(0.55 0.25 295);
+  --primary-contrasted: oklch(24.26% 0.11446 294.493);
   --primary-foreground: oklch(1 0 0);
 
   /* Secondary */
@@ -99,6 +112,7 @@
 
   /* Borders & Input */
   --border: oklch(0.922 0 0);
+  --border-contrasted: oklch(63.009% 0.00007 271.152);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.55 0.25 295);                  /* Matches primary */
 
@@ -204,6 +218,8 @@
   --font-satoshi: 'Satoshi', system-ui, -apple-system, sans-serif;
   --font-fraunces: 'Fraunces', Georgia, serif;
   --font-jetbrains-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-libre-baskerville: 'Libre Baskerville', Georgia, serif;
+  --font-lora: 'Lora', Georgia, serif;
 
   /* Font sizes */
   --text-xs: 0.75rem;      /* 12px */
@@ -275,6 +291,13 @@
   @keyframes cmdk-content-show {
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
+  }
+
+  /* Hide scrollbar utility */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
   }
 
   /* Reduced motion preference */

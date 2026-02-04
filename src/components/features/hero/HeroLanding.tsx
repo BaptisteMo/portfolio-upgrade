@@ -144,7 +144,7 @@ function StatCard({
   return (
     <motion.div
       variants={variants}
-      className="rounded-2xl border bg-background/60 backdrop-blur-sm p-5 shadow-sm"
+      className="rounded-2xl border bg-background/60 backdrop-blur-sm p-5 shadow-secondary-glow"
     >
       <div className="flex items-end gap-2">
         <CountUp

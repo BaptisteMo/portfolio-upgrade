@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
-import { LanguageProvider } from '@/contexts'
+import { LanguageProvider, ImageModalProvider } from '@/contexts'
 import { SkipLink } from '@/components/layout'
+import { ImageModal } from '@/components/ui'
 import { LazyCommandPaletteProvider } from '@/components/features/command-palette'
 import { LazyDesignForensicsOverlay } from '@/components/features/easter-egg'
 import type { Locale } from '@/content/meta'
@@ -32,10 +33,13 @@ export default async function LocaleLayout({
 
   return (
     <LanguageProvider locale={locale}>
-      <SkipLink locale={locale} />
-      {children}
-      <LazyCommandPaletteProvider />
-      <LazyDesignForensicsOverlay />
+      <ImageModalProvider>
+        <SkipLink locale={locale} />
+        {children}
+        <ImageModal />
+        <LazyCommandPaletteProvider />
+        <LazyDesignForensicsOverlay />
+      </ImageModalProvider>
     </LanguageProvider>
   )
 }

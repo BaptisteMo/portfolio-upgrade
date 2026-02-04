@@ -24,11 +24,11 @@ export function ProjectCard({ project, priority = false }: ProjectCardProps) {
     <Link
       href={`/${locale}/projects/${project.slug}`}
       className={cn(
-        'group block rounded-lg border border-border bg-card overflow-hidden',
-        'transition-all duration-150 ease-out',
-        'hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:ring-1 hover:ring-primary/20',
+        'group block rounded-lg border border-border bg-card overflow-hidden shadow-secondary-glow ',
+        'hover:shadow-secondary-hover hover:ring-primary/20 hover:-translate-y-0.5',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-        'motion-reduce:hover:translate-y-0 motion-reduce:hover:shadow-none motion-reduce:hover:ring-0'
+        'motion-reduce:hover:translate-y-0 motion-reduce:hover:shadow-none motion-reduce:hover:ring-0',
+        'active:translate-y-px active:shadow-secondary-down'
       )}
     >
       {/* Preview Image */}
