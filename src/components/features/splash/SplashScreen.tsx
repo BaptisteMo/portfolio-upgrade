@@ -45,7 +45,7 @@ const circleVariants: Variants = {
 // ============================================
 // Text Animation Configuration (Original)
 // ============================================
-const LETTER_STAGGER = 0.08
+const LETTER_STAGGER = 0.03
 
 const headlineVariants: Variants = {
   hidden: {},
@@ -84,19 +84,35 @@ const letterVariants: Variants = {
     y: 0,
     filter: 'blur(0px)',
     transition: {
-      duration: 0.8,
+      duration: 0.3,
       ease: [0.16, 1, 0.3, 1],
     },
   },
 }
 
-const itemVariants: Variants = {
+// Delayed variants for subtitle and button (cascade at end of text animation)
+const subtitleVariants: Variants = {
   hidden: { opacity: 0, y: 20, filter: 'blur(4px)' },
   visible: {
     opacity: 1,
     y: 0,
     filter: 'blur(0px)',
     transition: {
+      delay: 1.0,
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+}
+
+const buttonVariants: Variants = {
+  hidden: { opacity: 0, y: 20, filter: 'blur(4px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      delay: 1.4,
       duration: 0.8,
       ease: [0.16, 1, 0.3, 1],
     },
@@ -167,7 +183,8 @@ export function SplashScreen({ headline, subtitle, buttonText, onComplete }: Spl
   const circleVars = reducedMotion ? reducedMotionVariants : circleVariants
   const containerVars = reducedMotion ? reducedMotionVariants : containerVariants
   const letterVars = reducedMotion ? reducedMotionVariants : letterVariants
-  const itemVars = reducedMotion ? reducedMotionVariants : itemVariants
+  const subtitleVars = reducedMotion ? reducedMotionVariants : subtitleVariants
+  const buttonVars = reducedMotion ? reducedMotionVariants : buttonVariants
 
   return (
     <motion.div
@@ -216,20 +233,20 @@ export function SplashScreen({ headline, subtitle, buttonText, onComplete }: Spl
           />
         </motion.h1>
 
-        {/* Tagline (optional) */}
+        {/* Tagline (optional) - appears near end of text animation */}
         {subtitle && (
           <motion.p
-            variants={itemVars}
+            variants={subtitleVars}
             className="mt-6 text-lg md:text-xl lg:text-2xl font-medium text-muted-foreground"
           >
             {subtitle}
           </motion.p>
         )}
 
-        {/* CTA Button */}
-        <motion.div variants={itemVars} className="mt-16">
+        {/* CTA Button - appears slightly after subtitle */}
+        <motion.div variants={buttonVars} className="mt-16">
           <Button
-            variant="ghost"
+            variant="outline"
             size="lg"
             onClick={onComplete}
             className="min-h-[--touch-target] px-8"
