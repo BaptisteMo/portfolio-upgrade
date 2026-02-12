@@ -25,14 +25,6 @@ export const projects: Project[] = [
     status: 'completed',
   },
   {
-    slug: 'khora',
-    title: 'Khora',
-    description: 'Design System complet pour startup EdTech en Série A.',
-    image: '/images/projects/khora.jpg',
-    tags: ['Design System', 'B2B SaaS'],
-    status: 'completed',
-  },
-  {
     slug: 'nexus-crm',
     title: 'Nexus CRM',
     description:
