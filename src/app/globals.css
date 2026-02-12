@@ -52,7 +52,6 @@
   --font-sans: var(--font-satoshi);
   --font-serif: var(--font-fraunces);
   --font-mono: var(--font-jetbrains-mono);
-  --font-body: var(--font-lora);
 
   /* Custom shadows */
   --shadow-primary-glow: 0 2px 0px 1px var(--color-primary-shd);
@@ -225,8 +224,6 @@
   --font-satoshi: 'Satoshi', system-ui, -apple-system, sans-serif;
   --font-fraunces: 'Fraunces', Georgia, serif;
   --font-jetbrains-mono: 'JetBrains Mono', ui-monospace, monospace;
-  --font-libre-baskerville: 'Libre Baskerville', Georgia, serif;
-  --font-lora: 'Lora', Georgia, serif;
 
   /* Font sizes */
   --text-xs: 0.75rem;      /* 12px */
@@ -305,6 +302,25 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
     &::-webkit-scrollbar { display: none; }
+  }
+
+  /* View Transitions - locale switch crossfade */
+  ::view-transition-old(root) {
+    animation: fade-out 200ms ease-out;
+  }
+
+  ::view-transition-new(root) {
+    animation: fade-in 200ms ease-in 100ms;
+  }
+
+  @keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
   /* Reduced motion preference */

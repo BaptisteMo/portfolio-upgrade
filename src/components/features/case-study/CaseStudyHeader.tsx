@@ -74,7 +74,7 @@ export function CaseStudyHeader({ project }: CaseStudyHeaderProps) {
       initial="hidden"
       animate="visible"
       variants={containerVars}
-      className="my-8 space-y-4 mx-auto max-w-187.5"
+      className="my-8 space-y-4 mx-auto max-w-170"
     >
       {/* Title */}
       <motion.h1

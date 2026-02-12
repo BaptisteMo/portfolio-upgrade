@@ -59,7 +59,7 @@ export function RelatedProjects({ projects }: RelatedProjectsProps) {
   const itemVars = reducedMotion ? reducedMotionVariants : cardVariants
 
   return (
-    <section ref={ref} className="mt-16 border-t border-border pt-12 pb-8 mx-auto max-w-187.5 ">
+    <section ref={ref} className="mt-16 border-t border-border pt-12 pb-8 mx-auto max-w-170 ">
       <motion.h2
         initial={{ opacity: 0, y: 12 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}

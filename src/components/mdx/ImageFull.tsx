@@ -22,20 +22,21 @@ export function ImageFull({ src, alt, caption }: ImageFullProps) {
   }
 
   return (
-    <figure className="my-8 -mx-4 md:-mx-8">
+    <figure className="my-8">
       <motion.div
         layoutId={layoutId}
         onClick={handleClick}
-        className="relative aspect-video cursor-zoom-in"
+        className="cursor-zoom-in overflow-hidden rounded-lg"
         whileHover={{ scale: 1.01 }}
         transition={{ type: 'spring', stiffness: 400, damping: 30 }}
       >
         <Image
           src={src}
           alt={alt}
-          fill
-          className="object-cover rounded-lg"
+          width={0}
+          height={0}
           sizes="(max-width: 768px) 100vw, 80vw"
+          className="w-full h-auto"
           placeholder="blur"
           blurDataURL={BLUR_DATA_URL}
         />

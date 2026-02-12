@@ -4,35 +4,59 @@ import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
 import { Button } from '@/components/ui/button'
 import { Moon, Sun } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export function ThemeToggle() {
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
 
-  // Avoid hydration mismatch by only rendering after mount
   useEffect(() => {
     setMounted(true)
   }, [])
 
   if (!mounted) {
-    // Return placeholder with same dimensions to avoid layout shift
     return (
-      <Button variant="ghost" size="icon" className="relative" disabled>
+      <Button variant="outline" size="icon" className="relative overflow-hidden" disabled>
         <Sun className="h-5 w-5" />
       </Button>
     )
   }
 
+  const isDark = theme === 'dark'
+
   return (
     <Button
-      variant="ghost"
+      variant="outline"
       size="icon"
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      aria-label={`Passer en mode ${theme === 'dark' ? 'clair' : 'sombre'}`}
-      className="relative"
+      onClick={() => setTheme(isDark ? 'light' : 'dark')}
+      aria-label={`Passer en mode ${isDark ? 'clair' : 'sombre'}`}
+      className="relative overflow-hidden"
     >
-      <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+      <AnimatePresence initial={false}>
+        {isDark ? (
+          <motion.span
+            key="sun"
+            initial={{ x: -24, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: 24, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute inline-flex"
+          >
+            <Sun className="h-5 w-5" />
+          </motion.span>
+        ) : (
+          <motion.span
+            key="moon"
+            initial={{ x: 24, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -24, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute inline-flex"
+          >
+            <Moon className="h-5 w-5" />
+          </motion.span>
+        )}
+      </AnimatePresence>
     </Button>
   )
 }

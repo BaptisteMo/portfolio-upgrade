@@ -176,7 +176,7 @@ function InlineTextarea({ field, placeholder, error, ariaLabel }: InlineTextarea
         rows={1}
         className={cn(
           'w-full border-0 border-b-2 border-border bg-transparent',
-          'text-inherit outline-none resize-none',
+          'text-inherit outline-none resize-none overflow-hidden',
           'placeholder:text-muted-foreground placeholder:italic',
           'focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-ring transition-colors duration-200',
           error && 'border-destructive',

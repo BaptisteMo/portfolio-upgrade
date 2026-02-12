@@ -1,14 +1,16 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { useLanguage } from '@/contexts'
-
-function isMac(): boolean {
-  if (typeof navigator === 'undefined') return true
-  return /Mac|iPod|iPhone|iPad/.test(navigator.userAgent)
-}
 
 export function ShortcutsBar() {
   const { locale } = useLanguage()
+  const [modKey, setModKey] = useState('⌘')
+
+  useEffect(() => {
+    const isMac = /Mac|iPod|iPhone|iPad/.test(navigator.userAgent)
+    setModKey(isMac ? '⌘' : 'Ctrl')
+  }, [])
 
   function openPalette() {
     document.dispatchEvent(
@@ -16,7 +18,6 @@ export function ShortcutsBar() {
     )
   }
 
-  const modKey = isMac() ? '⌘' : 'Ctrl'
   const label = locale === 'fr' ? 'Rechercher' : 'Search'
 
   return (

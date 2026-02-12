@@ -67,7 +67,7 @@ interface MDXContentProps {
 
 export function MDXContent({ content }: MDXContentProps) {
   return (
-    <article className="prose-custom max-w-187.5 mx-auto">
+    <article className="prose-custom max-w-170 mx-auto">
       <MDXRemote source={content} components={components} />
     </article>
   )
