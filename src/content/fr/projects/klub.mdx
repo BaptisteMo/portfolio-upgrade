@@ -18,7 +18,7 @@ metrics:
     value: "3"
     description: "Définition et priorisation autour de 3 profils majeurs"
 contextSections:
-  - sectionId: "context"
+  - sectionId: "executive-summary"
     label: "Contexte"
     items:
       - label: "Client"
@@ -26,56 +26,45 @@ contextSections:
       - label: "Produit"
         value: "Klub! • app mobile B2B, canal principal entre centres et commerçants"
       - label: "Timeline"
-        value: "Mars 2024 → aujourd’hui"
-        type: "metric"
+        value: "Mars 2024 → aujourd'hui"
       - label: "Équipe"
-        value: "1 PO + moi (Digital Factory) • 2 représentants métier • 1 CP technique + 2 devs (agence)"
+        value: "1 PO + moi (Digital Factory), 2 représentants métier, 1 CP technique + 2 devs (agence)"
         type: "list"
-      - label: "Défis"
-        value: "Roadmap déjà verrouillée • Design perçu comme frein au delivery"
+      - label: "Description"
+        value: "Application communautaire — chaque centre commercial = un groupe d'utilisateurs distinct administré par les responsables de centre. Stockage de documents, déclarations, demandes d'accès, fil d'actualité…"
         type: "list"
-  - sectionId: "research"
-    label: "Research"
+  - sectionId: "construire-une-vision-produit"
+    label: "Feedback utilisateur"
     items:
-      - label: "Approche"
-        value: "Entretiens, tests utilisateurs, observations terrain, collecte retours support & métier"
-        type: "list"
-      - label: "Key findings"
-        value: "Features utilisées par obligation contractuelle mais difficiles • Hiérarchie confuse • Besoin de guidage"
-        type: "list"
-  - sectionId: "process"
-    label: "Processus"
+      - label: "Équipe centre #1"
+        value: "Placeholder — verbatim à compléter"
+        type: "quote"
+      - label: "Équipe centre #2"
+        value: "Placeholder — verbatim à compléter"
+        type: "quote"
+      - label: "Retailer #1"
+        value: "Placeholder — verbatim à compléter"
+        type: "quote"
+  - sectionId: "les-impacts"
+    label: "Les impacts"
     items:
-      - label: "Cadre"
-        value: "Cadrage + priorisation • Boucles de feedback régulières • Quick wins + refontes structurantes"
-        type: "list"
-      - label: "Focus"
-        value: "Navigation + fonctionnalités centrales (docs, demandes d’accès, gestion utilisateurs)"
-        type: "list"
-  - sectionId: "solution"
-    label: "Solution"
-    items:
-      - label: "Chantiers clés"
-        value: "Refonte MyDocs • Ajout États des lieux d’entrée • Industrialisation via UI Kit"
-        type: "list"
-      - label: "Innovation process"
-        value: "Indicateur Jira #DesignToDev pour cadrer les retours d’intégration et réduire la friction"
-  - sectionId: "results"
-    label: "Résultats"
-    items:
-      - label: "UI Kit"
-        value: "Complet et documenté"
-        type: "metric"
-      - label: "#DesignToDev"
-        value: "0.5j"
-        type: "metric"
-      - label: "Adoption"
-        value: "En hausse"
-        type: "metric"
-      - label: "Collaboration"
-        value: "Design / métier / tech alignés via une méthode et un langage commun"
-        type: "list"
+      - label: "Utilisateur #1"
+        value: "Placeholder — verbatim à compléter"
+        type: "quote"
+      - label: "Utilisateur #2"
+        value: "Placeholder — verbatim à compléter"
+        type: "quote"
+      - label: "Équipe support"
+        value: "Placeholder — verbatim à compléter"
+        type: "quote"
 ---
+
+<ImageFull
+  src="/images/projects/klub/banner.jpg"
+  alt="Description de l'image"
+  caption="Klub! mockups banner"
+/>
+
 
 ## Executive summary
 
@@ -149,12 +138,33 @@ Un petit point de contexte s’impose. Lorsque je suis arrivé, les équipes tec
 L’une des première action que j’ai mis en place a été de remplacer le plus vite possible les présentation de maquettes faites sur power-point par des maquettes Figma. J’ai donc pris un peu de place tous les mercredi dans un rituel existent pour présenter des maquettes. L’outil a été plutôt bien adopté et rapidement les métiers, les équipes techniques venaient me rendre visite pour y mettre des commentaires.
 
 ### Adopter une nouvelle UI
+L’application avait un sérieux besoin d’un coup de neuf. Au delà d’une volonté de moderniser une esthétique un peu vieillissante, beaucoup d’éléments n’était pas aux normes question accessibilité, certains étaient dupliqués  mais avec des styles différents… Progressivement nous avons intégrer les nouveaux composants au fil des mise en production ce qui a eu un effet positif sur les users
+> « Oh c’est bien plus agréable et sympas comme app ! Vous allez faire le reste quand ? » 
+
+L’ensemble de ces améliorations ont permis, au fil des refontes et des livraisons, de progressivement adopter un ensemble cohérent tant sur l’UI que sur l’expérience des utilisateurs entre les différentes fonctionnalité.
 
 ### Des recettes plus précises
+Les équipes métiers avait un rôle clé pour la recette fonctionnelle cependant il fallait un oeil attentif pour s’assurer que le front de l’application correspondent bien au maquettes validés en amont. J’ai donc activement participé aux recette pour alimenter petits écarts qu’on pouvait remarquer. Nous avons mis en place un KPI intéressant pour voir l’évolution dans la qualité de nos échanges entre développeurs et designer. J’ai donc mis en place le DesignToDev nous a permis de mesure la quantité de jours passer à corriger les écarts entre les maquettes et le résultats finale.
 
 ## Industrialiser la production
 
 ### Transformer une intention en UI Kit
+Pour gagner en vélocité, s’assurer qu’on ne réinventait pas la roue en permanence j’ai établie un Ui Kit sur Figma qui compte aujourd’hui 36 composants documentés et prêt à l’emplois pour les maquettes de l’ensemble des projets au sein de la DSI. Je vous en parles plus en profondeur dans cette étude de cas 
 
 ### Standardiser des usages
+Après la validation de nos utilisateurs sur plusieurs fonctionnalités dont nous nous étions occupés j’avais une réelle base de travail pour créer des standards d’utilisation. J’ai donc réintégrer des flow entiers que j’adaptais d’une fonctionnalité à une autre, des systèmes de navigations que nos utilisateurs avaient appréciés, bref nous avons capitaliser sur des choses que nous avions testés et valider pour produire plus vite. 
 
+## Les impacts
+
+### Nos utilisateurs nous parlent
+À plusieurs égards, nous avons vu un impact positifs à la suite des refontes, les retours par mails étaient super positifs après le lancement de certaines fonctionnalités clés. 
+> « On commence du bon pied avec un premier état des lieu d’entré réaliser sur Klub!, un outil intuitif et rapide ! On adhère ! »
+
+> « C’est vraiment top de pouvoir effectuer les états des lieux d’entrée sur Klub! 👌👌👌👌 ! Quand pourra-t-on effectuer les états des lieux de sortie! »
+L’équipe support constate également qu’il n’y a plus de 
+
+> On voit vraiment que Klub! avancent depuis 1 an et demi, et dans le bon sens ça fait plaisir !
+
+### Quelques chiffres
+Nous travaillons actuellement sur l’intégration d’outil analytics pour traquer de manière fiable et précises nos évolutions sur l’utilisation des différentes fonctionnalités. 
+Les différentes évolutions dans notre manière de travailler : documentation, rituel, UI Kit de plus en plus complet nous on permis de passer d’un DesignToDev de 3,5 jours en moyenne sur les premiers sprints à 0,5j. 

@@ -13,8 +13,8 @@ interface TimelineProps {
   items: ExperienceItem[]
 }
 
-const SWIPE_THRESHOLD = 120
-const DRAG_THRESHOLD = 15
+const SWIPE_THRESHOLD = 60
+const DRAG_THRESHOLD = 10
 
 function SwipeCard({
   item,
