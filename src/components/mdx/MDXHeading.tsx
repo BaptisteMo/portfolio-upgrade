@@ -32,7 +32,8 @@ export function MDXHeading({ level, children, ...props }: MDXHeadingProps) {
   return (
     <ScrollReveal>
       <h3
-        className="text-xl font-semibold text-foreground mt-8 mb-3"
+        id={id}
+        className="text-xl font-semibold text-foreground mt-8 mb-3 scroll-mt-20"
         {...props}
       >
         {children}

@@ -1,11 +1,11 @@
 ---
-title: "Klub!"
+title: "KLUB! — De la friction à l’adoption : 20 000+ utilisateurs concernés"
 slug: "klub"
 description: "Structurer la conception produit d’une application mobile B2B reliant Klépierre, les équipes de centre et les retailers (communication & opérations)."
 tags:
   - "B2B SaaS"
   - "Design System"
-status: "ongoing"
+status: "in-progress"
 timeline: "Mars 2024 → aujourd’hui"
 client: "Klépierre"
 role: "Product Designer (Digital Factory)"
@@ -24,14 +24,15 @@ contextSections:
       - label: "Client"
         value: "Klépierre • leader européen des centres commerciaux (10 pays, 70+ centres)"
       - label: "Produit"
-        value: "Klub! • app mobile B2B, canal principal entre centres et commerçants"
+        value: "Klub! app mobile B2B"
       - label: "Timeline"
         value: "Mars 2024 → aujourd'hui"
       - label: "Équipe"
         value: "1 PO + moi (Digital Factory), 2 représentants métier, 1 CP technique + 2 devs (agence)"
         type: "list"
-      - label: "Description"
-        value: "Application communautaire — chaque centre commercial = un groupe d'utilisateurs distinct administré par les responsables de centre. Stockage de documents, déclarations, demandes d'accès, fil d'actualité…"
+      - label: "L'application Klub!"
+        value: "Klub! est le canal de communication principal entre Klépierre, les équipes de centre et les commerçants présents dans ses centres.
+        Les utilisateurs peuvent y gérer leurs démarches administratives, suivre les actualités du centre, participer à des événements et interagir avec les autres acteurs de la communauté."
         type: "list"
   - sectionId: "construire-une-vision-produit"
     label: "Feedback utilisateur"
@@ -42,13 +43,13 @@ contextSections:
       - label: "Équipe centre #2"
         value: « Nan mais nous on utilise plus Klub! pour ça c’est vraiment pas pratique… »
         type: "quote"
-  - sectionId: "les-impacts"
+  - sectionId: "standardiser-les-usages"
     label: "Les impacts"
     items:
       - label: "Gestionnaire de centre"
         value: « C’est vraiment top de pouvoir effectuer les états des lieux d’entrée sur Klub! 👌👌👌👌 ! Quand pourra-t-on effectuer les états des lieux de sortie! »
         type: "quote"
-      - label: "Utilisateur #2"
+      - label: "Gestionnaire de centre"
         value: « On commence du bon pied avec un premier état des lieu d’entré réaliser sur Klub!, un outil intuitif et rapide ! On adhère ! »
         type: "quote"
       - label: "Équipe de centre"
@@ -63,14 +64,17 @@ contextSections:
 />
 
 
-## Executive summary
+## Résumé exécutif
 
-Entre 2024 et aujourd’hui j’ai aider l’équipe de Klub! à refondre la majeur partie de leur application tant dans la forme que dans les process que nous avons mis en place pour y parvenir. 
-C’est au total 5 fonctionnalités majeurs mises en production avec succès qui permettent de dire que nous avons positivement impacté l’expérience d’un peu plus de 20 000 utilisateurs.
+Depuis mars 2024 (mission toujours en cours), j’accompagne l’équipe Klub! dans une refonte progressive du produit : moderniser l’interface, renforcer la cohérence UX et structurer une méthode de conception compatible avec une roadmap déjà engagée.
+
+Au total, nous avons mis en production **5 lots majeurs** — dont MyDocs, Demande d’accès, État des lieux d’entrée, ainsi que des parcours opérationnels (ouverture / restitution de boutique) et des fonctionnalités plus administratives.
+
+
 
 ---
 
-## L’approche que j’ai proposé
+## La stratégie que j’ai mise en place
 
 ### 1) [Construire une vision produit](#construire-une-vision-produit)
 Comment j'ai inscris les besoins business et les retours utilisateurs dans une vision produit
@@ -78,19 +82,23 @@ Comment j'ai inscris les besoins business et les retours utilisateurs dans une v
 ### 2) [Établir des standards](#etablir-des-standards)
 Comment j'ai posé des bases solide pour construire sereinement
 
-### 3) Industrialiser la production
+### 3) [Industrialiser la production](#industrialiser-la-production)
 Comment je produit mieux des délais restreints
 
 ## Construire une vision produit
 
-Pour qu’un travail de refonte fonctionne il fallait commencer par déconstruire et analyser. Je devais comprendre pourquoi les utilisateurs n’avaient aucun intérêt pour l’outil qu’on leur mettait à disposition. Avec une équipe produit toute neuve, une documentation quasi-inexistantes et des utilisateurs difficiles d’accès ça a été un premier challenge.
+Pour qu’une refonte fonctionne, il fallait d’abord déconstruire l’existant : comprendre pourquoi l’outil n’était pas adopté et où se situaient les frictions réelles.
+Avec une équipe produit nouvellement constituée, une documentation quasi inexistante et des utilisateurs difficiles à mobiliser, c’était le premier défi à résoudre.
 
 ### Renouer avec le terrain
-Le meilleur point de départ pour moi à ce stade était d’aller discuter avec nos utilisateurs qui représentent noyaux dur de nos utilisateurs : Les équipes de centres. Dans la théorie c’est eux qui vont créer le contenue et faire vivre les communauté de retailers au sein des différents centres. 
-Après quelques interviews les verbatims sont plus qu’explicites : 
-« C’est chiant de faire ça sur Klub! » « Nan mais nous on utilise plus Klub! pour ça c’est vraiment pas pratique… »
+À ce stade, le meilleur point de départ était d’échanger avec le **noyau dur** de nos utilisateurs : les **équipes de centre**. En théorie, ce sont elles qui créent le contenu et animent la communauté de retailers dans chaque centre.
 
-### Personae
+Après quelques interviews, les verbatims étaient sans ambiguïté :
+> « C’est chiant de faire ça sur Klub! »  
+> « Non mais nous, on n’utilise plus Klub! pour ça, ce n’est vraiment pas pratique… »
+
+
+### Personas
 <ImageFull
   src="/images/projects/klub/persona_03.png"
   alt="Persona équipe Klépierre"
@@ -111,51 +119,93 @@ Après quelques interviews les verbatims sont plus qu’explicites :
 
 ### Clarifier les objectifs
 
-Les interviews nous ont permis de commencer à construire des personae claires qui nous ont servis de point de référence dans les futurs chantiers que nous avons menés. Cette première étape a été crucial pour aligner toute l’équipe projet sur une compréhension commune des problématiques des utilisateurs. 
-À partir de là notre objectif a été de plus en plus clair : Comment créer l’adhésion de Klub! auprès des gestionnaires de centres et les inciter à communiquer par ce canal à leurs retailers ?
+Ces interviews nous ont permis de construire des **personas** clairs, utilisés ensuite comme points de référence pour prioriser et arbitrer les chantiers.
+Cette étape a été **cruciale** pour aligner l’équipe projet sur une compréhension commune des enjeux et des irritants terrain.
+
+À partir de là, l’objectif s’est clarifié :
+**comment renforcer l’adhésion à Klub! chez les gestionnaires de centres et les inciter à en faire le canal principal de communication avec leurs retailers ?**
+
 
 ### Cibler les chantiers à fort impact
 
-Les sujets n’ont pas été durs à trouver et certains se sont même imposés à nous pour des raisons techniques ou des décisions prises par les sponsors. Cependant, nous avions maintenant une ligne directrice à suivre pour l’ensemble des ces sujets que nous avons adresser :
+Avec une roadmap en partie contrainte, notre approche a été de concentrer l’effort sur des parcours capables de maximiser l’adoption et de réduire la friction opérationnelle, puis de **capitaliser** sur ce qui fonctionne.
 
-**MyDocs** : L’outil de gestion documentaire pour les centres nous donné l’opportunité d’intégrer pour la première fois certains utilisateurs dans les phases de conceptions pour qu’ils puissent nous aider concrètement à construire l’outil qu’il leur fallait.
+- **MyDocs** : un chantier “pilote” pour valider rapidement des choix UX avec le terrain et stabiliser une base UI réutilisable.
+- **Demande d’accès** : un parcours critique (conformité + opérations) qui a ré-ancré la conception dans la réalité des process en centre.
+- **État des lieux / Handover** : un socle de parcours opérationnels structurant, conçu pour être **déclinable**.
 
-**Demande d’accès** : Une fonctionnalité obligatoire pour toute intervention de personnes extérieur au centre. La phase discovery de cette fonctionnalité a mis une emphase très forte sur un des problèmes majeurs de Klub!, les fonctionnalité ont été faites en se basant sur une idée erronée des réalités terrain et à encrée de manière encore plus forte la nécessité d’intégrer les équipes de centres dans nos phases de conception.
+À partir de ce socle, nous avons pu livrer plus vite et de manière cohérente : **Opening** et **Hand back** ont été construits comme des compléments du Handover, en répliquant les patterns validés (navigation, formulaires, étapes, validations) plutôt qu’en repartant de zéro.
 
-**État des lieux d’entrée** : Une fonctionnalité toute nouvelle qui permet aux responsables des centres de faire les états des lieux d’entrée de leurs retailers. C’est à ce jour la feature où nous avons reçu le plus de retours positifs et une volonté des utilisateurs d’avoir plus de changement dans l’application !
+Enfin, nous avons traité des fonctionnalités **admin** (gestion utilisateurs, configuration des centres, droits d'accès...), des éléments transverses comme la navigation — moins “visibles” en démo, mais essentielles pour fiabiliser l’exécution au quotidien et maintenir le produit à l’échelle.
+
+<ImageFull
+  src="/images/projects/klub/demo_features.png"
+  alt="Autres images de klub"
+  caption="Différents écrants des nouvelles fonctionnalités"
+/>
+
+
+
+
 
 ---
 
 ## Etablir des standards
 
-Un petit point de contexte s’impose. Lorsque je suis arrivé, les équipes techniques sont entièrement externalisée et basée à Nantes. Jusque là c’est cette agence externe qui menait de concert le développement et le chef de projet technique portait la conception des maquettes. Elles étaient ensuite présentées à l’équipe projet régulièrement pour préparer les sprints.
+Petit point de contexte : lorsque je suis arrivé, les équipes techniques étaient entièrement **externalisées** et basées à Nantes.
+Jusqu’alors, l’agence portait à la fois le développement et une partie de la conception : le chef de projet technique produisait les maquettes, ensuite présentées régulièrement à l’équipe projet pour préparer les sprints.
 
-### Bienvenue dans Figma !
+### Installer une source de vérité partagée
 
-L’une des première action que j’ai mis en place a été de remplacer le plus vite possible les présentation de maquettes faites sur power-point par des maquettes Figma. J’ai donc pris un peu de place tous les mercredi dans un rituel existent pour présenter des maquettes. L’outil a été plutôt bien adopté et rapidement les métiers, les équipes techniques venaient me rendre visite pour y mettre des commentaires.
+L’un de mes premiers leviers a été de remplacer rapidement les maquettes PowerPoint par une source de vérité unique sur **Figma**.
+J’ai instauré une revue hebdomadaire dans un rituel existant, ce qui a accéléré l’alignement et les arbitrages : métier et technique pouvaient commenter directement au bon endroit, avec le bon niveau de détail.
 
-### Adopter une nouvelle UI
-L’application avait un sérieux besoin d’un coup de neuf. Au delà d’une volonté de moderniser une esthétique un peu vieillissante, beaucoup d’éléments n’était pas aux normes question accessibilité, certains étaient dupliqués  mais avec des styles différents… Progressivement nous avons intégrer les nouveaux composants au fil des mise en production ce qui a eu un effet positif sur les users.
-> « Oh c’est bien plus agréable et sympas comme app ! Vous allez faire le reste quand ? » 
+### Nouvelle UI et réduction de la dette
+L’application avait besoin d’un vrai rafraîchissement. Au-delà d’une esthétique vieillissante, plusieurs éléments n’étaient pas conformes aux bonnes pratiques d’accessibilité, et certains composants existaient en doublon avec des styles différents.
 
-L’ensemble de ces améliorations ont permis, au fil des refontes et des livraisons, de progressivement adopter un ensemble cohérent tant sur l’UI que sur l’expérience des utilisateurs entre les différentes fonctionnalité.
+Progressivement, nous avons introduit les nouveaux composants au fil des mises en production, avec un effet immédiatement perceptible côté utilisateurs :
+> « Oh, c’est bien plus agréable comme app ! Vous allez faire le reste quand ? »
 
-### Des recettes plus précises
-Les équipes métiers avait un rôle clé pour la recette fonctionnelle cependant il fallait un oeil attentif pour s’assurer que le front de l’application correspondent bien au maquettes validés en amont. J’ai donc activement participé aux recette pour alimenter petits écarts qu’on pouvait remarquer. Nous avons mis en place un KPI intéressant pour voir l’évolution dans la qualité de nos échanges entre développeurs et designer. J’ai donc mis en place le DesignToDev nous a permis de mesure la quantité de jours passer à corriger les écarts entre les maquettes et le résultats finale.
+<ImageFull
+  src="/images/projects/klub/before.png"
+  alt="Avant la refonte UI"
+  caption="Avant la refonte UI"
+/>
+<ImageFull
+  src="/images/projects/klub/after.png"
+  alt="Après la refonte UI"
+  caption="Après la refonte UI"
+/>
+
+Ces améliorations, combinées aux refontes successives, nous ont permis d’aboutir à une interface plus cohérente et une expérience plus homogène entre les différentes fonctionnalités.
+
+### Garantir la qualité avant mise en production
+Les équipes métier jouaient un rôle clé dans la recette fonctionnelle. En parallèle, il fallait garantir la conformité UI/UX : s’assurer que l’interface livrée correspondait bien aux maquettes validées.
+
+J’ai donc participé activement aux phases de recette pour identifier et corriger les écarts (détails UI, comportements, cohérence des composants).
+Nous avons aussi introduit un KPI dédié — **#DesignToDev** — afin de mesurer le temps passé à corriger les écarts entre intentions de design et rendu final en production.
+
 
 ## Industrialiser la production
 
 ### Transformer une intention en UI Kit
-Pour gagner en vélocité, s’assurer qu’on ne réinventait pas la roue en permanence j’ai établie un Ui Kit sur Figma qui compte aujourd’hui 36 composants documentés et prêt à l’emplois pour les maquettes de l’ensemble des projets au sein de la DSI. Je vous en parles plus en profondeur dans cette étude de cas 
+Pour gagner en vélocité et éviter de réinventer la roue, j’ai construit un **UI Kit Figma** comptant aujourd’hui **36 composants documentés**, réutilisables pour l’ensemble des projets de la DSI.
+Je détaille ce chantier plus en profondeur dans une étude de cas dédiée.
+[Lin à intégrer]
 
-### Standardiser des usages
-Après la validation de nos utilisateurs sur plusieurs fonctionnalités dont nous nous étions occupés j’avais une réelle base de travail pour créer des standards d’utilisation. J’ai donc réintégrer des flow entiers que j’adaptais d’une fonctionnalité à une autre, des systèmes de navigations que nos utilisateurs avaient appréciés, bref nous avons capitaliser sur des choses que nous avions testés et valider pour produire plus vite. 
+### Standardiser les usages
+Après plusieurs cycles de conception et de validation terrain, nous avions une base solide pour standardiser les usages.
+J’ai capitalisé sur les patterns qui fonctionnaient : réutilisation de flows complets d’une fonctionnalité à l’autre, alignement des systèmes de navigation, et généralisation des composants validés.
+Objectif : produire plus vite, avec plus de cohérence, et moins de friction pour les utilisateurs.
 
 ## Les impacts
 
 ### Nos utilisateurs en parlent
-À plusieurs égards, nous avons vu un impact positifs à la suite des refontes, les retours par mails étaient super positifs après le lancement de certaines fonctionnalités clés. 
+À plusieurs égards, nous avons observé un impact positif à la suite des refontes. Les retours par e-mail ont été particulièrement encourageants après le lancement de certaines fonctionnalités clés :
+
+L’équipe support a également partagé des retours cohérents avec ces améliorations sur les parcours concernés.
+
 
 ### Quelques chiffres
-Nous travaillons actuellement sur l’intégration d’outil analytics pour traquer de manière fiable et précises nos évolutions sur l’utilisation des différentes fonctionnalités. 
-Les différentes évolutions dans notre manière de travailler : documentation, rituel, UI Kit de plus en plus complet nous on permis de passer d’un DesignToDev de 3,5 jours en moyenne sur les premiers sprints à 0,5j. 
+Nous travaillons actuellement sur l’intégration d’outils analytics afin de suivre de manière plus fiable l’usage des fonctionnalités et l’évolution de l’adoption.
+Les améliorations de notre manière de travailler (documentation, rituels, UI Kit de plus en plus complet) nous ont permis de passer d’un **DesignToDev** d’environ **3,5 jours** en moyenne sur les premiers sprints à **0,5 jour**.

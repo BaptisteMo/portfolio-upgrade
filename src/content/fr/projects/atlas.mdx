@@ -1,0 +1,172 @@
+---
+title: "Atlas - Le cockpit financier & contractuel à +1 Md€ / an"
+slug: "atlas"
+description: "Repenser la lisibilité d’un outil financier interne critique : clarifier un produit dense, aligner les métiers et remettre le design au cœur des arbitrages."
+tags:
+  - "B2B SaaS"
+  - "Design System"
+status: "in-progress"
+timeline: "Janvier 2025 → aujourd’hui"
+client: "Klépierre"
+role: "Product Designer (Digital Factory)"
+image: "/images/projects/atlas/banner.jpg"
+metrics:
+  - label: "Interviews"
+    value: "~40"
+    description: "Utilisateurs interrogés (6 métiers)"
+  - label: "Ateliers"
+    value: "~10"
+    description: "Ateliers inter-services & co-conception"
+  - label: "Workflow"
+    value: "15 étapes"
+    description: "Process contractuel au cœur du KPI “Speed of Execution”"
+contextSections:
+  - sectionId: "executive-summary"
+    label: "Contexte"
+    items:
+      - label: "Client"
+        value: "Klépierre • leader européen des centres commerciaux (10 pays, 70+ centres)"
+      - label: "Produit"
+        value: "ATLAS • outil interne B2B : pilotage financier + cycle de vie des offres & contrats"
+      - label: "Timeline"
+        value: "Janvier 2025 → aujourd’hui"
+      - label: "Équipe"
+        value: "2 PO/PM + moi (Digital Factory), représentants métiers (finance, leasing, juridique, asset…), 1 CP technique + 3 devs (agence)"
+        type: "list"
+      - label: "Enjeux"
+        value: "Produit construit sur ~10 ans, dette technique, expérience morcelée selon les métiers"
+        type: "list"
+  - sectionId: "cartographier-un-systeme-complexe"
+    label: "Feedback utilisateur"
+    items:
+      - label: "Utilisateur"
+        value: "« Atlas, c’est une mine d’or, mais on n’a pas la carte pour s’y retrouver. »"
+        type: "quote"
+      - label: "Utilisateur"
+        value: "« Pendant un appel client, je dois retrouver l’essentiel en quelques secondes. »"
+        type: "quote"
+  - sectionId: "les-impacts"
+    label: "Résultats"
+    items:
+      - label: "Équipe produit"
+        value: "Le design est redevenu un passage structurant pour cadrer, arbitrer et sécuriser la roadmap."
+        type: "quote"
+---
+
+<ImageFull
+  src="/images/projects/atlas/banner.jpg"
+  alt="ATLAS — outil interne finance & contrats"
+  caption="ATLAS — outil interne finance & contrats"
+/>
+
+## Executive summary
+
+Après un an sur *Klub!* et la mise en place de l'UI kit, j’ai rejoint **ATLAS** : l’outil interne qui centralise la gestion financière et contractuelle des centres commerciaux Klépierre.
+
+ATLAS est un produit **riche**, mais aussi **dense**, **ancien** et **hétérogène** : chaque métier y a ses repères, ses raccourcis et ses contournements. Mon rôle a été d’y ramener de la clarté, **structurer l’information, unifier les parcours critiques et réinstaller le design dans les décisions produit**.
+
+En un an, j’ai mené ~**40 interviews**, une vingtaine d’ateliers inter-services et participié activement au pilotage plusieurs refontes transverses. Les premiers retours sont très positifs, les mesures quantitatives d’adoption sont en cours de mise en place.
+
+## L’approche que j’ai mise en place
+
+Sur un produit complexe, l’objectif n’est pas “d’ajouter des écrans”. C’est de **redonner une lecture commune** du système, puis d’attaquer des parcours capables d’améliorer concrètement le quotidien des équipes.
+
+### 1) [Cartographier un système complexe](#cartographier-un-systeme-complexe)
+### 2) [Refondre le cockpit utilisateur (Todo)](#refondre-le-cockpit-utilisateur-todo)
+### 3) [Unifier le workflow contractuel (Speed of Execution)](#unifier-le-workflow-contractuel-speed-of-execution)
+
+---
+
+## Cartographier un système complexe
+
+Avant de refondre quoi que ce soit, il fallait comprendre **comment ATLAS est réellement utilisé** — et pourquoi un même parcours pouvait être vécu très différemment selon les métiers.
+
+Plutôt qu’une cartographie “figée”, j’ai construit une **base de connaissance actionnable** pour être pertinent sur l’ensemble de la roadmap :
+- une **quanrantaine d'interviews** avec des utilisateurs issus de **6 métiers différents**
+- une **vingtaine d’ateliers** collectifs (dépendances, validations, zones de friction)
+- des **observations** sur la circulation de l’information et les points de passage inter-équipes
+
+Le choix méthodologique clé a été de ne pas raisonner en “features”, mais en **Job To Be Done** : les actions concrètes que les utilisateurs cherchent à accomplir (retrouver l’essentiel rapidement, sécuriser une étape, faire avancer un deal, arbitrer...).
+
+Cette approche a permis de faire émerger des constats transverses (indépendamment de la dette de design) qui ont servi de fil conducteur pour les refontes et pour orienter ma stratégie de conception produit dans la durée :
+- **Piloter son activités selon ses priorités du moment** (et non selon la structure de l’outil)
+- **Accéder à l’essentiel en quelques secondes** (réunion, appel, arbitrage)
+- **Trouver une cohérence global** entre les différentes fonctionnalités pour éviter les re-saisie, les incohérences de données...
+
+Ces enseignements ont ensuite été utilisés comme cadre de décision : profiter de chaque chantier pour améliorer le global (clarifier, réduire le bruit, rendre l’action plus immédiate) plutôt que d’optimiser une fonctionnalité isolée.
+
+---
+
+## Créer le cockpit utilisateur
+
+La Todo n’était pas un “pense-bête” : c’était censé être **le cockpit personnel d’ATLAS**, là où chaque utilisateur pilote son activité.
+
+Le paradoxe : la fonctionnalité était **quasiment abandonnée**. Personne ne savait vraiment “ce qui n’allait pas”, précisément parce qu’elle n’était plus utilisée. On a donc cadré la refonte avec une ambition simple : **recréer un espace de travail exploitable au quotidien**.
+
+Principes de conception :
+- **Réduire la surcharge visuelle** (moins de colonnes, hiérarchie plus nette)
+- **Accélérer les actions répétées** (actions regroupées, mises à jour en batch)
+- **Redonner le contrôle à l’utilisateur** (filtres avancés, personnalisation)
+
+Plusieurs cycles d’itération avec les métiers ont permis d’équilibrer densité et lisibilité, puis de valider collectivement la compréhension du parcours.
+
+<ImageFull
+  src="/images/projects/atlas/todo-before.png"
+  alt="ATLAS — Todo avant refonte"
+  caption="Todo — avant"
+/>
+
+<ImageFull
+  src="/images/projects/atlas/todo-after.png"
+  alt="ATLAS — Todo après refonte"
+  caption="Todo — après"
+/>
+
+**Résultats (qualitatifs) :** retours très positifs dès le déploiement et plusieurs de nos embassadeurs ont remontés des commentaires de satisfactions ; la mesure d’adoption est en cours de consolidation (analytics).
+
+---
+
+## Unifier le workflow contractuel (Speed of Execution)
+
+Le KPI le plus structurant d’ATLAS est lié à son workflow principal : un process d’environ **15 étapes**. L’indicateur suivi par le business est le **“Speed of Execution”** : la capacité des équipes à faire avancer efficacement un dossier, de la validation de l’offre à l’intégration contractuelle permettant d’initier la facturation.
+
+Les équipes dirigeantes ont demandé une amélioration des **steps 4 à 9**, un segment critique du parcours (coordination entre les équipes legal et leasing, workflow de validations, qualité des informations).
+
+### Méthodologie :
+- **Entretiens individuels** pour clarifier rôles et responsabilités
+- **Focus groups inter-services** pour aligner besoins et repères communs
+- **Mapping end-to-end** (user flows + dépendances)
+- **Maquettes & prototypes** pour tester une expérience plus unifiée et anticiper des besoins transverses (ex : futur système de notifications)
+
+<ImageFull
+  src="/images/projects/atlas/dcm-flow.png"
+  alt="ATLAS — mapping global co-construit (contract management)"
+  caption="Mapping global co-construit — contract management"
+/>
+
+<ImageFull
+  src="/images/projects/atlas/dcm-mockups.png"
+  alt="ATLAS — maquettes d’intention (contract management)"
+  caption="Maquettes d’intention — vers une expérience unifiée"
+/>
+
+### Résultats
+
+---
+
+## Les impacts
+
+- **Le design est réintégré** comme un passage structurant : cadrage, arbitrage, alignement inter-métiers.
+- **Une lecture partagée** des pain points, facilitant la priorisation et les décisions produit.
+- **Standardisation progressive** (dans la continuité du design system initié sur Klub!).
+- **Premières refontes livrées** avec un niveau de satisfaction très élevé (mesures quantitatives à venir).
+- **Projection 2025–2026** : volonté forte de poursuivre l’effort (roadmap + refonte plus profonde).
+
+### Prochaines étapes
+
+- Construire la roadmap 2026 avec les équipes métiers
+- Continuer la refonte des parcours critiques du workflow
+- Consolider la cohérence UI (composants + patterns)
+- Renforcer le suivi qualité (UI/UX) en recette avant mise en production
+
+---

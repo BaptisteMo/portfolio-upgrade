@@ -33,4 +33,22 @@ export const projects: Project[] = [
     tags: ['CRM', 'Web App'],
     status: 'completed',
   },
+    {
+    slug: 'klub',
+    title: 'Klub!',
+    description:
+      "Refonte totale d'une application B2B utilisé par plus de 20 000 users",
+    image: '/images/projects/klub/banner.jpg',
+    tags: ['CRM', 'Web App'],
+    status: 'completed',
+  },
+  {
+    slug: 'Atlas',
+    title: 'Atlas',
+    description:
+      "Refonte totale d'une application B2B utilisé par plus de 20 000 users",
+    image: '/images/projects/klub/banner.jpg',
+    tags: ['CRM', 'Web App'],
+    status: 'completed',
+  },
 ]

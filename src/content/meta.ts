@@ -8,7 +8,7 @@ export type ProjectTag =
   | 'Mobile'
   | 'Web App'
 
-export type ProjectStatus = 'completed' | 'in-progress' | 'concept'
+export type ProjectStatus = 'completed' | 'ongoing' | 'in-progress' | 'concept'
 
 export type AvailabilityStatus = 'available' | 'in-talks' | 'unavailable'
 

@@ -19,14 +19,7 @@ const components = {
     <MDXHeading level={2} {...props}>{children}</MDXHeading>
   ),
   h3: ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <ScrollReveal>
-      <h3
-        className="text-xl font-semibold text-foreground mt-8 mb-3"
-        {...props}
-      >
-        {children}
-      </h3>
-    </ScrollReveal>
+    <MDXHeading level={3} {...props}>{children}</MDXHeading>
   ),
   p: ({ children, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <ScrollReveal>
