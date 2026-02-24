@@ -228,12 +228,12 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
       label={labels.ariaLabel}
       shouldFilter={!isSearching}
       overlayClassName="cmdk-overlay fixed inset-0 z-[100] bg-black/50 backdrop-blur-[8px]"
-      contentClassName="cmdk-content fixed inset-0 z-[100] flex items-center justify-center"
-      className='w-[50%]'
+      contentClassName="cmdk-content fixed left-1/2 top-1/2 z-[100] w-[90vw] max-w-150 -translate-x-1/2 -translate-y-1/2"
+      className="w-full"
     >
       <DialogTitle className="sr-only">{labels.ariaLabel}</DialogTitle>
       <DialogDescription className="sr-only">{labels.placeholder}</DialogDescription>
-      <div className="w-full max-w-150 mx-auto rounded-xl border border-border bg-popover shadow-lg">
+      <div className="rounded-xl border border-border bg-popover shadow-lg">
         <Command.Input
           placeholder={labels.placeholder}
           className="w-full border-b border-border bg-transparent p-4 text-sm text-foreground placeholder:text-muted-foreground outline-none"

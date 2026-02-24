@@ -47,7 +47,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
       >
         <CaseStudyHeader project={meta} />
         <MDXContent content={content} />
-        <MetricsGrid metrics={meta.metrics} />
+        <MetricsGrid metrics={meta.metrics ?? []} />
         <RelatedProjects projects={relatedProjects} />
       </CaseStudyShell>
     )
