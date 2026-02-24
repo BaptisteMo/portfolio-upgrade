@@ -17,7 +17,7 @@ export function TriPanelLayout({ nav, children, panel }: TriPanelLayoutProps) {
         <div className="relative flex flex-row">
           {/* Navigation - Fixed Left (AC2) */}
           <aside
-            className="sticky left-0 top-0 h-screen w-[15%] min-w-47.5 border-r border-border bg-background z-10"
+            className="sticky left-0 top-0 h-screen w-[15%] min-w-47.5 shrink-0 border-r border-border bg-background z-10"
             role="navigation"
             aria-label="Navigation principale"
           >
@@ -28,7 +28,7 @@ export function TriPanelLayout({ nav, children, panel }: TriPanelLayoutProps) {
           <main
             id="main-content"
             tabIndex={-1}
-            className="mx-auto min-h-screen overflow-y-auto px-12 focus:outline-none"
+            className="mx-auto min-h-screen min-w-0 flex-1 overflow-y-auto px-12 focus:outline-none"
             role="main"
           >
             <div className="mx-auto">
@@ -39,7 +39,7 @@ export function TriPanelLayout({ nav, children, panel }: TriPanelLayoutProps) {
           {/* Context Panel - Fixed Right (AC2) */}
           {panel && (
             <aside
-              className="sticky right-0 top-0 h-screen w-[20%] min-w-62.5 border-l border-border bg-background z-10"
+              className="sticky right-0 top-0 h-screen w-[20%] min-w-62.5 shrink-0 border-l border-border bg-background z-10"
               role="complementary"
               aria-label="Panneau contextuel"
             >

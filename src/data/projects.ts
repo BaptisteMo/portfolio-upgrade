@@ -29,7 +29,7 @@ export const projects: Project[] = [
     title: 'Atlas',
     description:
       "Repenser la lisibilité d’un outil financier interne critique : clarifier un produit dense, aligner les métiers et remettre le design au cœur des arbitrages",
-    image: '/images/projects/klub/banner.jpg',
+    image: '/images/projects/atlas/banner.jpg',
     tags: ['CRM', 'Web App'],
     status: 'completed',
   },
@@ -38,8 +38,18 @@ export const projects: Project[] = [
     title: 'Design system',
     description:
       "Structurer et unifier la conception des outils internes de la DSI : poser un design system transversal, accélérer l’implémentation front et installer une culture design pragmatique.",
-    image: '/images/projects/klub/banner.jpg',
+    image: '/images/projects/design-system/banner.png',
+    tags: ['CRM', 'Web App'],
+    status: 'completed',
+  },   
+  {
+    slug: 'enedis',
+    title: 'Enedis',
+    description:
+      "Mission de cadrage UX : transformer un suivi Excel fragile en une vision partagée, priorisée et exploitable pour lancer le développement d’un outil de pilotage multi-équipes",
+    image: '/images/projects/enedis/banner.png',
     tags: ['CRM', 'Web App'],
     status: 'completed',
   },
+  
 ]

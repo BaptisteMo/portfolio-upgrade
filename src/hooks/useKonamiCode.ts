@@ -3,8 +3,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 
 const KONAMI_SEQUENCE = [
-  'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
-  'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+  'ArrowUp', 'ArrowDown',
+  'ArrowLeft', 'ArrowRight',
   'b', 'a',
 ]
 

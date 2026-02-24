@@ -45,7 +45,7 @@ export default async function ContactPage({ params }: PageProps) {
       <ConcentricCircles position="top-right" className="fixed z-0" />
       <TriPanelLayout nav={<NavPanel />}>
         <h1 className="sr-only">{locale === 'fr' ? 'Contact' : 'Contact'}</h1>
-        <div className="max-w-3xl py-8 md:h-screen flex items-center">
+        <div className="max-w-3xl m-auto py-8 md:h-screen flex items-center">
           <MadLibsContactForm />
         </div>
         <Toaster richColors position="bottom-right" />

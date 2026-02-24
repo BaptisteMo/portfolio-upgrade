@@ -42,6 +42,15 @@ const components = {
       </ol>
     </ScrollReveal>
   ),
+  a: ({ children, href, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
+    <a
+      href={href}
+      className="underline underline-offset-4 decoration-black dark:decoration-white hover:decoration-primary transition-colors"
+      {...props}
+    >
+      {children}
+    </a>
+  ),
   blockquote: ({ children, ...props }: React.HTMLAttributes<HTMLQuoteElement>) => (
     <ScrollReveal>
       <blockquote

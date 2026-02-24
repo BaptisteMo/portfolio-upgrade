@@ -168,42 +168,46 @@ function StatCard({
   )
 }
 
+const content = {
+  fr: {
+    heading: "Hey, moi c'est Baptiste !",
+    tagline: "Je conçois des produits clairs, utiles et scalables — du discovery à la livraison, avec une obsession :",
+    taglineHighlight: "la simplicité",
+    ctaProjects: "Voir les projets",
+    ctaContact: "Me contacter",
+    stats: [
+      { value: 6, suffix: "+", title: "Années d'expérience", description: "Produit, design systems, discovery & delivery." },
+      { value: 12, suffix: "+", title: "Produits & modules livrés", description: "Web apps internes, B2B, mobile, multi-pays." },
+      { value: 40, suffix: "+", title: "Interviews utilisateurs", description: "Personas, parcours, tests, insights actionnables." },
+      { value: 3, suffix: "", title: "Stacks explorées", description: "React / Next.js, design tokens, prototyping avancé." },
+    ],
+  },
+  en: {
+    heading: "Hey, I'm Baptiste!",
+    tagline: "I design clear, useful, and scalable products — from discovery to delivery, with one obsession:",
+    taglineHighlight: "simplicity",
+    ctaProjects: "View projects",
+    ctaContact: "Contact me",
+    stats: [
+      { value: 6, suffix: "+", title: "Years of experience", description: "Product, design systems, discovery & delivery." },
+      { value: 12, suffix: "+", title: "Products & modules shipped", description: "Internal web apps, B2B, mobile, multi-country." },
+      { value: 40, suffix: "+", title: "User interviews", description: "Personas, journeys, tests, actionable insights." },
+      { value: 3, suffix: "", title: "Stacks explored", description: "React / Next.js, design tokens, advanced prototyping." },
+    ],
+  },
+} as const
+
 export function HeroLanding() {
   const reducedMotion = useReducedMotion()
   const { locale } = useLanguage()
-  const stats = [
-    {
-      value: 6,
-      suffix: "+",
-      title: "Années d’expérience",
-      description: "Produit, design systems, discovery & delivery.",
-    },
-    {
-      value: 12,
-      suffix: "+",
-      title: "Produits & modules livrés",
-      description: "Web apps internes, B2B, mobile, multi-pays.",
-    },
-    {
-      value: 40,
-      suffix: "+",
-      title: "Interviews utilisateurs",
-      description: "Personas, parcours, tests, insights actionnables.",
-    },
-    {
-      value: 3,
-      suffix: "",
-      title: "Stacks explorées",
-      description: "React / Next.js, design tokens, prototyping avancé.",
-    },
-  ] as const
+  const t = content[locale]
 
   // Select variants based on user preference (AC: 5)
   const containerVars = reducedMotion ? reducedMotionVariants : containerVariants
   const letterVars = reducedMotion ? reducedMotionVariants : letterVariants
   const itemVars = reducedMotion ? reducedMotionVariants : itemVariants
 
-return (
+  return (
     <motion.section
       initial="hidden"
       animate="visible"
@@ -216,7 +220,7 @@ return (
           variants={containerVars}
           className="text-5xl md:text-6xl font-bold tracking-[--tracking-hero] leading-[--leading-title] text-foreground"
         >
-          <AnimatedLetters text="Bienvenue" variants={letterVars} />
+          <AnimatedLetters text={t.heading} variants={letterVars} />
         </motion.h1>
 
         {/* Tagline */}
@@ -224,17 +228,13 @@ return (
           variants={itemVars}
           className="mt-4 max-w-2xl text-lg md:text-xl font-medium text-muted-foreground"
         >
-          Je conçois des produits clairs, utiles et scalables — du discovery à la
-          livraison, avec une obsession : <span className="text-foreground">la simplicité</span>.
+          {t.tagline} <span className="text-foreground">{t.taglineHighlight}</span>.
         </motion.p>
-
-        {/* Availability Status */}
-        <AvailabilityStatusCTA />
 
         {/* CTAs */}
         <motion.div variants={itemVars} className="mt-10 flex flex-col sm:flex-row gap-4">
           <Button asChild size="lg" className="min-h-[--touch-target] min-w-[--touch-target]">
-            <Link href="#projects">Voir les projets</Link>
+            <Link href={`/${locale}/projects`}>{t.ctaProjects}</Link>
           </Button>
           <Button
             asChild
@@ -242,7 +242,7 @@ return (
             size="lg"
             className="min-h-[--touch-target] min-w-[--touch-target]"
           >
-            <Link href={`/${locale}/contact`}>Me contacter</Link>
+            <Link href={`/${locale}/contact`}>{t.ctaContact}</Link>
           </Button>
         </motion.div>
 
@@ -251,7 +251,7 @@ return (
           variants={itemVars}
           className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
         >
-          {stats.map((s, idx) => (
+          {t.stats.map((s, idx) => (
             <StatCard
               key={s.title}
               value={s.value}

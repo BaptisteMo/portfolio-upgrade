@@ -11,6 +11,8 @@ interface MDXHeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
 export function MDXHeading({ level, children, ...props }: MDXHeadingProps) {
   const id = children
     ?.toString()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
     .replace(/\s+/g, '-')
     .replace(/[^a-z0-9-]/g, '')

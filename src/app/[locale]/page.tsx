@@ -15,24 +15,26 @@ type Step = 0 | 1 | 2
 const splashContent = {
   fr: {
     step0: {
-      headline: 'Créer des expériences qui comptent',
+      headline: 'Design is not just what it looks like and feels like. Design is how it works.',
+      subtitle: "Steve Jobs",
       buttonText: 'Suivant',
     },
     step1: {
-      headline: 'Product Designer',
+      headline: 'Baptiste Morillon • Product Designer',
       subtitle: "B2B SaaS • Design Systems • 6 ans d'expérience",
       buttonText: 'Entrer sur le site',
     },
   },
   en: {
     step0: {
-      headline: 'Creating experiences that matter',
-      buttonText: 'Enter the site',
+      headline: 'Design is not just what it looks like and feels like. Design is how it works.',
+      subtitle: "Steve Jobs",
+      buttonText: 'Next',
     },
     step1: {
-      headline: 'Product Designer',
+      headline: 'Baptiste Morillon • Product Designer',
       subtitle: 'B2B SaaS • Design Systems • 6 years of experience',
-      buttonText: 'Next',
+      buttonText: 'Enter the site',
     },
   },
 }
@@ -93,6 +95,7 @@ export default function HomePage() {
         <SplashScreen
           key="splash-2"
           headline={content.step0.headline}
+          subtitle={content.step0.subtitle}
           buttonText={content.step0.buttonText}
           onComplete={handleNextStep}
         />

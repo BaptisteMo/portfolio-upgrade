@@ -24,12 +24,17 @@ const tagConfig: Record<ProjectTagType, TagConfig> = {
     classes:
       'bg-violet-200 text-violet-600 shadow-[inset_0_2px_2px_rgba(255,255,255,0.5),inset_0_-2px_2px_rgba(139,92,246,0.3)] dark:bg-violet-400/30 dark:text-violet-300 dark:shadow-[inset_0_2px_2px_rgba(255,255,255,0.1),inset_0_-2px_2px_rgba(139,92,246,0.4)]',
   },
+    'B2B Product': {
+    icon: Building2,
+    classes:
+      'bg-violet-200 text-violet-600 shadow-[inset_0_2px_2px_rgba(255,255,255,0.5),inset_0_-2px_2px_rgba(139,92,246,0.3)] dark:bg-violet-400/30 dark:text-violet-300 dark:shadow-[inset_0_2px_2px_rgba(255,255,255,0.1),inset_0_-2px_2px_rgba(139,92,246,0.4)]',
+  },
   'Design System': {
     icon: Layers,
     classes:
       'bg-emerald-200 text-emerald-600 shadow-[inset_0_2px_2px_rgba(255,255,255,0.5),inset_0_-2px_2px_rgba(16,185,129,0.3)] dark:bg-emerald-400/30 dark:text-emerald-300 dark:shadow-[inset_0_2px_2px_rgba(255,255,255,0.1),inset_0_-2px_2px_rgba(16,185,129,0.4)]',
   },
-  '0→1': {
+  'Finance': {
     icon: Rocket,
     classes:
       'bg-orange-200 text-orange-600 shadow-[inset_0_2px_2px_rgba(255,255,255,0.5),inset_0_-2px_2px_rgba(249,115,22,0.3)] dark:bg-orange-400/30 dark:text-orange-300 dark:shadow-[inset_0_2px_2px_rgba(255,255,255,0.1),inset_0_-2px_2px_rgba(249,115,22,0.4)]',
@@ -44,10 +49,10 @@ const tagConfig: Record<ProjectTagType, TagConfig> = {
     classes:
       'bg-pink-200 text-pink-600 shadow-[inset_0_2px_2px_rgba(255,255,255,0.5),inset_0_-2px_2px_rgba(236,72,153,0.3)] dark:bg-pink-400/30 dark:text-pink-300 dark:shadow-[inset_0_2px_2px_rgba(255,255,255,0.1),inset_0_-2px_2px_rgba(236,72,153,0.4)]',
   },
-  'Web App': {
+  'UX Strategy': {
     icon: Globe,
     classes:
-      'bg-lime-200 text-lime-600 shadow-[inset_0_2px_2px_rgba(255,255,255,0.5),inset_0_-2px_2px_rgba(132,204,22,0.3)] dark:bg-lime-400/30 dark:text-lime-300 dark:shadow-[inset_0_2px_2px_rgba(255,255,255,0.1),inset_0_-2px_2px_rgba(132,204,22,0.4)]',
+      'bg-sky-200 text-sky-600 shadow-[inset_0_2px_2px_rgba(255,255,255,0.5),inset_0_-2px_2px_rgba(132,204,22,0.3)] dark:bg-sky-400/30 dark:text-sky-300 dark:shadow-[inset_0_2px_2px_rgba(255,255,255,0.1),inset_0_-2px_2px_rgba(132,204,22,0.4)]',
   },
 }
 

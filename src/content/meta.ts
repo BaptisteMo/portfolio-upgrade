@@ -2,11 +2,12 @@ export type Locale = 'fr' | 'en'
 
 export type ProjectTag =
   | 'B2B SaaS'
+  | 'B2B Product'
   | 'Design System'
-  | '0→1'
+  | 'Finance'
   | 'CRM'
   | 'Mobile'
-  | 'Web App'
+  | 'UX Strategy'
 
 export type ProjectStatus = 'completed' | 'in-progress' | 'concept'
 
@@ -37,7 +38,7 @@ export interface ProjectMeta {
   tags: ProjectTag[]
   status: ProjectStatus
   timeline: string
-  metrics: Metric[]
+  metrics?: Metric[]
   image?: string
   client?: string
   role?: string
