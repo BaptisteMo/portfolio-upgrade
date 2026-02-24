@@ -182,7 +182,7 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
         id: project.slug,
         label: project.title,
         group: 'projects',
-        keywords: project.tags,
+        keywords: [...project.tags],
         icon: FileText,
         onSelect: () => navigate(`/projects/${project.slug}`),
       })
