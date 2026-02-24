@@ -1,0 +1,176 @@
+---
+title: "Design System DSI — Bâtir une culture produit durable"
+slug: "design-system"
+description: "Structurer et unifier la conception des outils internes de la DSI : poser un design system transversal, accélérer l’implémentation front et installer une culture design pragmatique."
+tags:
+  - "Design System"
+status: "ongoing"
+timeline: "Dec 2024 → today"
+client: "Klépierre"
+role: "Product Designer (Digital Factory)"
+image: "/images/projects/design-system/banner.png"
+metrics:
+  - label: "Technos couvertes"
+    value: "3"
+    description: "React, Blazor, Power BI (et contraintes associées)"
+  - label: "Thèmes"
+    value: "2"
+    description: "Variantes de styles pour s’adapter aux produits"
+  - label: "Équipe"
+    value: "2"
+    description: "1 designer + 1 dev full-stack (quelques heures/semaine)"
+contextSections:
+  - sectionId: "context"
+    label: "Contexte"
+    items:
+      - label: "Client"
+        value: "Klépierre • 70+ centres • 10 pays"
+      - label: "Environnement"
+        value: "DSI • outils internes variés (finance, opérations, anti-fraude, contrats, etc.)"
+        type: "list"
+      - label: "Problème"
+        value: "Aucun cadre transverse : chaque app avait sa logique, ses composants et ses conventions"
+        type: "list"
+  - sectionId: "challenge"
+    label: "Défis"
+    items:
+      - label: "Défi #1"
+        value: "Créer un design system from scratch couvrant une diversité d’applications"
+      - label: "Défi #2"
+        value: "Proposer des composants intégrables dans plusieurs stacks (sans exploser le coût dev)"
+  - sectionId: "outputs"
+    label: "Livrables"
+    items:
+      - label: "UI Kit"
+        value: "Base composants + variations + principes d’usage"
+      - label: "Documentation"
+        value: "Guidelines + exemples + onboarding"
+      - label: "Composants dev"
+        value: "Base prête à l’emploi (architecture + fondation technique)"
+---
+
+<ImageFull
+  src="/images/projects/design-system/banner.png"
+  alt="Design System DSI — Klépierre"
+  caption="Design System DSI — uniformiser sans ralentir le delivery"
+/>
+
+## Executive summary
+
+Quand je rejoins Klépierre, la DSI n’a jamais collaboré durablement avec un Product Designer. Les outils internes se sont construits au fil des besoins : rapides à livrer, mais **hétérogènes** (visuels, composants, patterns, conventions). Résultat : une expérience fragmentée pour les utilisateurs internes, et une charge inutile côté équipes (reconception, incohérences, arbitrages récurrents).
+
+Ma mission a été de **poser les fondations d’un design system transversal** — avec une contrainte forte : être **adoptable** dans un écosystème multi-tech (Power BI, Blazor, React…), et délivrer rapidement de la valeur aux développeurs.
+
+En moins d’un an, on a produit un **UI Kit** et une **documentation**, enclenché un mode de collaboration design↔dev, et posé les premiers jalons d’un écosystème plus cohérent et pérenne pour les applications internes.
+
+## La stratégie que j’ai mise en place
+
+### 1) [Traiter le design system comme un produit à part entière pour les développeurs](#un-produit-pour-les-developpeurs)
+### 2) [Livrer vite sans repartir de zéro](#livrer-vite-sans-repartir-de-zero)
+### 3) [Assurer l’adoption : standards, docs et onboarding](#assurer-ladoption)
+
+---
+
+## Un produit pour les développeurs
+
+Avant de dessiner des composants, il fallait comprendre **ce que les équipes de dev vivaient vraiment** au quotidien.
+
+J’ai commencé par explorer l’écosystème applicatif :
+- identifier les outils existants et les stacks (Power BI, Blazor, React…)
+- comprendre les contextes d’usage et les contraintes par équipe
+- récolter les frustrations récurrentes (incohérences UI, manque de repères et de standards)
+
+Le constat était simple : la liberté totale permettait de livrer vite… mais elle avait créé une **expérience morcelée**, et un coût caché (décisions répétées, composants réinventés, variations inutiles).
+
+L’objectif n’était pas de “verrouiller” le design, mais de **donner un cadre** :
+- des composants compréhensibles,
+- des patterns réutilisables,
+- et un langage commun pour réduire les débats stériles.
+
+---
+
+## Livrer vite sans repartir de zéro
+
+Avec peu de ressources au démarrage, j’ai optimisé pour le **time-to-value**.
+
+### Choix #1 — Un terrain pilote concret
+
+En parallèle des refontes menées sur *Klub!* (un produit DSI), j’ai utilisé ce contexte comme terrain pilote pour lancer le design system :
+- composants réellement nécessaires,
+- contraintes réelles,
+- itérations courtes,
+- et un premier set crédible à mettre dans les mains des devs.
+
+### Choix #2 — Une base technique existante
+
+Quand un développeur full-stack a rejoint le chantier (quelques heures par semaine), le sujet principal était clair :
+- pas le temps de tout développer from scratch
+- besoin d’une architecture saine, réutilisable et maintenable
+
+On a donc fait le choix de partir d’une fondation reconnue : **Radix**.
+Objectif : sécuriser l’accessibilité et les comportements, et concentrer nos efforts sur ce qui fait la différence (styles, thèmes, patterns, intégration).
+
+### Choix #3 — Aligner design et code
+
+Pour éviter le “deux mondes” (Figma d’un côté, code de l’autre), j’ai proposé de **caler l’architecture des variables Figma** sur l’architecture des variables côté dev.
+But : réduire les écarts, faciliter la contribution et rendre le handoff plus fiable.
+
+---
+
+## Assurer l’adoption
+
+Un design system n’existe pas si personne ne l’utilise.
+
+J’ai donc travaillé le système pour qu’il soit :
+- **neutre** (adoptable dans plusieurs produits, plusieurs contextes),
+- **flexible** (propriétés/variantes pensées pour éviter des forks),
+- **compatible thèmes** (capable de “matcher” plusieurs styles sans recréer des composants).
+
+### Principes de design
+
+Pour guider la production des composants, je me suis fixé trois principes :
+- **Simple** : intégrable facilement dans des contextes variés
+- **Thémable** : capable de fonctionner dans les thèmes prédéfinis
+- **Flexible** : éviter d’ajouter une couche fonctionnelle inutile, et privilégier des patterns clairs
+
+### Exemples — même composant, deux thèmes
+
+<ImageFull
+  src="/images/projects/design-system/theme1.png"
+  alt="Composants UI Kit — thème 1"
+  caption="UI Kit — thème 1"
+/>
+
+<ImageFull
+  src="/images/projects/design-system/theme2.png"
+  alt="Composants UI Kit — thème 2"
+  caption="UI Kit — thème 2"
+/>
+
+### Docs & communication
+
+En parallèle des composants, j’ai documenté :
+- la logique de naming,
+- les règles d’usage,
+- les variantes,
+- et les bonnes pratiques d’intégration.
+
+L’objectif : un onboarding “frictionless” et une adoption progressive, projet par projet.
+
+---
+
+## Résultats et suivi
+
+- 🎨 **UI Kit** structuré et documenté, prêt à l’emploi pour les projets DSI
+- 🧩 **Design system en évolution continue**, enrichi à chaque nouveau besoin réel
+- 🤝 **Collaboration renforcée** design↔dev (revues, échanges, alignement sur les intégrations)
+- 💬 **Adhésion développeurs** : la démarche est comprise, attendue, et perçue comme un accélérateur
+- 🌍 **Premiers pas vers une uniformisation** globale des interfaces internes
+
+## Prochaines étapes
+
+- Promouvoir le design system plus largement au sein de la DSI
+- Faire grandir progressivement la base de composants (priorité aux patterns récurrents)
+- Continuer d’affiner la documentation pour faciliter l’onboarding et la contribution
+
+---

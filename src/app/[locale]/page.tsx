@@ -16,12 +16,12 @@ const splashContent = {
   fr: {
     step0: {
       headline: 'Créer des expériences qui comptent',
-      buttonText: 'Entrer sur le site',
+      buttonText: 'Suivant',
     },
     step1: {
       headline: 'Product Designer',
       subtitle: "B2B SaaS • Design Systems • 6 ans d'expérience",
-      buttonText: 'Suivant',
+      buttonText: 'Entrer sur le site',
     },
   },
   en: {

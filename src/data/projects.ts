@@ -15,24 +15,6 @@ export interface Project {
 // Default projects array (French locale) for backward compatibility
 // This will be replaced by MDX-based fetching in Story 3.3
 export const projects: Project[] = [
-  {
-    slug: 'la-wooferie',
-    title: 'La Wooferie',
-    description:
-      'Plateforme de réservation pour pension canine avec système de gestion intégré.',
-    image: '/images/projects/la-wooferie.jpg',
-    tags: ['B2B SaaS', '0→1'],
-    status: 'completed',
-  },
-  {
-    slug: 'nexus-crm',
-    title: 'Nexus CRM',
-    description:
-      "Refonte UX d'un CRM B2B avec réduction de 35% du temps de saisie.",
-    image: '/images/projects/nexus-crm.jpg',
-    tags: ['CRM', 'Web App'],
-    status: 'completed',
-  },
     {
     slug: 'klub',
     title: 'Klub!',
@@ -43,10 +25,19 @@ export const projects: Project[] = [
     status: 'completed',
   },
   {
-    slug: 'Atlas',
+    slug: 'atlas',
     title: 'Atlas',
     description:
-      "Refonte totale d'une application B2B utilisé par plus de 20 000 users",
+      "Repenser la lisibilité d’un outil financier interne critique : clarifier un produit dense, aligner les métiers et remettre le design au cœur des arbitrages",
+    image: '/images/projects/klub/banner.jpg',
+    tags: ['CRM', 'Web App'],
+    status: 'completed',
+  },
+    {
+    slug: 'design-system',
+    title: 'Design system',
+    description:
+      "Structurer et unifier la conception des outils internes de la DSI : poser un design system transversal, accélérer l’implémentation front et installer une culture design pragmatique.",
     image: '/images/projects/klub/banner.jpg',
     tags: ['CRM', 'Web App'],
     status: 'completed',

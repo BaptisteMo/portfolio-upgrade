@@ -126,9 +126,9 @@ Plusieurs cycles d’itération avec les métiers ont permis d’équilibrer den
 
 ---
 
-## Unifier le workflow contractuel (Speed of Execution)
+## Unifier le workflow contractuel
 
-Le KPI le plus structurant d’ATLAS est lié à son workflow principal : un process d’environ **15 étapes**. L’indicateur suivi par le business est le **“Speed of Execution”** : la capacité des équipes à faire avancer efficacement un dossier, de la validation de l’offre à l’intégration contractuelle permettant d’initier la facturation.
+Le KPI le plus structurant d’ATLAS est la speed of execution, il est lié à son workflow principal : un process d’environ **15 étapes**. Cet indicateur est la capacité des équipes à faire avancer efficacement un dossier, de la validation de l’offre à l’intégration contractuelle permettant d’initier la facturation.
 
 Les équipes dirigeantes ont demandé une amélioration des **steps 4 à 9**, un segment critique du parcours (coordination entre les équipes legal et leasing, workflow de validations, qualité des informations).
 
@@ -144,13 +144,29 @@ Les équipes dirigeantes ont demandé une amélioration des **steps 4 à 9**, un
   caption="Mapping global co-construit — contract management"
 />
 
+## Problématiques relevées : 
+- Un manque de traçabilité sur les décisions prises au cours des négociation 
+- La donnée est décentralisée et on perd beaucoup de temps à la retrouver 
+- Manque de visibilités sur les actions à mener au cours du workflow
+- Perte de temps et augmentation du speed of execution 
+
+## Ce que nous avons mis en place
+
+À partir de ces retours, on a convergé vers **4 axes** qui répondent aux problèmes majeurs, et qui servent maintenant de fil conducteur à la roadmap 2026 :
+
+- **Capitaliser sur la nouvelle Todo** pour piloter les différentes actions à réaliser sur l'ensemble du flow (prochaines étapes, validations, pièces attendues…)
+- **Repenser la négociation contractuelle** là où elle se fait vraiment et maintenair les binômes existent entre membre de l'équipe leasing et leur permettre d'effectuer leur travail dans un outil déjà existent : un **add-in Word** connecté à ATLAS pour piloter le workflow de validation côté Legal
+- **Créer une étape de contrôle** pour vérifier rapidement que les données du contrat et celles d’ATLAS sont cohérentes avant de faire avancer le deal et envoyer l'ensemble en signature en étant sûr d'avoir pris les décisions basées sur les bonnes données
+- **Mettre en place une brique d’automatisation** pour réduire les échanges inutiles et accélérer la mise à disposition des documents légaux une fois le contrat signé
+
+À date, seul le **premier axe (Todo)** est déjà **déployé**.  
+Les axes suivants (Word + contrôle + automatisation) sont actuellement **en phase de développement**.
+
 <ImageFull
   src="/images/projects/atlas/dcm-mockups.png"
   alt="ATLAS — maquettes d’intention (contract management)"
   caption="Maquettes d’intention — vers une expérience unifiée"
 />
-
-### Résultats
 
 ---
 
@@ -160,13 +176,5 @@ Les équipes dirigeantes ont demandé une amélioration des **steps 4 à 9**, un
 - **Une lecture partagée** des pain points, facilitant la priorisation et les décisions produit.
 - **Standardisation progressive** (dans la continuité du design system initié sur Klub!).
 - **Premières refontes livrées** avec un niveau de satisfaction très élevé (mesures quantitatives à venir).
-- **Projection 2025–2026** : volonté forte de poursuivre l’effort (roadmap + refonte plus profonde).
-
-### Prochaines étapes
-
-- Construire la roadmap 2026 avec les équipes métiers
-- Continuer la refonte des parcours critiques du workflow
-- Consolider la cohérence UI (composants + patterns)
-- Renforcer le suivi qualité (UI/UX) en recette avant mise en production
-
+- **Projection 2026** : volonté forte de poursuivre l’effort (roadmap + refonte plus profonde).
 ---
