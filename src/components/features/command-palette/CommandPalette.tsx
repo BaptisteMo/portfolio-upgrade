@@ -294,7 +294,7 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
                   <Command.Item
                     key={project.slug}
                     value={project.slug}
-                    keywords={project.tags}
+                    keywords={[...project.tags]}
                     onSelect={() => navigate(`/projects/${project.slug}`)}
                     className={itemClass}
                   >
