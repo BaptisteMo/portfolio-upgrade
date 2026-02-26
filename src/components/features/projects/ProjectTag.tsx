@@ -39,12 +39,12 @@ const tagConfig: Record<ProjectTagType, TagConfig> = {
     classes:
       'bg-orange-200 text-orange-600 shadow-[inset_0_2px_2px_rgba(255,255,255,0.5),inset_0_-2px_2px_rgba(249,115,22,0.3)] dark:bg-orange-400/30 dark:text-orange-300 dark:shadow-[inset_0_2px_2px_rgba(255,255,255,0.1),inset_0_-2px_2px_rgba(249,115,22,0.4)]',
   },
-  CRM: {
+  'CRM': {
     icon: Users,
     classes:
       'bg-blue-200 text-blue-600 shadow-[inset_0_2px_2px_rgba(255,255,255,0.5),inset_0_-2px_2px_rgba(59,130,246,0.3)] dark:bg-blue-400/30 dark:text-blue-300 dark:shadow-[inset_0_2px_2px_rgba(255,255,255,0.1),inset_0_-2px_2px_rgba(59,130,246,0.4)]',
   },
-  Mobile: {
+  'Mobile': {
     icon: Smartphone,
     classes:
       'bg-pink-200 text-pink-600 shadow-[inset_0_2px_2px_rgba(255,255,255,0.5),inset_0_-2px_2px_rgba(236,72,153,0.3)] dark:bg-pink-400/30 dark:text-pink-300 dark:shadow-[inset_0_2px_2px_rgba(255,255,255,0.1),inset_0_-2px_2px_rgba(236,72,153,0.4)]',
@@ -52,7 +52,7 @@ const tagConfig: Record<ProjectTagType, TagConfig> = {
   'UX Strategy': {
     icon: Globe,
     classes:
-      'bg-sky-200 text-sky-600 shadow-[inset_0_2px_2px_rgba(255,255,255,0.5),inset_0_-2px_2px_rgba(132,204,22,0.3)] dark:bg-sky-400/30 dark:text-sky-300 dark:shadow-[inset_0_2px_2px_rgba(255,255,255,0.1),inset_0_-2px_2px_rgba(132,204,22,0.4)]',
+      'bg-sky-200 text-sky-600 shadow-[inset_0_2px_2px_rgba(255,255,255,0.5),inset_0_-2px_2px_rgba(0,132,209,0.3)] dark:bg-sky-400/30 dark:text-sky-300 dark:shadow-[inset_0_2px_2px_rgba(255,255,255,0.1),inset_0_-2px_2px_rgba(0,132,209,0.4)]',
   },
 }
 

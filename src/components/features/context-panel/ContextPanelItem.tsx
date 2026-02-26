@@ -13,7 +13,7 @@ export function ContextPanelItem({ item, variants }: ContextPanelItemProps) {
     return (
       <motion.div variants={variants} className="space-y-1">
         <p className="text-2xl font-bold text-foreground">{item.value}</p>
-        <p className="text-xs text-muted-foreground">{item.label}</p>
+        <p className="text-xs text-light-foreground">{item.label}</p>
       </motion.div>
     )
   }
@@ -24,7 +24,7 @@ export function ContextPanelItem({ item, variants }: ContextPanelItemProps) {
         <p className="border-l-2 border-border pl-3 text-sm italic text-foreground">
           {item.value}
         </p>
-        <p className="text-xs text-muted-foreground">— {item.label}</p>
+        <p className="text-xs text-light-foreground">— {item.label}</p>
       </motion.div>
     )
   }
@@ -40,7 +40,7 @@ export function ContextPanelItem({ item, variants }: ContextPanelItemProps) {
           href={item.value}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm text-foreground underline underline-offset-2 transition-colors hover:text-muted-foreground"
+          className="text-sm text-foreground underline underline-offset-2 transition-colors hover:text-light-foreground"
         >
           {item.label} ↗
         </a>
@@ -52,7 +52,7 @@ export function ContextPanelItem({ item, variants }: ContextPanelItemProps) {
     const listItems = item.value.split(',').map((s) => s.trim())
     return (
       <motion.div variants={variants} className="space-y-1">
-        <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+        <p className="text-xs font-medium uppercase tracking-wider text-light-foreground">
           {item.label}
         </p>
         <ul className="space-y-1">
@@ -69,7 +69,7 @@ export function ContextPanelItem({ item, variants }: ContextPanelItemProps) {
   // Default: text
   return (
     <motion.div variants={variants} className="space-y-1">
-      <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+      <p className="text-xs font-medium uppercase tracking-wider text-light-foreground">
         {item.label}
       </p>
       <p className="text-sm text-foreground">{item.value}</p>

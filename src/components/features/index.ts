@@ -1,5 +1,5 @@
 // Feature components barrel export
-export { HeroLanding, AvailabilityStatusCTA } from './hero'
+export { HeroLanding } from './hero'
 export { NavPanel, Breadcrumbs } from './navigation'
 export { ProjectCard, ProjectGrid, ProjectTag } from './projects'
 export { CaseStudyHeader, MetricsGrid, StatCard } from './case-study'
@@ -8,3 +8,4 @@ export { ContextPanel } from './context-panel'
 export { ContactForm } from './contact'
 export { MobileFAB } from './mobile-fab'
 export { MobileBottomSheet } from './mobile-bottom-sheet'
+export { SideProjectsPlaceholder } from './side-projects'

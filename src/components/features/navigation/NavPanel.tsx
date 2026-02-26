@@ -12,13 +12,13 @@ const navItems = {
   fr: [
     { label: 'Accueil', href: '' },
     { label: 'Projets', href: '/projects' },
-    { label: 'À propos', href: '/about' },
+    { label: 'Side projects', href: '/side-projects' },
     { label: 'Contact', href: '/contact' },
   ],
   en: [
     { label: 'Home', href: '' },
     { label: 'Projects', href: '/projects' },
-    { label: 'About', href: '/about' },
+    { label: 'Side projects', href: '/side-projects' },
     { label: 'Contact', href: '/contact' },
   ],
 }

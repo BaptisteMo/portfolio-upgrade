@@ -8,6 +8,8 @@ interface ConcentricCirclesProps {
   position?: 'center' | 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left'
   /** Whether to animate on mount */
   animate?: boolean
+  /** Visibility intensity */
+  intensity?: 'subtle' | 'medium' | 'strong'
   /** Additional className for the container */
   className?: string
 }
@@ -55,13 +57,21 @@ const positionClasses: Record<string, string> = {
   'bottom-left': 'bottom-0 left-0',
 }
 
+const intensityClasses: Record<string, string> = {
+  subtle: 'bg-muted/20 shadow-[inset_0_2px_6px_rgba(255,255,255,0.08),inset_0_-2px_8px_rgba(0,0,0,0.06),0_4px_16px_rgba(0,0,0,0.04)] dark:bg-muted/30 dark:shadow-[inset_0_2px_6px_rgba(255,255,255,0.03),inset_0_-2px_8px_rgba(0,0,0,0.2),0_4px_16px_rgba(0,0,0,0.15)]',
+  medium: 'bg-muted/30 shadow-[inset_0_2px_8px_rgba(255,255,255,0.12),inset_0_-2px_10px_rgba(0,0,0,0.08),0_4px_20px_rgba(0,0,0,0.06)] dark:bg-muted/50 dark:shadow-[inset_0_2px_8px_rgba(255,255,255,0.06),inset_0_-2px_10px_rgba(0,0,0,0.3),0_4px_20px_rgba(0,0,0,0.2)]',
+  strong: 'bg-muted/40 shadow-[inset_0_2px_10px_rgba(255,255,255,0.15),inset_0_-2px_12px_rgba(0,0,0,0.1),0_6px_24px_rgba(0,0,0,0.08)] dark:bg-muted/60 dark:shadow-[inset_0_2px_10px_rgba(255,255,255,0.08),inset_0_-2px_12px_rgba(0,0,0,0.35),0_6px_24px_rgba(0,0,0,0.25)]',
+}
+
 export function ConcentricCircles({
   position = 'center',
   animate = true,
+  intensity = 'subtle',
   className = '',
 }: ConcentricCirclesProps) {
   const reducedMotion = useReducedMotion()
   const circleVars = reducedMotion ? reducedMotionVariants : circleVariants
+  const circleClass = intensityClasses[intensity]
 
   return (
     <div
@@ -76,7 +86,7 @@ export function ConcentricCircles({
             initial={animate ? 'hidden' : 'visible'}
             animate="visible"
             variants={circleVars}
-            className="absolute rounded-full bg-muted/20 shadow-[inset_0_2px_6px_rgba(255,255,255,0.08),inset_0_-2px_8px_rgba(0,0,0,0.06),0_4px_16px_rgba(0,0,0,0.04)] dark:bg-muted/30 dark:shadow-[inset_0_2px_6px_rgba(255,255,255,0.03),inset_0_-2px_8px_rgba(0,0,0,0.2),0_4px_16px_rgba(0,0,0,0.15)]"
+            className={`absolute rounded-full ${circleClass}`}
             style={{
               width: circle.size,
               height: circle.size,
