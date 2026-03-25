@@ -23,9 +23,9 @@ export function ExperienceCard() {
       : 'cv-baptiste-morillon-en.pdf'
 
   return (
-    <div className="absolute -inset-5 md:-inset-6 overflow-hidden rounded-2xl min-h-30">
+    <div className="absolute -inset-5 md:-inset-6 overflow-hidden rounded-2xl ">
       <Image
-        src="/images/cv-preview.jpg"
+        src="/images/preview-cv.jpg"
         alt=""
         fill
         className="object-cover object-top"

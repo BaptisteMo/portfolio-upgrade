@@ -47,10 +47,6 @@ export function BentoGrid({ experience, skills, availability }: BentoGridProps) 
         <BentoCard index={1} variant="identity" className="flex-1">
           <IdentityCard availability={availability} />
         </BentoCard>
-
-        <BentoCard index={2} variant="experience" className="flex-1 min-h-30">
-          <ExperienceCard />
-        </BentoCard>
       </div>
 
       {/* Row 3-4: Projects (1/3, row-span-2) + Quote (2/3) + 2 previews (1/3 each) */}
@@ -58,11 +54,11 @@ export function BentoGrid({ experience, skills, availability }: BentoGridProps) 
         <ProjectsCard />
       </BentoCard>
 
-      <BentoCard index={4} variant="contact" className="md:col-span-2 md:self-start">
-        <ContactCard />
+      <BentoCard index={4} variant="experience" className="md:col-span-2 min-h-30">
+        <ExperienceCard />
       </BentoCard>
 
-      <BentoCard index={5} variant="projects" className="min-h-45">
+      <BentoCard index={5} variant="projects" className="md:min-h-45">
         <Link href={`/${locale}/projects/atlas`} className="absolute -inset-5 md:-inset-6 rounded-2xl overflow-hidden block">
           <Image
             src="/images/projects/atlas/dcm-mockups.png"
@@ -76,7 +72,7 @@ export function BentoGrid({ experience, skills, availability }: BentoGridProps) 
         </Link>
       </BentoCard>
 
-      <BentoCard index={6} variant="projects" className="min-h-45">
+      <BentoCard index={6} variant="projects" className="md:min-h-45">
         <Link href={`/${locale}/projects/design-system`} className="absolute -inset-5 md:-inset-6 rounded-2xl overflow-hidden block">
           <Image
             src="/images/projects/design-system/banner.png"
