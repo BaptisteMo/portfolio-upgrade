@@ -60,10 +60,10 @@ export function BentoCard({ index, variant, className, children }: BentoCardProp
         variants={reducedMotion ? reducedVariants : cardVariants}
         className={cn(
           'relative rounded-2xl p-5 md:p-6 overflow-hidden h-full',
-          'border border-(--glass-border)',
+          'border border-glass-border',
           'backdrop-blur-sm',
           'transition-[border-color] duration-200 ease-out',
-          'hover:border-(--glass-border-hover)',
+          'hover:border-glass-border-hover',
         )}
         style={{
           backgroundColor: 'var(--glass-bg)',

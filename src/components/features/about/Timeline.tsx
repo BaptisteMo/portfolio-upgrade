@@ -67,10 +67,10 @@ function SwipeCard({
       onDragEnd={isTop ? handleDragEnd : undefined}
       whileDrag={{ cursor: 'grabbing' }}
     >
-      <div className="relative h-full overflow-hidden rounded-2xl border border-border bg-card p-6 md:p-8 shadow-secondary-glow cursor-grab active:cursor-grabbing select-none">
+      <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-6 md:p-8 shadow-secondary-glow cursor-grab active:cursor-grabbing select-none">
         {/* Large year watermark */}
         <span
-          className="absolute -top-6 -right-2 text-[8rem] md:text-[10rem] font-bold leading-none text-muted-foreground/[0.06] pointer-events-none"
+          className="absolute -top-6 right-11 text-[12rem] max-w-50 md:text-[6rem] font-bold leading-none text-muted-foreground/6 pointer-events-none"
           aria-hidden="true"
         >
           {item.year}
@@ -85,6 +85,7 @@ function SwipeCard({
             {item.title}
           </h3>
           <p className="text-muted-foreground mt-1">{item.company}</p>
+          <p className="text-muted-foreground mt-1">{item.description}</p>
         </div>
       </div>
     </motion.div>
@@ -110,22 +111,6 @@ export function Timeline({ items }: TimelineProps) {
             total={items.length}
             active={active}
             onSwipe={handleSwipe}
-          />
-        ))}
-      </div>
-
-      {/* Dots indicator */}
-      <div className="flex items-center justify-center gap-2 mt-6">
-        {items.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setActive(index)}
-            className={`h-2 rounded-full transition-all duration-300 ${
-              index === active
-                ? 'w-6 bg-primary'
-                : 'w-2 bg-muted-foreground/30'
-            }`}
-            aria-label={`Expérience ${index + 1}`}
           />
         ))}
       </div>

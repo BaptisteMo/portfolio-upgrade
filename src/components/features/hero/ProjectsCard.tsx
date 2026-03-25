@@ -11,7 +11,7 @@ export function ProjectsCard() {
   return (
     <Link
       href={`/${locale}/projects`}
-      className="absolute -inset-5 md:-inset-6 rounded-2xl overflow-hidden block group"
+      className="absolute -inset-5 md:-inset-6 rounded-2xl overflow-hidden block group min-h-60"
     >
       <Image
         src="/images/my-project.png"

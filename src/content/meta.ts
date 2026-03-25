@@ -49,6 +49,7 @@ export interface ExperienceItem {
   year: string
   title: string
   company: string
+  description: string
 }
 
 export interface AboutMeta {

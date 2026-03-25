@@ -40,13 +40,6 @@ const navCommands: NavCommand[] = [
     keywords: ['projets', 'projects', 'portfolio'],
   },
   {
-    id: 'about',
-    label: { fr: 'À propos', en: 'About' },
-    href: '/about',
-    icon: User,
-    keywords: ['about', 'à propos', 'bio'],
-  },
-  {
     id: 'contact',
     label: { fr: 'Contact', en: 'Contact' },
     href: '/contact',

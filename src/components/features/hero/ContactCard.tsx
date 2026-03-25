@@ -1,6 +1,5 @@
 'use client'
 
-import { ConcentricCircles } from '@/components/ui/ConcentricCircles'
 import { useLanguage } from '@/contexts'
 
 const quotes = {
@@ -14,7 +13,7 @@ export function ContactCard() {
   return (
     <div className="relative h-full">
 
-      <p className="relative z-10 text-base md:text-lg font-bold text-foreground italic">
+      <p className="relative z-10 text-base md:text-lg text-foreground italic">
         {quotes[locale]}
       </p>
     </div>

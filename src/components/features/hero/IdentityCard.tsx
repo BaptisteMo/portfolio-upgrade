@@ -13,14 +13,14 @@ export function IdentityCard({ availability }: IdentityCardProps) {
   const { locale } = useLanguage()
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 min-h-30">
       <div className="flex items-center gap-3">
         <Image
           src="/images/baptiste.jpg"
           alt="Baptiste Morillon"
           width={60}
           height={60}
-          className="rounded-full border border-(--glass-border) object-cover shrink-0"
+          className="rounded-full border border-glass-border object-cover shrink-0"
           placeholder="blur"
           blurDataURL={BLUR_DATA_URL}
           priority

@@ -9,7 +9,7 @@ export function BioCard() {
   const { locale } = useLanguage()
 
   return (
-    <div className="relative flex h-full flex-col justify-between min-h-[240px]">
+    <div className="relative flex h-full flex-col justify-between min-h-40">
       {/* Concentric circles behind content */}
       <div className="absolute -inset-5 md:-inset-6 overflow-hidden rounded-2xl">
         <ConcentricCircles position="top-right" intensity="medium" />
