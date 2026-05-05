@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import type { Locale, ProjectMeta, AboutMeta } from '@/content/meta'
+import type { Locale, ProjectMeta, AboutMeta, AiArticleMeta } from '@/content/meta'
 
 const contentDirectory = path.join(process.cwd(), 'src/content')
 
@@ -110,4 +110,32 @@ export function getAllProjectSlugs(): string[] {
  */
 export function getAllLocales(): Locale[] {
   return ['fr', 'en']
+}
+
+function validateAiArticleMeta(data: Record<string, unknown>): AiArticleMeta {
+  const required = ['title', 'slug', 'description', 'level']
+  for (const field of required) {
+    if (!(field in data)) {
+      throw new Error(`Missing required ai-journey frontmatter field: ${field}`)
+    }
+  }
+  const level = data.level
+  if (level !== 0 && level !== 1 && level !== 2 && level !== 3) {
+    throw new Error(`Invalid level "${String(level)}" in ai-journey article (must be 0|1|2|3)`)
+  }
+  return data as unknown as AiArticleMeta
+}
+
+export async function getAllAiArticles(locale: Locale): Promise<AiArticleMeta[]> {
+  const dir = path.join(contentDirectory, locale, 'ai-journey')
+  if (!fs.existsSync(dir)) return []
+
+  return fs
+    .readdirSync(dir)
+    .filter((name) => name.endsWith('.mdx'))
+    .map((filename) => {
+      const fileContents = fs.readFileSync(path.join(dir, filename), 'utf8')
+      const { data } = matter(fileContents)
+      return validateAiArticleMeta(data)
+    })
 }
