@@ -86,14 +86,14 @@ export function BentoGrid({ experience, skills, availability }: BentoGridProps) 
         </Link>
       </BentoCard>
 
-      {/* Row 5: Experience carousel (2/3) + Side projects link (1/3) */}
+      {/* Row 5: Experience carousel (2/3) + AI Journey link (1/3) */}
       <BentoCard index={7} variant="experience" className="md:col-span-2">
         <Timeline items={experience} />
       </BentoCard>
 
       <BentoCard index={8} variant="projects" className='min-h-40'>
         <Link
-          href={`/${locale}/side-projects`}
+          href={`/${locale}/ai-journey`}
           className="flex flex-col justify-between h-full min-h-45 group"
         >
           <Rocket
@@ -101,7 +101,7 @@ export function BentoGrid({ experience, skills, availability }: BentoGridProps) 
             aria-hidden="true"
           />
           <p className="text-lg font-bold text-foreground transition-colors">
-            {locale === 'fr' ? 'Mes sides projects' : 'My side projects'}
+            {locale === 'fr' ? 'Exploration IA' : 'AI Journey'}
           </p>
         </Link>
       </BentoCard>
