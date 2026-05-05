@@ -139,3 +139,30 @@ export async function getAllAiArticles(locale: Locale): Promise<AiArticleMeta[]>
       return validateAiArticleMeta(data)
     })
 }
+
+export async function getAiArticleBySlug(
+  slug: string,
+  locale: Locale
+): Promise<{ meta: AiArticleMeta; content: string }> {
+  const filePath = path.join(contentDirectory, locale, 'ai-journey', `${slug}.mdx`)
+
+  if (!fs.existsSync(filePath)) {
+    throw new Error(`AI article not found: ${slug} (${locale})`)
+  }
+
+  const fileContents = fs.readFileSync(filePath, 'utf8')
+  const { data, content } = matter(fileContents)
+  const meta = validateAiArticleMeta(data)
+
+  return { meta, content }
+}
+
+export function getAllAiArticleSlugs(): string[] {
+  const dir = path.join(contentDirectory, 'fr', 'ai-journey')
+  if (!fs.existsSync(dir)) return []
+
+  return fs
+    .readdirSync(dir)
+    .filter((name) => name.endsWith('.mdx'))
+    .map((name) => name.replace('.mdx', ''))
+}

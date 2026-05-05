@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
+import { useLanguage } from '@/contexts'
 import { useParallax } from '@/hooks'
 import { BLUR_DATA_URL } from '@/lib/image-placeholder'
 import type { AiArticleMeta } from '@/content/meta'
@@ -14,6 +15,7 @@ interface AiArticleCardProps {
 }
 
 export function AiArticleCard({ article, priority = false }: AiArticleCardProps) {
+  const { locale } = useLanguage()
   const imageRef = useRef<HTMLDivElement>(null)
   useParallax(imageRef, { speed: 0.15, maxOffset: 20 })
 
@@ -52,13 +54,16 @@ export function AiArticleCard({ article, priority = false }: AiArticleCardProps)
     </>
   )
 
-  if (article.href) {
-    return (
-      <Link href={article.href} target="_blank" rel="noreferrer" className={cardClass}>
-        {inner}
-      </Link>
-    )
-  }
+  const isExternal = !!article.href
+  const href = article.href ?? `/${locale}/ai-journey/${article.slug}`
 
-  return <div className={cn(cardClass, 'cursor-default')}>{inner}</div>
+  return (
+    <Link
+      href={href}
+      className={cardClass}
+      {...(isExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+    >
+      {inner}
+    </Link>
+  )
 }
