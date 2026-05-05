@@ -61,3 +61,20 @@ export interface AboutMeta {
   skills: string[]
   experience: ExperienceItem[]
 }
+
+export type AiArticleLevel = 0 | 1 | 2 | 3
+
+export interface AiArticleMeta {
+  title: string
+  slug: string
+  description: string
+  level: AiArticleLevel
+  image?: string
+  href?: string
+}
+
+export interface AiJourneyLevel {
+  level: AiArticleLevel
+  title: string
+  description: string
+}
