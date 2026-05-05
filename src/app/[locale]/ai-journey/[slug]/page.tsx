@@ -45,30 +45,30 @@ export default async function AiArticlePage({ params }: PageProps) {
 
     return (
       <TriPanelLayout nav={<NavPanel />}>
-        <article className="space-y-8 py-4">
+        <article className="py-4">
           <Link
             href={`/${typedLocale}/ai-journey`}
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            className="mx-auto max-w-170 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             {t.back}
           </Link>
 
-          <header className="space-y-4">
+          <header className="my-8 space-y-4 mx-auto max-w-170">
             {levelConfig && (
               <p className="text-sm font-medium text-primary">{levelConfig.title}</p>
             )}
             <h1 className="text-3xl md:text-4xl font-bold text-foreground">{meta.title}</h1>
-            <p className="text-lg text-muted-foreground max-w-2xl">{meta.description}</p>
+            <p className="text-lg text-muted-foreground">{meta.description}</p>
           </header>
 
           {meta.image && (
-            <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-border bg-muted">
+            <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-border bg-muted mx-auto max-w-170 mb-8">
               <Image
                 src={meta.image}
                 alt={meta.title}
                 fill
-                sizes="(max-width: 768px) 100vw, 70vw"
+                sizes="(max-width: 768px) 100vw, 680px"
                 priority
                 className="object-cover"
               />
