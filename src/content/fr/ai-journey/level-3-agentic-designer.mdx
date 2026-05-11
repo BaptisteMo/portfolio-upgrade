@@ -1,0 +1,77 @@
+---
+title: "Agentic Designer : un système d'agents pour faire du design"
+slug: "level-3-agentic-designer"
+description: "Trois projets, trois rôles, et un système d'agents qui travaille avec moi sur mes produits — en cours de construction."
+level: 3
+image: "/images/ai/agentic-design.png"
+---
+
+<ImageFull
+  src="/images/ai/agentic-design.png"
+  alt="Agentic Designer — architecture en trois zones"
+  caption="Agentic Designer — architecture en trois zones"
+/>
+
+> Ce projet est en cours. Il fonctionne déjà sur plusieurs scénarios, mais tout n'est pas encore au point — je suis en pleine itération. Cet article décrit l'idée et là où j'en suis aujourd'hui.
+
+## L'idée
+
+Je voulais sortir du schéma "un projet IA = une app". À la place, j'avais envie de me construire un vrai **environnement de travail**, où plusieurs agents collaborent autour de mon métier de designer.
+
+L'objectif : avoir un système qui sait répondre à trois besoins concrets de mon quotidien.
+
+1. **Produire rapidement des protos haute-fidélité** pour les demandes simples, en s'appuyant sur le [design system](/fr/ai-journey/level-2-agents), j'y ai inclus des éléments de documentation spécifique à la lecture par d'autres agents.
+2. **Maintenir une documentation à jour** sur les différents produits dont je m'occupe.
+3. **Reproduire en code des composants Figma plus complexes**, pour pouvoir tester les interactions en vrai et pas juste les imaginer sur une maquette.
+4. **Enrichir le design system.** Avoir une boucle complète qui permet d'identifier les éléments manquants dans le DS lors de la création des protos, d'envoyer des briefs structurés sur le composant à créer, et de les transmettre aux agents responsables de maintenir le design system. Le tout avec quelques points d'étape pour intégrer les retours humains dans la boucle.
+
+
+## Trois projets, trois rôles
+
+Plutôt qu'un seul gros agent qui fait tout, j'ai préféré découper en trois projets, avec chacun un rôle clair.
+
+### 🟣 Le cerveau du designer
+
+C'est lui qui sait ce qu'on fait, où on en est et ce qui a été demandé.
+
+Il agrège ce qui circule autour de moi : transcripts de réunions, tickets Jira, notes. Il en fait un wiki structuré, projet par projet. Et quand j'arrive avec un brief (texte ou vocal), il le transforme en demande propre, contextualisée, prête à être traitée.
+
+### 🟢 Le design system
+
+C'est la **source de vérité visuelle** : tokens, composants, brands. Construit au niveau précédent, il est ici branché comme une infra : on peut le tirer d'un projet à l'autre avec une simple commande.
+
+### 🟠 Les mains
+
+C'est le projet où le craft se passe. Il consomme le design system, prend la demande préparée par le cerveau, et la transforme en mockup utilisable, brand-aware, prêt à être présenté. L'objectif : avoir une paire de mains par projet métier.
+
+## Comment ça marche au quotidien
+
+Ma cible ressemble à :
+
+1. Une réunion, un ticket, un brief vocal arrive.
+2. Le **cerveau** ingère ça, met à jour le wiki, puis prépare une demande propre.
+3. Les **mains** prennent la demande, consomment le **design system**, et sortent un proto.
+4. Je relis à chaque étape — rien ne passe sans validation humaine.
+
+Le tout repose sur un format de demande commun entre les trois zones. Concrètement, ça veut dire que je peux changer la manière dont j'écris le brief, ou changer l'outil qui produit les mockups, sans tout casser.
+
+## Aujourd'hui :
+
+- Le **design system** est solide, c'est la partie la plus stable.
+- Le **cerveau** ingère bien les transcripts et les tickets Jira, mais sa partie "transformer un brief en demande" demande encore beaucoup d'allers-retours.
+- Les **mains** utilisent correctement le design system, mais il n'y a pas vraiment de boucle de feedback et la création de protos haute-fidélité reste très approximative. Il faut encore des itérations pour rendre les outputs plus prévisibles.
+
+Bref, j'itère. Je teste des cas réels, j'ajuste les agents, j'alimente la documentation côté wiki, et je passe surtout beaucoup de temps à itérer sur les agents plus qu'à corriger les outputs.
+
+## Ce que j'apprends en chemin
+
+- **Penser système, pas projet.** Le vrai saut n'est plus de livrer une app, c'est de livrer un environnement où plusieurs produits profitent du même socle.
+- **La connaissance compte autant que le code.** Sans un wiki bien tenu, des systèmes d'escalade et des scopes bien définis, les agents redemandent toujours le même contexte — et c'est moi qui redeviens le goulot d'étranglement.
+- **L'humain pilote un centre de production.** Penser le système pour qu'il permette de me faire valider à chaque palier critique, de soumettre des feedbacks, de monitorer l'activité et de prioriser les tâches… c'est ce qui transforme un workflow hasardeux et non exploitable en contexte professionnel en un système prédictible et efficient, utilisable au quotidien dans un écosystème complexe.
+- **Un composant en code bat une maquette Figma.** Dans un contexte où nous avons peu de temps pour produire des prototypes haute-fidélité sur Figma, les composants du design system permettent aux utilisateurs de se projeter de manière bien plus fidèle dans une future interface, et donc de donner des feedbacks encore plus précis !
+
+## Conclusion
+
+Ce que j'observe aujourd'hui, c'est qu'avec l'IA qui s'intègre dans nos métiers, nous retournons plutôt vers une méthodologie en V : on passe beaucoup de temps à rédiger des briefs clairs, structurés et précis pour laisser le moins de place possible à l'interprétation pour nos agents. L'effet tunnel n'existe quasiment plus, car les temps de développement sont relativement faibles.
+
+Et c'est comme ça que je vois mon métier de designer évoluer : vers un métier de décisions — aider les métiers à formuler leurs besoins de la manière la plus claire possible et piloter une flotte d'agents qui consomme les specs écrites en partenariat avec le métier. L'expertise du designer reste importante pour cadrer, corriger et mettre à jour les agents sur des sujets très précis, sur les parties que les LLM ne sont pas encore en capacité de mesurer : le ressenti, la perception humaine d'une interface…

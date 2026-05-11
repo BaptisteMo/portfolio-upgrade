@@ -1,9 +1,48 @@
 ---
-title: "Mes 5 outils IA quotidiens"
+title: "Développer une app avec ChatGPT"
 slug: "level-0-first-tools"
-description: "Le starter-pack que je recommande à toute personne qui découvre l'IA générative en 2026."
+description: "Ma première vraie expérience de dev assisté par IA : un tracker d'habitudes que j'ai utilisé pendant des mois."
 level: 0
-image: "/images/projects/atlas/banner.jpg"
+image: "/images/ai/weight-tracker.png"
 ---
 
-Contenu à venir.
+<ImageFull
+  src="/images/ai/weight-tracker.png"
+  alt="Habit tracker — mon premier side project avec ChatGPT"
+  caption="Habit tracker — mon premier side project avec ChatGPT"
+/>
+
+## Le contexte
+
+Quand ChatGPT est sorti, j'avais des bases en code mais j'ai eu beaucoup de mal à sortir des tutos YouTube et malgré ça j'avais tout de même envie de faire mes propres projets ! C'est devenu mon premier vrai partenaire de dev : à deux, on a construit des petits outils que j'utilise pour de vrai, en commençant par un **tracker d'habitudes** branché sur mon suivi de poids.
+
+L'idée n'était pas de viser un produit. Juste un outil perso, propre, qui marche sur mon téléphone, qui retient mes données, et que j'ai envie d'ouvrir tous les matins.
+
+## Ce que ça fait
+
+- Suivi quotidien d'habitudes (sport, lecture, sommeil, poids…)
+- Graphes de progression sur la durée pour visualiser les tendances
+- Auth + stockage cloud pour retrouver mes données partout
+- Installable comme une app sur mobile (PWA)
+
+J'ai utilisé l'app pendant plusieurs mois — c'est le seul vrai test qui compte.
+
+## La stack
+
+- **Next.js 14** + **TypeScript**
+- **Supabase** pour l'auth et la base Postgres
+- **Tailwind CSS** + **shadcn/ui** (Radix) pour l'UI
+- **React Query** pour la gestion d'état serveur
+- **Recharts** pour les graphes
+- **Zod** + React Hook Form pour les formulaires
+- PWA via `next-pwa`
+
+Une stack que je n'aurais jamais osé attaquer seul à l'époque. ChatGPT m'a servi de fil rouge : expliquer un concept, débloquer une erreur, proposer un pattern, m'aider à choisir entre deux approches.
+
+## Ce que j'en ai retenu
+
+- **L'IA accélère la mise en route, pas la compréhension.** Coller du code qui marche sans le lire, ça fonctionne jusqu'aux premières lignes rouges dans le terminal.
+- **Itérer petit.** Éviter à tout prix de tenter les « one shot », du moins quand on est deux ans en arrière et qu'il faut faire des aller-retours entre le code et le chat. Les longs prompts qui demandent toute une feature finissent toujours par dériver.
+- **J'ai un prof à portée de main.** J'ai toujours pris à cœur de comprendre et de questionner les choix que me proposait ChatGPT.
+
+C'était mon point de départ. J'ai fait plusieurs autres petits side-projects (web-apps, développement C# avec Unity…) en suivant ce mode opératoire, jusqu'à commencer à introduire les outils de code directement dans mon IDE.

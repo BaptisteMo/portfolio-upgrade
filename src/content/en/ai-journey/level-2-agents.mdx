@@ -1,9 +1,57 @@
 ---
-title: "My first agent that actually acts"
+title: "Building your own agents for a real client need"
 slug: "level-2-agents"
-description: "Past the chatbot: tool use, agent loops, and the first surprises in production."
+description: "A React component library shipped with its own agents: from business brief to GitHub distribution flow."
 level: 2
-image: "/images/projects/atlas/banner.jpg"
+image: "/images/ai/ds-home-page.png"
 ---
 
-Content coming soon.
+<ImageFull
+  src="/images/ai/ds-home-page.png"
+  alt="KLP Design System — React component library for Klépierre"
+  caption="KLP Design System — React component library for Klépierre"
+/>
+
+## The context
+
+Level 2: producing things genuinely usable in a client context. No more side projects for myself, no more protos to validate an idea — a real deliverable.
+
+The goal: build a **React component library** usable by my client's developers at [Klépierre](/en/projects/design-system), to take one more step toward **standardizing internal business apps**.
+
+This time, I also wanted to leave behind off-the-shelf agent frameworks like BMAD and **build my own agent workflows from scratch** to answer a precise business need.
+
+## What was shipped
+
+- A component library in **shadcn-style copy-paste** mode (Radix + Tailwind v4)
+- A **CLI** (`klp-ui`) so any dev can pull a component into their app with a single command
+- A versioned **registry** to distribute components via GitHub
+- **Specialized agents** wired into Claude Code to generate, adapt and document each component from Figma mockups
+
+All of it designed so that other Klépierre developers can grab a component, use it, and keep the design system consistent without depending on me.
+
+## The stack
+
+- **React 19** + **TypeScript** + **Vite 6**
+- **Radix Primitives** + **Tailwind CSS v4**
+- **CVA** + `tailwind-merge` for variants
+- **In-house CLI** (Node) for distribution
+- Custom **Claude Code agents**: `figma-extractor`, `component-adapter`, `documentalist`…
+
+## Building my own agents
+
+That's the real point at this level. Building my own agents to answer precise needs:
+
+- **Define its scope**: what it does, what it doesn't. An agent that tries to do everything does everything badly.
+- **Describe its tasks**: inputs, outputs, expected steps, return format.
+- **Set its limits**: what it's not allowed to touch, read-only files, decisions that have to bubble up to a human.
+- **Wire the right skills**: Figma extraction, token reading, TS generation, lint, doc writing… each skill is a bounded capability.
+
+On this project I have three agents that hand off to each other: one reads Figma via their MCP, one writes the React component, one writes the docs. Each with its own brief, guardrails, verifiable outputs.
+
+## What I took away
+
+- **Our real limit is creativity in designing agents.** When you know the domain and the constraints, an agent system genuinely lets you build precise workflows that are predictable and repeatable! Which, until now, wasn't really the case in the way I worked.
+- **Agent specs are 80% of the work.** From what I've observed, a precise spec — scope, escalation system, etc. — produces really good results, even when you feed the agents mediocre or imprecise inputs.
+- **Fix the agents rather than fix the outputs.** That's a philosophy I'm adopting more and more when I work with agent workflows. My goal is no longer a perfect output but to fix the agents, their instructions and their skills so future runs avoid those errors — and then patch the outputs by hand at the margins. It takes a bit more effort up front, and it really pays off when you know your own agents well.
+
+By that point, I'd been able to hand off the full code and workflow to my dev colleagues, who took over for internal compliance reasons. But a large majority of the generated code will be kept, and will save real time for every future user of the design system.

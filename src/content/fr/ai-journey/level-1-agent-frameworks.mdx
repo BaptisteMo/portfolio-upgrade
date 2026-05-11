@@ -1,0 +1,55 @@
+---
+title: "Tester un framework d'agents avec BMAD"
+slug: "level-1-agent-frameworks"
+description: "Sortir une vraie app desktop multi-plateforme avec une équipe d'agents spécialisés et un workflow strict."
+level: 1
+image: "/images/ai/farmer-app.png"
+---
+
+<ImageFull
+  src="/images/ai/farmer-app.png"
+  alt="Farmer — gestionnaire de fenêtres pour la communauté Dofus"
+  caption="Farmer — gestionnaire de fenêtres pour la communauté Dofus"
+/>
+
+## Le contexte
+
+Après mes premiers projets pilotés "à la main" avec Claude Code, je voulais aller plus loin : tester ce que donnent des **frameworks d'agents** déjà tout faits, pour essayer de comprendre ce qu'était un agent, un skill, et comment les workflows d'agents fonctionnent.
+
+J'ai choisi la méthodologie **BMAD** : un système d'agents spécialisés (PM, architecte, dev, QA…) qui offre la possibilité d'utiliser plein de workflows différents en fonction des besoins. Il couvre tout, de la rédaction des specs à la rédaction de la documentation finale — un super outil.
+
+Le projet support : **Farmer**, une petite app de gestion de fenêtres pour la communauté **Dofus**. Pratique pour celles et ceux qui jouent en multi-comptes. C'est un soft que j'ai réellement sorti, proposé à la communauté, qui compte aujourd'hui une centaine de téléchargements, et que j'utilise encore moi-même à chaque session de jeu.
+
+## Ce que ça fait
+
+- Détection et organisation des fenêtres Dofus ouvertes
+- Layouts personnalisables (drag & drop) pour cycler entre les comptes
+- Raccourcis clavier configurables
+- Build natif **Windows** et **macOS**
+
+L'app a été menée de bout en bout : design, dev, packaging, distribution.
+
+## La stack
+
+- **Tauri 2** (Rust côté natif) pour le shell desktop multi-plateforme
+- **React 19** + **TypeScript**
+- **Tailwind CSS v4** pour l'UI
+- **BMAD** côté process : agents spécialisés + workflows
+
+## Le vrai sujet : déléguer ce que je ne maîtrise pas
+
+Tauri / Rust, ce n'est pas mon terrain. Sans agent, j'aurais été coincé ou j'aurais bricolé un truc fragile. Avec BMAD, j'ai pu :
+
+- **Déléguer la partie native** (Tauri, gestion fenêtres, packaging) aux agents : ils écrivent, testent, débuggent.
+- **Garder la main sur l'UI** : c'est le terrain où je voulais me faire plaisir, partir de mes maquettes initiales et faire un truc vraiment custom.
+- **Comprendre suffisamment** pour ne pas être prisonnier des choix de Claude Code — quand il proposait quelque chose qui n'allait pas avec ma vision, je savais le repérer et le corriger.
+
+Bref : ne pas subir le code, mais piloter une équipe d'agents tout en gardant la zone qui me plaît.
+
+## Ce que j'en ai retenu
+
+- **Un framework de tâches change la qualité du code.** La rédaction en amont (specs, tickets, critères d'acceptance), le découpage en agents spécialisés, les workflows clairs — ça monte la qualité d'un cran. Le code est plus propre, plus prévisible, plus maintenable.
+- **On peut shipper dans une stack qu'on maîtrise moins.** À condition de maintenir une vraie documentation et d'être extrêmement précis dans les spécifications techniques des demandes.
+- **On peut travailler en parallèle des agents IA.** Sur ce projet j'ai été réellement surpris de pouvoir scinder les responsabilités : avec des agents bien documentés, ils ne détruisaient pas le travail fait à la main de mon côté.
+
+À ce stade, j'avais validé que les agents pouvaient produire du code utilisable en prod. Logique de pousser plus loin et de connecter ces agents à des outils externes — direction MCP.

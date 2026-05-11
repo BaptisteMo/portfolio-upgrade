@@ -1,0 +1,57 @@
+---
+title: "Piloting Claude Code in the IDE"
+slug: "level-1-piloting-claude-code"
+description: "From ChatGPT apprentice to Claude Code pilot: a high-fidelity proto shipped in a few days."
+level: 1
+image: "/images/ai/cimer-home.png"
+---
+
+<ImageFull
+  src="/images/ai/cimer-home.png"
+  alt="Cimer — mobile CMR management prototype"
+  caption="Cimer — mobile CMR management prototype"
+/>
+
+## The context
+
+A friend had an idea he wanted to validate fast: a mobile app to generate and sign **CMR** documents (road transport waybills) in under 2 minutes from a smartphone. The goal wasn't a finished product — it was a **high-fidelity prototype** credible enough to put in real drivers' hands and test the idea.
+
+That's the project where I really switched: out with ChatGPT in the browser, in with **Claude Code** as a VSCode extension.
+
+## What it does
+
+- Authentication (Supabase Auth)
+- Creating a CMR from mobile: shipper, consignee, goods, vehicle, places
+- Photo capture + on-screen signature
+- PDF generation and sharing (email, link, Web Share)
+- History and review of past CMRs
+
+Mobile-first all the way through, from user flow to architecture. Doable in a few days thanks to a stack I was starting to know well.
+
+## The stack
+
+- **Next.js 16** (App Router) + **React 19** + **TypeScript**
+- **Supabase** for auth, database and storage
+- **Tailwind CSS** + **shadcn/ui** (Radix)
+- **jsPDF** for the final document
+- **Claude Code**
+
+Roughly the same stack I use across my other projects. What really changed is the way I use LLMs.
+
+## What changed in how I code
+
+Before, I asked ChatGPT *how* to do things. With Claude Code in the IDE, I tell it *what* to do, and it executes. Way fewer round trips between a chat window and my editor — Claude already sees my code, my files, my structure. The first time I saw what it could pull off in a single "one shot," I was genuinely impressed.
+
+I went from **apprentice** to **pilot**:
+
+- I know what I want product-side and UX-side, I dictate it.
+- I let Claude propose the implementation, I review, I steer.
+- The code stays under my control because I thought it through up front.
+
+## What I took away
+
+- **Precision first.** I quickly realized I had to be really precise in my requests — sometimes even spelling things out as pseudo-code.
+- **Having someone who challenges you constantly is a luxury.** Claude suggests angles I wouldn't have thought of, refactors, alternatives. Not all of them are relevant, but having that kind of interaction keeps you sharp.
+- **Yes, Claude has IDE access, but…** After the wow effect — when it felt like I could ask for bigger and bigger things and code entire features in one detailed prompt — my own testing showed it's always better to scope requests relatively small. It takes a bit more time to ship a feature, but I spent way less time debugging.
+
+By that point, this was the second project I'd shipped with that workflow, and I was starting to feel real friction — and a massive loss of information across long sessions stretched over several days, the moment things got more complex.

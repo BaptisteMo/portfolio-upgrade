@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import {
@@ -50,7 +49,7 @@ export default async function AiArticlePage({ params }: PageProps) {
 
     return (
       <TriPanelLayout nav={<NavPanel />}>
-        <article className="py-4">
+        <article className="py-4 max-w-170 m-auto">
           <Link
             href={`/${typedLocale}/ai-journey`}
             className="mx-auto max-w-170 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -59,26 +58,13 @@ export default async function AiArticlePage({ params }: PageProps) {
             {t.back}
           </Link>
 
-          <header className="my-8 space-y-4 mx-auto max-w-170">
+          <header className="my-8 space-y-4 mx-auto ">
             {levelConfig && (
               <p className="text-sm font-medium text-primary">{levelConfig.title}</p>
             )}
             <h1 className="text-3xl md:text-4xl font-bold text-foreground">{meta.title}</h1>
             <p className="text-lg text-muted-foreground">{meta.description}</p>
           </header>
-
-          {meta.image && (
-            <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-border bg-muted mx-auto max-w-170 mb-8">
-              <Image
-                src={meta.image}
-                alt={meta.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 680px"
-                priority
-                className="object-cover"
-              />
-            </div>
-          )}
 
           <MDXContent content={content} />
 

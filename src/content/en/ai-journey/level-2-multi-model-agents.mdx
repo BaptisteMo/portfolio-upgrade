@@ -1,0 +1,68 @@
+---
+title: "Beyond Claude Code: OpenCode and multi-model agents"
+slug: "level-2-multi-model-agents"
+description: "A legal POC shipped in a few days, with agent workflows each driving their own local model."
+level: 2
+image: "/images/ai/contract-iq-image.png"
+---
+
+<ImageFull
+  src="/images/ai/contract-iq-image.png"
+  alt="ContractIQ — legal decision-support tool"
+  caption="ContractIQ — legal decision-support tool"
+/>
+
+## The context
+
+My goal was to step out of the Claude Code ecosystem to see how things go with other tools, and especially other models. At my client's, and especially given that we'd be handling sensitive contract data, we had real data sovereignty concerns. Also, to understand what's structural about working with agents and what's just tool-specific.
+
+So I picked **OpenCode**, and installed several models locally on my machine. Each agent workflow can drive the model that fits it best, locally, without depending on a single provider. Technically, it was a first for me — and exactly the kind of ground I wanted to cover at this level.
+
+## The project: ContractIQ
+
+The project: **ContractIQ**, a legal decision-support tool.
+
+The origin of the need is interesting. It wasn't a formal request: it was sentences caught in passing during meetings, frustrations voiced about another product that couldn't cover those cases. Business users were complaining about the lack of visibility on their contracts, how hard it was to find a piece of information or a precedent that had already been validated.
+
+So I decided to launch a focused **POC** to address it. Today the tool has been presented to the legal team and will be put to use. A few compliance items still need to clear (which I can't push through myself), but the direction is set.
+
+## What it does
+
+- Contract upload (PDF, DOCX)
+- Automatic extraction of clauses, derogations, key dates
+- Search across past legal decisions (accepted / rejected)
+- Confidence score on extracted elements
+- A "Bloomberg Terminal meets Linear" dashboard: dense, calm, data-forward
+
+Only a few features, but **UX pushed all the way** on the things that matter. Everything I'd learned at the previous levels — tight scoping, well-specified agents, short iterations — was used to free up time for product polish.
+
+## The stack
+
+- **Next.js 16** + **React 19** + **TypeScript**
+- **Supabase** (auth, database, storage) — temporary, just for the POC
+- **Tailwind CSS v4** + **shadcn** — just for the POC, the design system will come in later
+- **Inngest** for async extraction jobs
+- **mupdf** + **PyMuPDF** for document extraction
+- **OpenCode** as the harness, with several **locally installed models**
+
+## The real point: multi-model agents
+
+Where Claude Code runs on a single model, OpenCode let me **route each agent to the model best suited for its task**, locally:
+
+- A fast model for classification / routing agents
+- A specialized model for structured extraction from PDFs
+
+Concretely, that changes two things:
+
+- **Security and confidentiality.** Sensitive legal documents → everything stays on the machine during dev, then we'll just call the models we already have access to inside Klépierre's environments. Everything stays in our ecosystem.
+- **Step-by-step fit.** No need for one "do-everything" model on simple sub-tasks. You pay the right price for the right task — latency included.
+
+And technically, it's a playground: watching how the same workflow behaves with different models, tuning briefs accordingly, learning where each model shines and where it falls off.
+
+## What I took away
+
+- **Becoming tool-independent.** The good habits picked up on Claude Code (scope, specs, escalation, "fix the agent, not the output") work identically on OpenCode. The tool changes, the craft doesn't.
+- **The right model for the right task.** Designing an agent workflow is also designing the routing: not every agent needs the same model. On cost and data control, that's a huge lever.
+- **We can now address needs incredibly fast.** The trigger for this project wasn't a spec — it was scraps of conversation in meetings. With a short cycle (POC in days), you turn that into a tangible result. Outcome: a useful tool, and a real bump in trust from the business about our team's ability to ship custom solutions.
+
+These shifts position our team quite differently. We'll be hit with more and more requests, and our role won't be to ask whether we *can* do it, but whether we *should*. Better challenge what the business asks for, evaluate together how relevant it really is, and only ship the projects and products that actually meet the group's needs.

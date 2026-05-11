@@ -1,0 +1,68 @@
+---
+title: "Sortir de Claude Code : OpenCode et agents multi-modèles"
+slug: "level-2-multi-model-agents"
+description: "Un POC juridique livré en quelques jours, avec des workflows d'agents qui pilotent chacun leur propre modèle local."
+level: 2
+image: "/images/ai/contract-iq-image.png"
+---
+
+<ImageFull
+  src="/images/ai/contract-iq-image.png"
+  alt="ContractIQ — outil d'aide à la décision juridique"
+  caption="ContractIQ — outil d'aide à la décision juridique"
+/>
+
+## Le contexte
+
+J'avais comme objectif de sortir de l'écosystème Claude Code pour voir ce que ça donne avec d'autres outils, et surtout d'autres modèles. Chez mon client, et surtout dans le cadre où nous allons traiter des données sensibles liées aux contrats, nous avions de réelles problématiques de souveraineté de la donnée. Aussi, pour comprendre ce qu'il y a de structurel dans la manière de travailler avec des agents, et ce qui dépend juste de l'outil.
+
+J'ai donc choisi **OpenCode**, et j'ai installé plusieurs modèles localement sur ma machine. Chaque workflow d'agent peut piloter le modèle qui lui correspond le mieux, en local, sans dépendre d'un seul fournisseur. Techniquement, c'est la première fois que je faisais ça — et c'est exactement le genre de terrain que je voulais explorer à ce niveau.
+
+## Le projet : ContractIQ
+
+Le projet support : **ContractIQ**, un outil d'aide à la décision juridique.
+
+L'origine du besoin est intéressante. Ce n'était pas une demande formelle : c'étaient des phrases captées au fil de réunions, des frustrations exprimées sur un autre produit qui ne pouvait pas couvrir ces cas. Les utilisateurs métier se plaignaient d'un manque de visibilité sur leurs contrats, de la difficulté à retrouver une information ou un précédent déjà validé.
+
+J'ai donc décidé de lancer un **POC** ciblé pour répondre à ce besoin. Aujourd'hui, l'outil a été présenté à l'équipe legal et va être utilisé. Il reste quelques sujets de conformité à faire passer (que je ne peux pas administrer moi-même), mais la direction est prise.
+
+## Ce que ça fait
+
+- Upload de contrats (PDF, DOCX)
+- Extraction automatique des clauses, dérogations, dates clés
+- Recherche dans les décisions juridiques passées (validées / refusées)
+- Score de confiance sur les éléments extraits
+- Dashboard "Bloomberg Terminal meets Linear" : dense, calme, orienté données
+
+Quelques features seulement, mais une **UX poussée à fond** sur ce qui compte. Tout ce que j'avais appris sur les niveaux précédents — scoping serré, agents bien spécifiés, itération courte — servait à libérer du temps pour le polish produit.
+
+## La stack
+
+- **Next.js 16** + **React 19** + **TypeScript**
+- **Supabase** (auth, base, storage) - Temporairement pour le POC
+- **Tailwind CSS v4** + **shadcn** - Juste pour le POC, on y intégrera le design system dans un second temps
+- **Inngest** pour les jobs d'extraction asynchrones
+- **mupdf** + **PyMuPDF** côté extraction documents
+- **OpenCode** comme harness, avec plusieurs **modèles installés localement**
+
+## Le vrai sujet : agents multi-modèles
+
+Là où Claude Code utilise un seul modèle, OpenCode m'a permis de **router chaque agent vers le modèle le plus adapté à sa tâche**, en local :
+
+- Un modèle rapide pour les agents de classification / routing
+- Un modèle spécialisé pour l'extraction structurée à partir de PDF
+
+Concrètement, ça change deux choses :
+
+- **Sécurité et confidentialité.** Documents juridiques sensibles → tout reste sur la machine pour le développement, puis on aura plus qu'à appeler les modèles auxquels on a accès dans les environnements Klépierre. Tout reste dans notre écosystème.
+- **Adaptation par étape.** Pas besoin d'un modèle "tout puissant" pour des sous-tâches simples. On paie le bon prix pour la bonne tâche — y compris en latence.
+
+Et techniquement, c'est un terrain de jeu : observer comment un même workflow se comporte avec différents modèles, ajuster les briefs en conséquence, comprendre où chaque modèle excelle et où il décroche. 
+
+## Ce que j'ai appris
+
+- **Devenir indépendant des outils.** Les bonnes pratiques apprises sur Claude Code (scope, specs, escalade, "fix the agent, not the output") fonctionnent à l'identique sur OpenCode. C'est l'outil qui change, pas le métier.
+- **Le bon modèle pour la bonne tâche.** Penser un workflow d'agents, c'est aussi penser le routing : tous les agents n'ont pas besoin du même modèle. Côté coût et maîtrise des données, c'est un levier énorme.
+- **On est aujourd'hui en mesure d'adresser des besoins très rapidement.** Le déclencheur du projet, ce n'est pas un cahier des charges, ce sont des bouts de phrases en réunion. Avec un cycle court (POC en quelques jours), on transforme ça en preuve concrète. Résultat : un outil utile, et surtout un cran de confiance gagné côté métier sur la capacité de notre équipe à produire du sur-mesure.
+
+Ces changements positionnent notre équipe d'une manière assez différente. On va être confrontés à de plus en plus de demandes, et notre rôle ne va plus être de se demander si on peut le faire, mais si on doit le faire. Mieux challenger les demandes du métier pour en évaluer tous ensemble la pertinence, et ne livrer que les projets et les produits qui répondent réellement aux besoins du groupe.

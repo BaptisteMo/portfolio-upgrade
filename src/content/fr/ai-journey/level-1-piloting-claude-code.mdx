@@ -1,0 +1,57 @@
+---
+title: "Piloter Claude Code dans l'IDE"
+slug: "level-1-piloting-claude-code"
+description: "Passer d'apprenti ChatGPT à pilote de Claude Code : un proto haute-fidélité bouclé en quelques jours."
+level: 1
+image: "/images/ai/cimer-home.png"
+---
+
+<ImageFull
+  src="/images/ai/cimer-home.png"
+  alt="Cimer — proto mobile de gestion de CMR"
+  caption="Cimer — proto mobile de gestion de CMR"
+/>
+
+## Le contexte
+
+Un ami avait une idée à tester rapidement : une app mobile pour générer et signer des **CMR** (lettres de voiture pour le transport routier) en moins de 2 minutes, depuis un smartphone. L'objectif n'était pas un produit fini, c'était un **proto haute-fidélité** assez crédible pour le mettre dans les mains de chauffeurs et valider l'idée.
+
+C'est sur ce projet que j'ai vraiment switché : exit ChatGPT dans le navigateur, j'ai installé **Claude Code** directement en extension VSCode.
+
+## Ce que ça fait
+
+- Authentification (Supabase Auth)
+- Création d'un CMR depuis mobile : expéditeur, destinataire, marchandises, véhicule, lieux
+- Capture photo + signature directe sur l'écran
+- Génération PDF et partage (mail, lien, Web Share)
+- Historique et consultation des CMR passés
+
+Pensé mobile-first, du flow utilisateur jusqu'à l'archi. Faisable en quelques jours grâce à une stack que je commençais à bien connaître.
+
+## La stack
+
+- **Next.js 16** (App Router) + **React 19** + **TypeScript**
+- **Supabase** pour l'auth, la base et le storage
+- **Tailwind CSS** + **shadcn/ui** (Radix)
+- **jsPDF** pour la génération du document final
+- **Claude Code**
+
+Plus ou moins la même stack que j'utilise pour mes autres projets. Ce qui a changé, c'est plutôt la manière d'utiliser les LLM.
+
+## Ce qui a changé dans ma manière de coder
+
+Avant, je demandais à ChatGPT *comment* faire. Avec Claude Code dans l'IDE, j'indique *ce qu'il faut faire*, et c'est lui qui exécute. Beaucoup moins d'aller-retours entre une fenêtre de chat et mon éditeur — Claude voit déjà mon code, mes fichiers, ma structure. Quand j'ai vu la puissance de ce que c'était capable de faire en "one shot", j'ai vraiment été très impressionné !
+
+Je suis passé d'**apprenti** à **pilote** :
+
+- Je sais ce que je veux côté produit et côté UX, je le dicte.
+- Je laisse Claude proposer l'implémentation, je relis, je corrige le tir.
+- Le code reste sous mon contrôle parce que je l'ai pensé avant.
+
+## Ce que j'en ai retenu
+
+- **La précision avant tout.** Assez rapidement je me suis rendu compte qu'il fallait être vraiment précis dans les demandes, voire même écrire les éléments en pseudo-code.
+- **Avoir quelqu'un qui challenge en permanence est un luxe.** Claude propose des angles auxquels je n'aurais pas pensé, des refactos, des alternatives. Toutes ne sont pas pertinentes, mais avoir ce genre d'interaction permet de rester en alerte.
+- **Certes Claude a accès à l'IDE mais...** Après l'effet waouh où j'avais la sensation que je pouvais faire des demandes de plus en plus grosses et coder des features entières en un seul prompt détaillé, mes tests ont montré qu'il valait toujours mieux scoper les demandes relativement petites. Ça prend un peu plus de temps pour produire une feature, mais je passais moins de temps à débugger.
+
+À ce stade, c'était le deuxième projet que je réalisais avec ce mode opératoire et je commençais à sentir un réel frein, et surtout une perte massive d'information sur des sessions longues qui s'étalent sur plusieurs jours, dès qu'on veut ajouter un peu de complexité.

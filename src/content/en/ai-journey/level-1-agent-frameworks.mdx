@@ -1,0 +1,55 @@
+---
+title: "Trying an agent framework with BMAD"
+slug: "level-1-agent-frameworks"
+description: "Shipping a real cross-platform desktop app with a team of specialized agents and a strict workflow."
+level: 1
+image: "/images/ai/farmer-app.png"
+---
+
+<ImageFull
+  src="/images/ai/farmer-app.png"
+  alt="Farmer — window manager for the Dofus community"
+  caption="Farmer — window manager for the Dofus community"
+/>
+
+## The context
+
+After my first projects "hand-piloted" with Claude Code, I wanted to push further: try what off-the-shelf **agent frameworks** actually deliver, to get a feel for what an agent really is, what a skill is, and how agent workflows actually run.
+
+I picked the **BMAD** methodology: a system of specialized agents (PM, architect, dev, QA…) that lets you tap into a wide range of workflows depending on the need. It covers everything, from writing specs to writing the final documentation — a great tool.
+
+The project: **Farmer**, a small window-management app for the **Dofus** community. Useful for anyone playing multi-account. I actually shipped it, released it to the community, it has clocked around a hundred downloads, and I still use it myself every gaming session.
+
+## What it does
+
+- Detects and organizes open Dofus windows
+- Customizable layouts (drag & drop) to cycle between accounts
+- Configurable keyboard shortcuts
+- Native build for **Windows** and **macOS**
+
+End-to-end: design, dev, packaging, distribution.
+
+## The stack
+
+- **Tauri 2** (Rust on the native side) for the cross-platform desktop shell
+- **React 19** + **TypeScript**
+- **Tailwind CSS v4** for the UI
+- **BMAD** on the process side: specialized agents + workflows
+
+## The real point: delegating what I don't master
+
+Tauri / Rust isn't my home turf. Without agents, I would've been stuck or bolted together something fragile. With BMAD, I could:
+
+- **Delegate the native side** (Tauri, window management, packaging) to the agents: they write, test, debug.
+- **Stay hands-on for the UI**: that's where I wanted to enjoy myself, start from my own mockups, ship something genuinely custom.
+- **Understand enough** not to be locked into Claude Code's choices — when it suggested something that didn't fit my vision, I could spot it and fix it.
+
+In short: don't sit through the code, pilot a team of agents while keeping the zone I love hands-on.
+
+## What I took away
+
+- **A task framework changes code quality.** Writing things up front (specs, tickets, acceptance criteria), splitting work across specialized agents, clean workflows — it lifts the bar. The code is cleaner, more predictable, easier to maintain.
+- **You can ship in a stack you don't fully master** — provided you keep real documentation and stay extremely precise in the technical specs of your requests.
+- **You can work in parallel with AI agents.** On this project I was genuinely surprised at how well I could split responsibilities: with well-documented agents, they didn't trash the work I was doing by hand on my side.
+
+By that point I'd validated that agents could ship production-grade code. Logical next step: connect those agents to external tools — heading toward MCP.

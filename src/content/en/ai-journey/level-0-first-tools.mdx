@@ -1,9 +1,48 @@
 ---
-title: "My 5 daily AI tools"
+title: "Building an app with ChatGPT"
 slug: "level-0-first-tools"
-description: "The starter pack I recommend to anyone discovering generative AI in 2026."
+description: "My first real experience with AI-assisted dev: a habit tracker I actually used for months."
 level: 0
-image: "/images/projects/atlas/banner.jpg"
+image: "/images/ai/weight-tracker.png"
 ---
 
-Content coming soon.
+<ImageFull
+  src="/images/ai/weight-tracker.png"
+  alt="Habit tracker — my first side project with ChatGPT"
+  caption="Habit tracker — my first side project with ChatGPT"
+/>
+
+## The context
+
+When ChatGPT came out, I had some coding basics but I really struggled to break out of YouTube tutorials — and despite that, I still wanted to ship my own projects. ChatGPT became my first real dev partner: together, we built small tools I actually use, starting with a **habit tracker** wired up to my weight log.
+
+The goal wasn't to ship a product. Just a clean personal tool that runs on my phone, remembers my data, and that I want to open every morning.
+
+## What it does
+
+- Daily habit tracking (sport, reading, sleep, weight…)
+- Progress charts to visualize trends over time
+- Auth + cloud storage so my data follows me everywhere
+- Installable as a mobile app (PWA)
+
+I used it for several months — the only test that actually counts.
+
+## The stack
+
+- **Next.js 14** + **TypeScript**
+- **Supabase** for auth and the Postgres database
+- **Tailwind CSS** + **shadcn/ui** (Radix) for the UI
+- **React Query** for server state
+- **Recharts** for the charts
+- **Zod** + React Hook Form for the forms
+- PWA via `next-pwa`
+
+A stack I would never have dared to tackle alone at the time. ChatGPT was my guide rope: explaining a concept, unblocking an error, suggesting a pattern, helping me pick between two approaches.
+
+## What I took away
+
+- **AI speeds up getting started, not understanding.** Pasting code that works without reading it works fine — until the first red lines hit the terminal.
+- **Iterate small.** Avoid "one-shotting" entire features at all costs, especially two years ago when you had to ping-pong between code and chat. Long prompts asking for a whole feature always drift.
+- **A teacher within reach.** I always made a point of understanding and questioning the choices ChatGPT suggested.
+
+That was my starting point. I shipped several other small side projects (web apps, C# with Unity…) following the same playbook, until I started bringing coding tools directly into my IDE.

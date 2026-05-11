@@ -1,0 +1,76 @@
+---
+title: "Agentic Designer: an agent system that does design"
+slug: "level-3-agentic-designer"
+description: "Three projects, three roles, and an agent system that works with me across my products — still being built."
+level: 3
+image: "/images/ai/agentic-design.png"
+---
+
+<ImageFull
+  src="/images/ai/agentic-design.png"
+  alt="Agentic Designer — three-zone architecture"
+  caption="Agentic Designer — three-zone architecture"
+/>
+
+> This project is a work in progress. It already works on several scenarios, but it's not where I want it yet — I'm still iterating. This article describes the idea and where I stand today.
+
+## The idea
+
+I wanted to break out of the "one AI project = one app" pattern. Instead, I wanted to build a real **working environment** where several agents collaborate around my design work.
+
+The goal: a system that handles four concrete day-to-day needs.
+
+1. **Quickly produce high-fidelity prototypes** for simple requests, using the [design system](/en/ai-journey/level-2-agents) — into which I've baked specific documentation aimed at being read by other agents.
+2. **Keep documentation up to date** across the products I look after.
+3. **Rebuild complex Figma components in code**, so I can actually test the interactions instead of just imagining them on a mockup.
+4. **Enrich the design system.** A full loop that spots missing components in the DS while building prototypes, packages a structured brief on the component to create, and forwards it to the agents responsible for maintaining the design system. With a few checkpoints to keep human feedback in the loop.
+
+## Three projects, three roles
+
+Rather than one giant do-it-all agent, I split it into three projects, each with a clear role.
+
+### 🟣 The designer's brain
+
+It knows what we're doing, where we stand and what's been asked.
+
+It aggregates what flows around me: meeting transcripts, Jira tickets, notes. Out of that, it builds a structured wiki, project by project. And when I come in with a brief (text or voice), it turns it into a clean, contextualized request ready to be handled.
+
+### 🟢 The design system
+
+It's the **visual source of truth**: tokens, components, brands. Built at the previous level, it's plugged in here as real infrastructure: you can pull it into any project with a single command.
+
+### 🟠 The hands
+
+This is where the craft happens. It consumes the design system, picks up the request prepared by the brain, and turns it into a usable, brand-aware mockup ready to be shown. The goal: one pair of hands per business project.
+
+## How it works day to day
+
+What I'm aiming for looks like this:
+
+1. A meeting, a ticket, a voice brief comes in.
+2. The **brain** ingests it, updates the wiki, then prepares a clean request.
+3. The **hands** pick up the request, consume the **design system**, and ship a prototype.
+4. I review at every step — nothing moves forward without a human sign-off.
+
+The whole thing relies on a shared request format between the three zones. Concretely, that means I can change how I write the brief, or change the tool that produces the mockups, without breaking everything.
+
+## Where it stands today
+
+- The **design system** is solid — that's the most stable part.
+- The **brain** ingests transcripts and Jira tickets well, but the "turn a brief into a clean request" piece still takes a lot of back-and-forth.
+- The **hands** use the design system correctly, but there isn't really a feedback loop yet, and high-fidelity prototype generation is still very rough. More iteration is needed to make outputs predictable.
+
+So I'm iterating. Testing real cases, tweaking the agents, feeding the wiki, and spending way more time iterating on the agents than fixing their outputs.
+
+## What I'm learning along the way
+
+- **Think systems, not projects.** The real jump isn't shipping another app — it's shipping an environment where several products share the same foundations.
+- **Knowledge matters as much as the code.** Without a well-kept wiki, proper escalation systems and well-defined scopes, agents keep asking for the same context — and I become the bottleneck again.
+- **The human pilots a production center.** Designing the system so it lets me sign off at every critical checkpoint, submit feedback, monitor activity and prioritize tasks… that's what turns a chaotic, non-usable workflow into a predictable, efficient system you can actually run day to day in a complex ecosystem.
+- **A coded component beats a Figma mockup.** Given how little time we have to produce high-fidelity prototypes in Figma, design system components let users project themselves into the future interface much more faithfully — and so give much sharper feedback!
+
+## Closing thoughts
+
+What I'm seeing today is that, with AI moving into our jobs, we're shifting back toward a V-shaped methodology: we spend a lot of time writing briefs that are clear, structured and precise to leave as little room as possible for interpretation by our agents. Tunnel effect almost disappears, because development cycles are now relatively short.
+
+That's how I see the designer's role evolving: into a role about decisions — helping business teams formulate their needs as clearly as possible, and steering a fleet of agents that consume specs co-written with the business. Designer expertise stays critical to frame, correct and update agents on very specific topics, on the parts LLMs can't measure yet: feel, the human perception of an interface…

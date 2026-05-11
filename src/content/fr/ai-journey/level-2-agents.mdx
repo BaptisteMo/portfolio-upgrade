@@ -1,9 +1,57 @@
 ---
-title: "Mon premier agent qui agit vraiment"
+title: "Construire ses propres agents pour un vrai besoin client"
 slug: "level-2-agents"
-description: "Sortir du chatbot : tool use, boucle d'agent, et premières surprises en production."
+description: "Une librairie de composants React livrée avec ses propres agents : du brief métier au flow de distribution GitHub."
 level: 2
-image: "/images/projects/atlas/banner.jpg"
+image: "/images/ai/ds-home-page.png"
 ---
 
-Contenu à venir.
+<ImageFull
+  src="/images/ai/ds-home-page.png"
+  alt="KLP Design System — librairie de composants React pour Klépierre"
+  caption="KLP Design System — librairie de composants React pour Klépierre"
+/>
+
+## Le contexte
+
+Niveau 2 : produire des choses réellement exploitables dans un contexte client. Plus de side project pour soi, plus de proto pour valider une idée — un vrai livrable.
+
+L'objectif : construire une **librairie de composants React** utilisable par les développeurs de mon client, [Klépierre](/fr/projects/design-system), pour faire un pas supplémentaire vers la **standardisation des applications métier** internes.
+
+Cette fois, je voulais aussi quitter le terrain des frameworks d'agents tout faits comme BMAD, et **construire de zéro mes propres workflows d'agents** pour répondre à un besoin métier précis.
+
+## Ce qui a été livré
+
+- Une librairie de composants en mode **shadcn-style copy-paste** (Radix + Tailwind v4)
+- Un **CLI** (`klp-ui`) pour qu'un dev puisse tirer un composant dans son app en une commande
+- Un **registry** versionné pour distribuer les composants via GitHub
+- Des **agents spécialisés** branchés sur Claude Code pour générer, adapter et documenter chaque composant à partir des maquettes Figma
+
+Le tout pensé pour que les autres développeurs Klépierre puissent récupérer un composant, l'utiliser, et garder la cohérence du design system sans dépendre de moi.
+
+## La stack
+
+- **React 19** + **TypeScript** + **Vite 6**
+- **Radix Primitives** + **Tailwind CSS v4**
+- **CVA** + `tailwind-merge` pour les variants
+- **CLI maison** (Node) pour la distribution
+- **Agents Claude Code** custom : `figma-extractor`, `component-adapter`, `documentalist`...
+
+## Construire ses propres agents
+
+C'est le vrai sujet de ce niveau. Construire mes propres agents pour répondre à des besoins précis :
+
+- **Définir son scope** : qu'est-ce qu'il fait, qu'est-ce qu'il ne fait pas. Un agent qui essaie de tout faire fait tout mal.
+- **Décrire ses tâches** : entrées, sorties, étapes attendues, format de retour.
+- **Poser ses limites** : ce qu'il n'a pas le droit de toucher, les fichiers en lecture seule, les décisions qui doivent remonter à l'humain.
+- **Lui associer les bons skills** : extraction Figma, lecture de tokens, génération TS, lint, écriture de docs… chaque skill est une capacité bornée.
+
+Sur ce projet j'ai trois agents qui se passent le relais : un qui lit Figma via leur MCP, un qui écrit le composant React, un qui écrit la doc. Chacun avec son brief, ses garde-fous, ses outputs vérifiables.
+
+## Ce que j'en ai retenu
+
+- **Notre limite, c'est la créativité pour créer des agents.** Quand on connaît le métier et les contraintes, le système d'agents permet vraiment de créer des workflows précis, et surtout prévisibles et répétables ! Ce qui, jusque-là dans ma manière de travailler, n'était pas vraiment le cas.
+- **Les specs d'un agent, c'est 80 % du travail.** D'après mes observations, une spécification précise des agents — scope, système d'escalade, etc. — produit des résultats vraiment bons, même quand on leur fournit des inputs moyens ou imprécis.
+- **Corriger les agents plutôt que corriger les outputs.** C'est une philosophie que j'adopte de plus en plus quand je travaille avec des workflows d'agents. Mon objectif n'est plus d'avoir un output parfait, mais plutôt de corriger les agents, leurs instructions et leurs skills pour éviter les erreurs sur les prochaines demandes — et ensuite de corriger à la marge les outputs moi-même à la main. C'est un investissement qui demande un peu plus d'efforts au début, et surtout de bien connaître ses propres agents.
+
+À ce stade, j'ai pu proposer l'intégralité du code et du workflow à mes collègues développeurs, qui ont repris le sujet pour des questions de conformité avec les règles internes. Mais une vaste majorité du code généré va être conservée, et fera gagner un temps précieux à tous les futurs utilisateurs du design system.
