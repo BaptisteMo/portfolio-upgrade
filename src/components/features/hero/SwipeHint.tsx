@@ -47,7 +47,7 @@ export function SwipeHint() {
       initial={{ opacity: 0, rotate: 0, x: 0 }}
       animate={controls}
       style={{ transformOrigin: '20% 80%' }}
-      className="pointer-events-none absolute bottom-10 right-20 z-50 text-muted-foreground"
+      className="pointer-events-none absolute bottom-10 right-[23%] z-50 text-muted-foreground"
     >
       <Hand className="h-6 w-6" />
     </motion.div>
