@@ -62,7 +62,7 @@ export interface AboutMeta {
   experience: ExperienceItem[]
 }
 
-export type AiArticleLevel = 0 | 1 | 2 | 3
+export type AiArticleLevel = 1 | 2 | 3 | 4
 
 export interface AiArticleMeta {
   title: string

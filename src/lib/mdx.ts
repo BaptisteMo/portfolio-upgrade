@@ -120,8 +120,8 @@ function validateAiArticleMeta(data: Record<string, unknown>): AiArticleMeta {
     }
   }
   const level = data.level
-  if (level !== 0 && level !== 1 && level !== 2 && level !== 3) {
-    throw new Error(`Invalid level "${String(level)}" in ai-journey article (must be 0|1|2|3)`)
+  if (level !== 1 && level !== 2 && level !== 3 && level !== 4) {
+    throw new Error(`Invalid level "${String(level)}" in ai-journey article (must be 1|2|3|4)`)
   }
   return data as unknown as AiArticleMeta
 }

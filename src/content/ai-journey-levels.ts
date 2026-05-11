@@ -3,54 +3,54 @@ import type { AiJourneyLevel, Locale } from './meta'
 export const aiJourneyLevels: Record<Locale, AiJourneyLevel[]> = {
   fr: [
     {
-      level: 0,
-      title: 'Level 0 — Premiers pas',
-      description:
-        "Découverte des LLM, prompts, outils grand public. Comprendre ce qu'on peut faire avec l'IA en moins d'une heure.",
-    },
-    {
       level: 1,
-      title: 'Level 1 — Sortir du chat',
+      title: 'Level 1 — Premiers pas',
       description:
-        "RAG, fenêtres de contexte, embeddings : connecter l'IA à ses propres données et dépasser le simple chat.",
+        "Créer mes premiers side projects épaulé par ChatGPT.",
     },
     {
       level: 2,
-      title: 'Level 2 — Agents qui agissent',
+      title: 'Level 2 — Découverte de Claude Code',
       description:
-        "Tool use, boucles d'agent, orchestration multi-étapes. L'IA passe du conseil à l'action.",
+        "Installer mes premiers outils, travailler directement dans l'IDE, tester des frameworks.",
     },
     {
       level: 3,
-      title: 'Level 3 — Superpouvoirs',
+      title: 'Level 3 — Structurer les workflows',
       description:
-        'MCP, sub-agents, skills custom : étendre Claude Code et construire son propre stack agentique.',
+        "Créer des workflows structurés, produire des outils utilisables dans un contexte pro.",
+    },
+    {
+      level: 4,
+      title: 'Level 4 — Superpouvoirs',
+      description:
+        "Créer des systèmes d'agents avec lesquels je collabore au quotidien.",
     },
   ],
   en: [
     {
-      level: 0,
-      title: 'Level 0 — First steps',
-      description:
-        'LLMs, prompts, consumer tools. Understanding what AI can do in under an hour.',
-    },
-    {
       level: 1,
-      title: 'Level 1 — Beyond chat',
+      title: 'Level 1 — First steps',
       description:
-        'RAG, context windows, embeddings: plugging AI into your own data and moving past plain chat.',
+        'Building my first side projects with ChatGPT as a partner.',
     },
     {
       level: 2,
-      title: 'Level 2 — Agents that act',
+      title: 'Level 2 — Discovering Claude Code',
       description:
-        'Tool use, agent loops, multi-step orchestration. AI moves from advice to action.',
+        'Setting up my first tools, working directly in the IDE, testing frameworks.',
     },
     {
       level: 3,
-      title: 'Level 3 — Superpowers',
+      title: 'Level 3 — Structuring workflows',
       description:
-        'MCP, sub-agents, custom skills: extending Claude Code and building your own agentic stack.',
+        'Building structured workflows and shipping tools usable in a real work context.',
+    },
+    {
+      level: 4,
+      title: 'Level 4 — Superpowers',
+      description:
+        'Building agent systems I collaborate with every day.',
     },
   ],
 }

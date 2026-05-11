@@ -76,7 +76,7 @@ export function LevelSection({ level, articles, isLast, emptyLabel }: LevelSecti
               <motion.div key={article.slug} variants={itemVars}>
                 <AiArticleCard
                   article={article}
-                  priority={level.level === 0 && index < 2}
+                  priority={level.level === 1 && index < 2}
                 />
               </motion.div>
             ))}
