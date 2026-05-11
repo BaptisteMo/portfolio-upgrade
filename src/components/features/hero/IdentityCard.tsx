@@ -29,8 +29,8 @@ export function IdentityCard({ availability }: IdentityCardProps) {
       </div>
       <p className="text-sm text-muted-foreground leading-relaxed">
         {locale === 'fr'
-          ? 'Product Designer passionné par la création d\'expériences utilisateur intuitives et impactantes. Créer, itérer, se challenger, le product design est un métier passion qui anime chez moi la volonté d\'aller toujours plus loin.'
-          : 'A product designer passionate about creating intuitive and impactful user experiences. Creating, iterating, challenging myself – product design is a passion that drives me to always push further.'}
+          ? "Product Designer passionné par la création d'expériences utilisateur intuitives et impactantes. Depuis 2 ans, j'explore aussi le design augmenté par l'IA : workflows d'agents, design systems pilotables, protos haute-fidélité livrés en quelques jours. Je cherche un environnement stimulant et innovant pour pousser ces recherches encore plus loin."
+          : "Product Designer passionate about crafting intuitive, impactful user experiences. For the past 2 years, I've also been exploring AI-augmented design: agent workflows, drivable design systems, high-fidelity prototypes shipped in days. Looking for a stimulating, innovative environment to push this research even further."}
       </p>
     </div>
   )

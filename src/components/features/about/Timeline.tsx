@@ -70,7 +70,7 @@ function SwipeCard({
       <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-6 md:p-8 shadow-secondary-glow cursor-grab active:cursor-grabbing select-none">
         {/* Large year watermark */}
         <span
-          className="absolute -top-6 right-11 text-[12rem] max-w-50 md:text-[6rem] font-bold leading-none text-muted-foreground/6 pointer-events-none"
+          className="absolute -top-6 right-11 text-[12rem] max-w-50 sm:text-[6rem] font-bold leading-none text-muted-foreground/6 pointer-events-none"
           aria-hidden="true"
         >
           {item.year}

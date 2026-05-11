@@ -15,6 +15,7 @@ import { Timeline } from '@/components/features/about'
 import { ExperienceCard } from './ExperienceCard'
 import { ProjectsCard } from './ProjectsCard'
 import { ContactCard } from './ContactCard'
+import { SwipeHint } from './SwipeHint'
 
 interface BentoGridProps {
   experience: ExperienceItem[]
@@ -73,9 +74,9 @@ export function BentoGrid({ experience, skills, availability }: BentoGridProps) 
       </BentoCard>
 
       <BentoCard index={6} variant="projects" className="md:min-h-45">
-        <Link href={`/${locale}/projects/design-system`} className="absolute -inset-5 md:-inset-6 rounded-2xl overflow-hidden block">
+        <Link href={`/${locale}/ai-journey/level-4-agentic-designer`} className="absolute -inset-5 md:-inset-6 rounded-2xl overflow-hidden block">
           <Image
-            src="/images/projects/design-system/banner.png"
+            src="/images/ai/agentic-design.png"
             alt="Design System"
             fill
             className="object-cover transition-transform duration-300 hover:scale-105"
@@ -89,6 +90,7 @@ export function BentoGrid({ experience, skills, availability }: BentoGridProps) 
       {/* Row 5: Experience carousel (2/3) + AI Journey link (1/3) */}
       <BentoCard index={7} variant="experience" className="md:col-span-2">
         <Timeline items={experience} />
+        <SwipeHint />
       </BentoCard>
 
       <BentoCard index={8} variant="projects" className='min-h-40'>
@@ -101,7 +103,7 @@ export function BentoGrid({ experience, skills, availability }: BentoGridProps) 
             aria-hidden="true"
           />
           <p className="text-lg font-bold text-foreground transition-colors">
-            {locale === 'fr' ? 'Exploration IA' : 'AI Journey'}
+            {locale === 'fr' ? 'Mes explorations IA' : 'My AI Journey'}
           </p>
         </Link>
       </BentoCard>
