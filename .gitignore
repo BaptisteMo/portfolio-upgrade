@@ -46,3 +46,7 @@ _bmad-output/
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local tooling (skills)
+.agents/
+skills-lock.json

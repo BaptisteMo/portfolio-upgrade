@@ -1,112 +1,85 @@
 'use client'
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { Rocket } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { BLUR_DATA_URL } from '@/lib/image-placeholder'
 import { useReducedMotion } from '@/hooks'
 import { useLanguage } from '@/contexts'
-import type { ExperienceItem, AvailabilityStatus } from '@/content/meta'
-import { BentoCard } from './BentoCard'
-import { IdentityCard } from './IdentityCard'
-import { BioCard } from './BioCard'
-import { Timeline } from '@/components/features/about'
-import { ExperienceCard } from './ExperienceCard'
-import { ProjectsCard } from './ProjectsCard'
-import { ContactCard } from './ContactCard'
-import { SwipeHint } from './SwipeHint'
+import { HomeCard } from './HomeCard'
 
-interface BentoGridProps {
-  experience: ExperienceItem[]
-  skills: string[]
-  availability: AvailabilityStatus
+const LOREM =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.'
+
+interface CardDef {
+  key: string
+  title: { fr: string; en: string }
+  href: string
+  animation: string
 }
 
-export function BentoGrid({ experience, skills, availability }: BentoGridProps) {
+// Routes wired to existing content. `#` = placeholder (no matching route yet).
+const ROW_1: CardDef[] = [
+  { key: 'projects-1', title: { fr: 'Mes projets', en: 'My projects' }, href: '/projects', animation: 'projects' },
+  { key: 'ai-1', title: { fr: 'Mes exploration IA', en: 'My AI explorations' }, href: '/ai-journey', animation: 'ai-explorations' },
+]
+const ROW_2: CardDef[] = [
+  { key: 'atlas', title: { fr: 'Atlas - Le cockpit financier & contractuel à +1 Md€/an', en: 'Atlas' }, href: '/projects/atlas', animation: 'atlas' },
+  { key: 'studio', title: { fr: 'Studio de design IA', en: 'AI Design Studio' }, href: '#', animation: 'studio' },
+  { key: 'ai-2', title: { fr: 'Me contacter', en: 'Contact me' }, href: '/contact', animation: 'contact' },
+]
+
+
+export function BentoGrid() {
   const reducedMotion = useReducedMotion()
   const { locale } = useLanguage()
 
+  const bio =
+    locale === 'fr'
+      ? "Product Designer depuis 6 ans, je travaille à l'intersection du design, du dev et de l'IA. Je conçois des produits B2B et des design systems pensés pour durer, et j'intègre l'IA directement dans ma façon de travailler : workflows d'agents, design systems pilotables, protos haute-fidélité livrés en quelques heures."
+      : "Product Designer with 6 years of experience, working at the intersection of design, development and AI. I build B2B products and design systems made to last, and I weave AI directly into how I work: agent workflows, controllable design systems, high-fidelity prototypes shipped in a few hours."
+
+  const href = (path: string) => (path === '#' ? '#' : `/${locale}${path}`)
+
+  let i = 0
+  const card = (c: CardDef) => (
+    <HomeCard
+      key={c.key}
+      index={i++}
+      href={href(c.href)}
+      title={c.title[locale === 'fr' ? 'fr' : 'en']}
+      description={LOREM}
+      animation={c.animation}
+    />
+  )
+
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={{
-        hidden: {},
-        visible: {
-          transition: { staggerChildren: reducedMotion ? 0 : 0.09 },
-        },
-      }}
-      className="grid w-full max-w-[80%] mx-auto gap-4 grid-cols-1 md:grid-cols-3 md:min-h-[80vh] md:grid-rows-[auto_auto_1fr_auto]"
-    >
-      {/* Row 1: Title (2/3) + stacked Identity & CV (1/3, 50/50) */}
-      <BentoCard index={0} variant="bio" className="md:col-span-2">
-        <BioCard />
-      </BentoCard>
+    <div className="flex flex-col gap-6 pt-6 lg:min-h-screen lg:gap-8 lg:pt-10">
+      {/* Header: name (left) + bio (right) */}
+      <header className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-10 lg:pr-10">
+        <h1 className="text-4xl font-bold leading-[1.04] tracking-tight text-foreground lg:whitespace-nowrap lg:text-6xl">
+          Baptiste Morillon,
+          <span className="name-sweep block w-fit cursor-default pb-[0.12em] -mb-[0.12em]">product designer</span>
+        </h1>
+        <p className="w-full max-w-162.5 text-base leading-relaxed text-foreground lg:text-xl">
+          {bio}
+        </p>
+      </header>
 
-      <div className="flex flex-col gap-4">
-        <BentoCard index={1} variant="identity" className="flex-1">
-          <IdentityCard availability={availability} />
-        </BentoCard>
-      </div>
-
-      {/* Row 3-4: Projects (1/3, row-span-2) + Quote (2/3) + 2 previews (1/3 each) */}
-      <BentoCard index={3} variant="projects" className="md:row-span-2 min-h-60">
-        <ProjectsCard />
-      </BentoCard>
-
-      <BentoCard index={4} variant="experience" className="md:col-span-2 min-h-30">
-        <ExperienceCard />
-      </BentoCard>
-
-      <BentoCard index={5} variant="projects" className="md:min-h-45">
-        <Link href={`/${locale}/projects/atlas`} className="absolute -inset-5 md:-inset-6 rounded-2xl overflow-hidden block">
-          <Image
-            src="/images/projects/atlas/dcm-mockups.png"
-            alt="Atlas"
-            fill
-            className="object-cover transition-transform duration-300 hover:scale-105"
-            placeholder="blur"
-            blurDataURL={BLUR_DATA_URL}
-            sizes="(max-width: 768px) 100vw, 33vw"
-          />
-        </Link>
-      </BentoCard>
-
-      <BentoCard index={6} variant="projects" className="md:min-h-45">
-        <Link href={`/${locale}/ai-journey/level-4-agentic-designer`} className="absolute -inset-5 md:-inset-6 rounded-2xl overflow-hidden block">
-          <Image
-            src="/images/ai/agentic-design.png"
-            alt="Design System"
-            fill
-            className="object-cover transition-transform duration-300 hover:scale-105"
-            placeholder="blur"
-            blurDataURL={BLUR_DATA_URL}
-            sizes="(max-width: 768px) 100vw, 33vw"
-          />
-        </Link>
-      </BentoCard>
-
-      {/* Row 5: Experience carousel (2/3) + AI Journey link (1/3) */}
-      <BentoCard index={7} variant="experience" className="md:col-span-2">
-        <Timeline items={experience} />
-        <SwipeHint />
-      </BentoCard>
-
-      <BentoCard index={8} variant="projects" className='min-h-40'>
-        <Link
-          href={`/${locale}/ai-journey`}
-          className="flex flex-col justify-between h-full min-h-45 group"
-        >
-          <Rocket
-            className="h-10 w-10 text-muted-foreground"
-            aria-hidden="true"
-          />
-          <p className="text-lg font-bold text-foreground transition-colors">
-            {locale === 'fr' ? 'Mes explorations IA' : 'My AI Journey'}
-          </p>
-        </Link>
-      </BentoCard>
-    </motion.div>
+      {/* Bento panel */}
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: {},
+          visible: { transition: { staggerChildren: reducedMotion ? 0 : 0.09 } },
+        }}
+        className="flex flex-col gap-3 rounded-2xl bg-muted p-3 lg:flex-1 lg:gap-4 lg:rounded-tl-[32px] lg:rounded-tr-none lg:rounded-bl-none lg:rounded-br-none lg:p-4 lg:pr-14"
+      >
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:flex-1 lg:gap-4 lg:max-h-75">
+          {ROW_1.map(card)}
+        </div>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:flex-1 lg:gap-4">
+          {ROW_2.map(card)}
+        </div>
+      </motion.div>
+    </div>
   )
 }

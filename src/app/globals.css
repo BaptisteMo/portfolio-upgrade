@@ -89,7 +89,7 @@
   --radius: 0.625rem;
 
   /* Background & Foreground */
-  --background: oklch(1 0 0);                    /* White */
+  --background: #fbfbfd;                          /* Off-white (mockup) */
   --foreground: oklch(0.145 0.02 265);           /* Near black with slight blue */
 
   /* Card */
@@ -356,3 +356,56 @@
     }
   }
 }
+
+/* ============================================
+   Name sweep — pastel spotlight on hover
+   ("product designer" in the hero header)
+   ============================================ */
+:root {
+  --name-base: #c1c2c5; /* resting gray (matches mockup) */
+}
+.dark {
+  --name-base: oklch(0.958 0.007 268.55 / 0.32); /* dim off-white */
+}
+
+/* clip:text + transparent stay ON at rest AND hover so the glyphs never
+   re-render (no jump). Only the gradient swaps in on hover. */
+.name-sweep {
+  color: transparent;
+  background-image: linear-gradient(90deg, var(--name-base), var(--name-base));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.name-sweep:hover {
+  /* Pastel band sits in the middle; base colour fills the rest. */
+  background-image: linear-gradient(
+    90deg,
+    var(--name-base) 0%,
+    var(--name-base) 34%,
+    #f3b58f 42%,
+    #eccca6 47%,
+    #a9c0e0 53%,
+    #c3b2e6 58%,
+    var(--name-base) 66%,
+    var(--name-base) 100%
+  );
+  background-size: 250% 100%;
+  background-position: 150% 0;
+  background-repeat: repeat-x;
+  animation: name-sweep 1.4s ease-in-out infinite;
+}
+
+@keyframes name-sweep {
+  0% { background-position: 150% 0; }
+  100% { background-position: -50% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .name-sweep:hover {
+    background-image: linear-gradient(90deg, var(--name-base), var(--name-base));
+    animation: none;
+  }
+}
+
+/* "Me contacter" greeting styles moved to ContactGreeting.module.css */

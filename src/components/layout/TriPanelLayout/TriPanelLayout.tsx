@@ -19,7 +19,7 @@ export function TriPanelLayout({ nav, children, panel }: TriPanelLayoutProps) {
       <div className="relative lg:flex lg:flex-row">
         {/* Navigation - Fixed Left (desktop only) */}
         <aside
-          className="hidden lg:block sticky left-0 top-0 h-screen w-[15%] min-w-47.5 shrink-0 border-r border-border bg-background z-10"
+          className="hidden lg:block sticky left-0 top-0 h-screen w-[15%] min-w-47.5 shrink-0 border-r border-border bg-card z-10"
           role="navigation"
           aria-label="Navigation principale"
         >
@@ -30,10 +30,10 @@ export function TriPanelLayout({ nav, children, panel }: TriPanelLayoutProps) {
         <main
           id="main-content"
           tabIndex={-1}
-          className="min-h-screen pt-14 scroll-mt-14 lg:pt-0 lg:scroll-mt-0 lg:min-w-0 lg:flex-1 px-4 lg:px-12 focus:outline-none"
+          className="min-h-screen pt-14 scroll-mt-14 lg:pt-0 lg:scroll-mt-0 lg:min-w-0 lg:flex-1 lg:pl-12 focus:outline-none w-full"
           role="main"
         >
-          <div className="mx-auto max-w-3xl lg:max-w-none py-8 lg:py-0">
+          <div className="mx-auto w-full max-w-3xl px-5 py-8 sm:px-6 lg:max-w-none lg:px-0 lg:py-0">
             <PageTransition>{children}</PageTransition>
           </div>
         </main>
@@ -41,7 +41,7 @@ export function TriPanelLayout({ nav, children, panel }: TriPanelLayoutProps) {
         {/* Context Panel - Fixed Right (desktop only) */}
         {panel && (
           <aside
-            className="hidden lg:block sticky right-0 top-0 h-screen w-[20%] min-w-62.5 shrink-0 border-l border-border bg-background z-10"
+            className="hidden lg:block sticky right-0 top-0 h-screen w-[20%] min-w-62.5 shrink-0 border-l border-border bg-card z-10"
             role="complementary"
             aria-label="Panneau contextuel"
           >
