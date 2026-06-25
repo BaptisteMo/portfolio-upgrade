@@ -4,9 +4,11 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { useLanguage } from '@/contexts'
+import { Download } from 'lucide-react'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { ThemeToggle } from '@/components/shared'
 import { ShortcutsBar } from '@/components/features/shortcuts-bar'
+import { Button } from '@/components/ui/button'
 
 const navItems = {
   fr: [
@@ -48,7 +50,9 @@ export function NavPanel() {
 
         aria-label={locale === 'fr' ? "Retour à l'accueil" : 'Back to home'}
         className={cn(
-          'mb-8 text-lg font-bold text-foreground',
+          // desktop sidebar only — in the mobile drawer the brand is redundant
+          // (MobileHeader bar + drawer "Menu" header already carry identity)
+          'mb-8 hidden text-lg font-bold text-foreground lg:block',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-sm'
         )}
       >
@@ -86,6 +90,12 @@ export function NavPanel() {
 
       {/* Bottom section */}
       <div className="mt-auto space-y-4 pt-6 border-t border-border">
+        <Button asChild size="lg" className="w-full">
+          <a href={`/cv-baptiste-morillon-${locale}.pdf`} download>
+            <Download />
+            {locale === 'fr' ? 'Télécharger mon CV' : 'Download my CV'}
+          </a>
+        </Button>
         <ShortcutsBar />
         <div className="flex items-center justify-between">
           <LanguageSwitcher />
