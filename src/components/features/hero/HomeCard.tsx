@@ -29,7 +29,7 @@ interface HomeCardProps {
   index: number
   href: string
   title: string
-  description: string
+  description?: string
   /** Lottie slot id for the hover animation. */
   animation: string
   className?: string
@@ -88,9 +88,11 @@ export function HomeCard({
           </div>
           <div className="relative z-10">
             <h3 className="text-xl font-bold text-foreground md:text-lg lg:text-[28px]">{title}</h3>
-            <p className="mt-3 max-w-md text-sm text-muted-foreground md:text-base">
-              {description}
-            </p>
+            {description && (
+              <p className="mt-3 max-w-md text-sm text-muted-foreground md:text-base">
+                {description}
+              </p>
+            )}
           </div>
         </Link>
       </motion.div>
