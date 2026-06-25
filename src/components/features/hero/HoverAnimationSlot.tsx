@@ -30,7 +30,7 @@ const SVG_ANIMATIONS: Record<
     src: '/images/anim/Klepierre.svg',
     rest: 1.78,
     full: 3,
-    className: 'text-[#1B214D] dark:text-white',
+    className: 'scale-[0.6] text-[#1B214D] dark:text-white',
   },
   // idle = empty prompt field (caret blinks); hover types "Help me build..." then
   // the mini-UI draws itself in line + fills.
