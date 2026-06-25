@@ -5,25 +5,69 @@ import { useReducedMotion } from '@/hooks'
 import { useLanguage } from '@/contexts'
 import { HomeCard } from './HomeCard'
 
-const LOREM =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.'
-
 interface CardDef {
   key: string
   title: { fr: string; en: string }
+  // Edit each card's blurb here, per language.
+  description: { fr: string; en: string }
   href: string
   animation: string
 }
 
 // Routes wired to existing content. `#` = placeholder (no matching route yet).
 const ROW_1: CardDef[] = [
-  { key: 'projects-1', title: { fr: 'Mes projets', en: 'My projects' }, href: '/projects', animation: 'projects' },
-  { key: 'ai-1', title: { fr: 'Mes exploration IA', en: 'My AI explorations' }, href: '/ai-journey', animation: 'ai-explorations' },
+  {
+    key: 'projects-1',
+    title: { fr: 'Mes projets', en: 'My projects' },
+    description: {
+      fr: "Une sélection de produits B2B et de design systems conçus de bout en bout.",
+      en: 'A selection of B2B products and design systems built end to end.',
+    },
+    href: '/projects',
+    animation: 'projects',
+  },
+  {
+    key: 'ai-1',
+    title: { fr: 'Mes exploration IA', en: 'My AI explorations' },
+    description: {
+      fr: "Mes expérimentations à l'intersection du design et de l'IA : agents, workflows, protos.",
+      en: 'My experiments where design meets AI: agents, workflows, prototypes.',
+    },
+    href: '/ai-journey',
+    animation: 'ai-explorations',
+  },
 ]
 const ROW_2: CardDef[] = [
-  { key: 'atlas', title: { fr: 'Atlas - Le cockpit financier & contractuel à +1 Md€/an', en: 'Atlas' }, href: '/projects/atlas', animation: 'atlas' },
-  { key: 'studio', title: { fr: 'Studio de design IA', en: 'AI Design Studio' }, href: '#', animation: 'studio' },
-  { key: 'ai-2', title: { fr: 'Me contacter', en: 'Contact me' }, href: '/contact', animation: 'contact' },
+  {
+    key: 'atlas',
+    title: { fr: 'Atlas - Le cockpit financier & contractuel à +1 Md€/an', en: 'Atlas' },
+    description: {
+      fr: "Le cockpit financier et contractuel qui pilote plus d'1 Md€ de flux par an.",
+      en: 'The financial and contractual cockpit steering over €1B in flows per year.',
+    },
+    href: '/projects/atlas',
+    animation: 'atlas',
+  },
+  {
+    key: 'studio',
+    title: { fr: 'Studio de design IA', en: 'AI Design Studio' },
+    description: {
+      fr: "Un studio où l'IA génère, itère et livre des interfaces haute-fidélité en quelques heures.",
+      en: 'A studio where AI generates, iterates and ships high-fidelity interfaces in hours.',
+    },
+    href: '#',
+    animation: 'studio',
+  },
+  {
+    key: 'ai-2',
+    title: { fr: 'Me contacter', en: 'Contact me' },
+    description: {
+      fr: "Un projet, une idée, ou juste envie d'échanger ? Écrivez-moi.",
+      en: 'A project, an idea, or just want to chat? Drop me a line.',
+    },
+    href: '/contact',
+    animation: 'contact',
+  },
 ]
 
 
@@ -45,7 +89,7 @@ export function BentoGrid() {
       index={i++}
       href={href(c.href)}
       title={c.title[locale === 'fr' ? 'fr' : 'en']}
-      description={LOREM}
+      description={c.description[locale === 'fr' ? 'fr' : 'en']}
       animation={c.animation}
     />
   )

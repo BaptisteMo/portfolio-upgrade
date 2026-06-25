@@ -87,7 +87,7 @@ export function HomeCard({
             <HoverAnimationSlot name={animation} hovered={hovered} />
           </div>
           <div className="relative z-10">
-            <h3 className="text-xl font-bold text-foreground md:text-[23px]">{title}</h3>
+            <h3 className="text-xl font-bold text-foreground md:text-lg lg:text-[28px]">{title}</h3>
             <p className="mt-3 max-w-md text-sm text-muted-foreground md:text-base">
               {description}
             </p>
