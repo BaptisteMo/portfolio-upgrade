@@ -42,7 +42,7 @@ const ROW_2: CardDef[] = [
     key: 'studio',
     title: { fr: 'Studio de design IA', en: 'AI Design Studio' },
 
-    href: '#',
+    href: '/ai-journey/level-4-agentic-designer',
     animation: 'studio',
   },
   {
